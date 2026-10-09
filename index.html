@@ -62,8 +62,8 @@
       margin: 0;
       position: fixed;
       top: 0;
-      left: 0;
-      right: 0;
+      left: 50%;
+      right: auto;
       bottom: 0;
       overflow: hidden;
       border-radius: 0;
@@ -293,7 +293,8 @@
       // app-wrapper 始终保持 390x844 的设计尺寸，通过 transform scale 缩放
       w.style.width = TARGET_W + 'px';
       w.style.height = TARGET_H + 'px';
-      w.style.transform = 'scale(' + scale + ')';
+      // 宽屏直开时将固定竖屏画布水平居中，窄屏手机布局保持不变。
+      w.style.transform = 'translateX(-50%) scale(' + scale + ')';
       w.style.transformOrigin = 'top center';
       w.style.setProperty('--app-radius', RADIUS + 'px');
 
