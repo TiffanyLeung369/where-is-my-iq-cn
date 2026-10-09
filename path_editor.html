@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>路径节点拖拽定位工具</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Microsoft YaHei', sans-serif; background: #1a1a2e; color: #fff; padding: 16px; }
+    h1 { text-align: center; font-size: 20px; margin-bottom: 8px; }
+    .tip { text-align: center; color: #aaa; font-size: 13px; margin-bottom: 16px; }
+
+    .panels { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    .panel { flex: 0 0 auto; }
+    .panel-title { text-align: center; font-size: 15px; font-weight: 700; margin-bottom: 6px; color: #78C5E3; }
+
+    .canvas-area {
+      position: relative;
+      width: 375px; height: 500px;
+      background: #2a2a3e;
+      border: 2px solid #444;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: crosshair;
+    }
+    .canvas-area img {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: contain;
+      opacity: 0.7;
+      pointer-events: none;
+      user-select: none;
+    }
+    .upload-hint {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      color: #666; font-size: 14px; text-align: center; pointer-events: none;
+    }
+
+    .node {
+      position: absolute;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #42A5F5, #1565C0);
+      border: 2px solid #fff;
+      box-shadow: 0 2px 8px rgba(21,101,192,0.6);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 700; color: #fff;
+      cursor: grab;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      user-select: none;
+      transition: box-shadow 0.15s;
+    }
+    .node:hover { box-shadow: 0 2px 14px rgba(66,165,245,0.9); }
+    .node.dragging {
+      cursor: grabbing;
+      box-shadow: 0 4px 20px rgba(66,165,245,1);
+      z-index: 20;
+    }
+
+    /* 连接线用SVG */
+    .line-layer {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 5;
+    }
+
+    .controls { margin-top: 10px; text-align: center; }
+    .controls button {
+      padding: 6px 16px; margin: 4px;
+      border: none; border-radius: 6px;
+      font-size: 13px; font-weight: 600; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-upload { background: #4ECDC4; color: #fff; }
+    .btn-upload:hover { background: #3ab5ad; }
+    .btn-copy { background: #FF6B6B; color: #fff; }
+    .btn-copy:hover { background: #e55555; }
+    .btn-reset { background: #555; color: #fff; }
+    .btn-reset:hover { background: #666; }
+
+    .coord-box {
+      margin-top: 8px;
+      background: #222;
+      border: 1px solid #444;
+      border-radius: 6px;
+      padding: 8px;
+      font-family: Consolas, monospace;
+      font-size: 11px;
+      color: #4ECDC4;
+      max-height: 80px;
+      overflow-y: auto;
+      word-break: break-all;
+      white-space: pre-wrap;
+    }
+
+    .toast {
+      position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+      background: #4ECDC4; color: #fff; padding: 8px 20px;
+      border-radius: 20px; font-size: 14px; font-weight: 600;
+      opacity: 0; transition: opacity 0.3s; z-index: 999;
+    }
+    .toast.show { opacity: 1; }
+  </style>
+</head>
+<body>
+  <h1>🎯 路径节点拖拽定位工具</h1>
+  <div class="tip">① 点击「加载线稿」选择图片 → ② 拖拽蓝色圆圈到线条上 → ③ 点击「复制坐标」</div>
+
+  <div class="panels">
+    <!-- 路径1 -->
+    <div class="panel" id="panel1">
+      <div class="panel-title">路径1 — S形曲线</div>
+      <div class="canvas-area" id="area1">
+        <img id="img1" src="" style="display:none" />
+        <div class="upload-hint" id="hint1">点击下方「加载线稿」<br>选择第1张图</div>
+        <svg class="line-layer" id="svg1"></svg>
+      </div>
+      <div class="controls">
+        <button class="btn-upload" onclick="loadImage(1)">📂 加载线稿</button>
+        <button class="btn-copy" onclick="copyCoords(1)">📋 复制坐标</button>
+        <button class="btn-reset" onclick="resetNodes(1)">🔄 重置位置</button>
+        <input type="file" id="file1" accept="image/*" style="display:none" onchange="onFile(1,this)" />
+      </div>
+      <div class="coord-box" id="coords1">等待拖拽...</div>
+    </div>
+
+    <!-- 路径2 -->
+    <div class="panel" id="panel2">
+      <div class="panel-title">路径2 — 大弧钩形</div>
+      <div class="canvas-area" id="area2">
+        <img id="img2" src="" style="display:none" />
+        <div class="upload-hint" id="hint2">点击下方「加载线稿」<br>选择第2张图</div>
+        <svg class="line-layer" id="svg2"></svg>
+      </div>
+      <div class="controls">
+        <button class="btn-upload" onclick="loadImage(2)">📂 加载线稿</button>
+        <button class="btn-copy" onclick="copyCoords(2)">📋 复制坐标</button>
+        <button class="btn-reset" onclick="resetNodes(2)">🔄 重置位置</button>
+        <input type="file" id="file2" accept="image/*" style="display:none" onchange="onFile(2,this)" />
+      </div>
+      <div class="coord-box" id="coords2">等待拖拽...</div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script>
+    const N = 20; // 每条路径20个节点
+
+    // 初始坐标（均匀排列，方便用户从头拖）
+    function defaultPositions() {
+      const pts = [];
+      for (let i = 0; i < N; i++) {
+        pts.push({ x: 50, y: 4 + i * (90 / (N - 1)) });
+      }
+      return pts;
+    }
+
+    const state = {
+      1: { pts: defaultPositions(), nodes: [] },
+      2: { pts: defaultPositions(), nodes: [] },
+    };
+
+    // 创建节点
+    function createNodes(panelId) {
+      const area = document.getElementById('area' + panelId);
+      const s = state[panelId];
+      s.nodes = [];
+      // 移除旧节点
+      area.querySelectorAll('.node').forEach(n => n.remove());
+
+      for (let i = 0; i < N; i++) {
+        const el = document.createElement('div');
+        el.className = 'node';
+        el.textContent = i + 1;
+        el.style.left = s.pts[i].x + '%';
+        el.style.top = s.pts[i].y + '%';
+        el.dataset.idx = i;
+        area.appendChild(el);
+        s.nodes.push(el);
+        makeDraggable(el, panelId, i);
+      }
+      drawLines(panelId);
+      updateCoordText(panelId);
+    }
+
+    // 拖拽逻辑
+    function makeDraggable(el, panelId, idx) {
+      let dragging = false;
+      const area = document.getElementById('area' + panelId);
+
+      function onStart(e) {
+        e.preventDefault();
+        dragging = true;
+        el.classList.add('dragging');
+        document.addEventListener('mousemove', onMove);
+        document.addEventListener('mouseup', onEnd);
+        document.addEventListener('touchmove', onMove, { passive: false });
+        document.addEventListener('touchend', onEnd);
+      }
+
+      function onMove(e) {
+        if (!dragging) return;
+        e.preventDefault();
+        const rect = area.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        let px = (clientX - rect.left) / rect.width * 100;
+        let py = (clientY - rect.top) / rect.height * 100;
+        px = Math.max(2, Math.min(98, px));
+        py = Math.max(2, Math.min(98, py));
+        state[panelId].pts[idx] = { x: Math.round(px), y: Math.round(py) };
+        el.style.left = px + '%';
+        el.style.top = py + '%';
+        drawLines(panelId);
+        updateCoordText(panelId);
+      }
+
+      function onEnd() {
+        dragging = false;
+        el.classList.remove('dragging');
+        document.removeEventListener('mousemove', onMove);
+        document.removeEventListener('mouseup', onEnd);
+        document.removeEventListener('touchmove', onMove);
+        document.removeEventListener('touchend', onEnd);
+      }
+
+      el.addEventListener('mousedown', onStart);
+      el.addEventListener('touchstart', onStart, { passive: false });
+    }
+
+    // 画连接线
+    function drawLines(panelId) {
+      const svg = document.getElementById('svg' + panelId);
+      const pts = state[panelId].pts;
+      let d = '';
+      for (let i = 0; i < pts.length - 1; i++) {
+        d += `<line x1="${pts[i].x}%" y1="${pts[i].y}%" x2="${pts[i+1].x}%" y2="${pts[i+1].y}%"
+              stroke="rgba(255,255,255,0.35)" stroke-width="1.5" />`;
+      }
+      svg.innerHTML = d;
+    }
+
+    // 更新坐标文本
+    function updateCoordText(panelId) {
+      const pts = state[panelId].pts;
+      const lines = [];
+      for (let i = 0; i < pts.length; i += 5) {
+        const chunk = pts.slice(i, i + 5).map(p => `{x:${p.x}, y:${p.y}}`).join(', ');
+        lines.push(chunk + ',');
+      }
+      document.getElementById('coords' + panelId).textContent = lines.join('\n');
+    }
+
+    // 加载图片
+    function loadImage(panelId) {
+      document.getElementById('file' + panelId).click();
+    }
+    function onFile(panelId, input) {
+      const file = input.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = document.getElementById('img' + panelId);
+        img.src = e.target.result;
+        img.style.display = 'block';
+        document.getElementById('hint' + panelId).style.display = 'none';
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 复制坐标
+    function copyCoords(panelId) {
+      const pts = state[panelId].pts;
+      const lines = [];
+      for (let i = 0; i < pts.length; i += 5) {
+        const chunk = pts.slice(i, i + 5).map(p => `{x:${p.x}, y:${p.y}}`).join(', ');
+        lines.push('    ' + chunk + ',');
+      }
+      const text = lines.join('\n');
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('路径' + panelId + ' 坐标已复制！');
+      }).catch(() => {
+        // fallback
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast('路径' + panelId + ' 坐标已复制！');
+      });
+    }
+
+    // 重置
+    function resetNodes(panelId) {
+      state[panelId].pts = defaultPositions();
+      state[panelId].nodes.forEach((el, i) => {
+        el.style.left = state[panelId].pts[i].x + '%';
+        el.style.top = state[panelId].pts[i].y + '%';
+      });
+      drawLines(panelId);
+      updateCoordText(panelId);
+    }
+
+    // Toast
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 1500);
+    }
+
+    // 初始化
+    createNodes(1);
+    createNodes(2);
+  </script>
+</body>
+</html>

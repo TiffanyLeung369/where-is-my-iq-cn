@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>藏在哪 - 官方 12 色色板</title>
+    <style>
+        body { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            background: #2c3e50; 
+            margin: 0; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container { text-align: center; padding: 40px; }
+        h2 { color: white; margin-bottom: 24px; letter-spacing: 2px;}
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 160px); 
+            grid-template-rows: repeat(3, 160px); 
+            gap: 16px; 
+            padding: 30px; 
+            background: #fff; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5); 
+        }
+        .cell { 
+            border-radius: 12px; 
+            display: flex; 
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center; 
+            font-weight: bold; 
+            color: #fff; 
+            text-shadow: 0px 2px 4px rgba(0,0,0,0.3); 
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);
+        }
+        .cell:hover { 
+            transform: scale(1.05) translateY(-5px); 
+            cursor: crosshair; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+        .idx { font-size: 28px; margin-bottom: 2px; opacity: 0.95; font-weight: 900;}
+        .hex { font-size: 14px; font-family: monospace; letter-spacing: 1px;}
+        .desc { font-size: 15px; opacity: 0.9; margin-top: 8px; font-weight: 500; letter-spacing: 1px;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🎨 官方全套 12 星战定制马卡龙色</h2>
+        <div class="grid">
+            <div class="cell" style="background-color: #78C5E3;"><div class="idx">0</div><div class="hex">#78C5E3</div><div class="desc">天蓝</div></div>
+            <div class="cell" style="background-color: #F09541;"><div class="idx">1</div><div class="hex">#F09541</div><div class="desc">活力橘</div></div>
+            <div class="cell" style="background-color: #A8D86E;"><div class="idx">2</div><div class="hex">#A8D86E</div><div class="desc">青柠绿</div></div>
+            <div class="cell" style="background-color: #CD91D8;"><div class="idx">3</div><div class="hex">#CD91D8</div><div class="desc">紫罗兰</div></div>
+            
+            <div class="cell" style="background-color: #E88BAD;"><div class="idx">4</div><div class="hex">#E88BAD</div><div class="desc">粉红</div></div>
+            <div class="cell" style="background-color: #506999;"><div class="idx">5</div><div class="hex">#506999</div><div class="desc">深丹宁蓝</div></div>
+            <div class="cell" style="background-color: #F3E073;"><div class="idx">6</div><div class="hex">#F3E073</div><div class="desc">奶油黄</div></div>
+            <div class="cell" style="background-color: #9B4F80;"><div class="idx">7</div><div class="hex">#9B4F80</div><div class="desc">李子紫</div></div>
+            
+            <div class="cell" style="background-color: #4DBEB0;"><div class="idx">8</div><div class="hex">#4DBEB0</div><div class="desc">青绿</div></div>
+            <div class="cell" style="background-color: #AF7E5C;"><div class="idx">9</div><div class="hex">#AF7E5C</div><div class="desc">咖啡棕</div></div>
+            <div class="cell" style="background-color: #948BCE;"><div class="idx">10</div><div class="hex">#948BCE</div><div class="desc">鸢尾紫</div></div>
+            <div class="cell" style="background-color: #9BB0C1;"><div class="idx">11</div><div class="hex">#9BB0C1</div><div class="desc">冷灰蓝</div></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>Debug: 3分钟无限体力</title></head>
+<body>
+<script>
+  // 设置无限体力 3 分钟
+  try {
+    const raw = localStorage.getItem('gameData');
+    const data = raw ? JSON.parse(raw) : {};
+    data.infinitePlayEndTime = Date.now() + 3 * 60 * 1000;
+    localStorage.setItem('gameData', JSON.stringify(data));
+    document.write('<h2>✅ 已设置 3 分钟无限体力，正在跳转...</h2>');
+    setTimeout(() => { location.href = '/'; }, 500);
+  } catch(e) {
+    document.write('<h2>❌ 失败: ' + e.message + '</h2>');
+  }
+</script>
+</body></html>

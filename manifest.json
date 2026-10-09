@@ -1,0 +1,17 @@
+{
+  "name": "看你智商藏哪",
+  "short_name": "藏在哪",
+  "description": "一款益智找茬解谜游戏，动点小脑不呆不老！",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#BBEBFF",
+  "theme_color": "#BBEBFF",
+  "icons": [
+    {
+      "src": "assets/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,1916 @@
+/* ========== 首页样式（构图003严格复刻） ========== */
+
+#app {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.page {
+  height: 100vh;
+  height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #d4eef7 0%, #b8dff0 50%, #a3d5eb 100%);
+}
+
+/* 宽屏缩放时，用容器反算后的真实高度代替 100vh */
+.is-scaled .page {
+  height: var(--app-h, 100vh);
+}
+
+
+/* ========== 背景气泡 ========== */
+
+.bg-bubbles {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.15;
+  background: radial-gradient(circle, #fff, transparent);
+}
+
+.bubble-1 { width: 40vw; height: 40vw; top: -6.67vw; left: -10.67vw; }
+.bubble-2 { width: 26.67vw; height: 26.67vw; top: 26.67vw; right: -5.33vw; }
+.bubble-3 { width: 53.33vw; height: 53.33vw; bottom: 13.33vw; left: -13.33vw; }
+.bubble-4 { width: 21.33vw; height: 21.33vw; top: 66.67vw; right: 8vw; }
+.bubble-5 { width: 33.33vw; height: 33.33vw; bottom: -8vw; right: -8vw; }
+
+/* ========== 主内容 ========== */
+
+.content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5.33vw 4.27vw;
+  box-sizing: border-box;
+}
+
+/* ========== 资产栏（构图003顶部） ========== */
+
+.asset-bar {
+  display: flex;
+  gap: 4.27vw;
+  margin-bottom: 2.67vw;
+  flex-shrink: 0;
+  animation: fadeIn 0.8s ease;
+}
+
+.asset-item {
+  display: flex;
+  align-items: center;
+  gap: 1.07vw;
+  padding: 1.33vw 2.67vw;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 4vw;
+  border: 0.13vw solid rgba(255, 255, 255, 0.6);
+}
+
+.asset-icon {
+  width: 6.67vw;
+  height: 6.67vw;
+}
+
+.asset-value {
+  font-size: 3.73vw;
+  font-weight: 600;
+  color: #2c5f7c;
+}
+
+.asset-plus {
+  width: 4.27vw;
+  height: 4.27vw;
+  line-height: 4vw;
+  text-align: center;
+  font-size: 3.73vw;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #4FC3F7, #2196F3);
+  border-radius: 50%;
+  margin-left: 0.53vw;
+}
+
+.asset-item:active {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
+
+
+
+/* ========== Logo（螃蟹放大 + 芭蕾旋转） ========== */
+
+.logo-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2.13vw;
+  flex-shrink: 0;
+  animation: fadeIn 0.8s ease;
+}
+
+.logo-crab-static {
+  width: 30vw;
+  height: 30vw;
+  margin-bottom: -2.67vw;
+}
+
+
+/* 跳舞容器：弹跳 + 左右摇摆 */
+.logo-crab-dance {
+  width: 26.67vw;
+  height: 26.67vw;
+  margin-bottom: 1.07vw;
+  position: relative;
+  animation: crab-dance 1.6s ease-in-out infinite;
+}
+
+/* 两帧交替显示（模拟脚动，与每日挑战同理） */
+.logo-frame-1, .logo-frame-2 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.logo-frame-1 {
+  animation: flip-a 0.35s steps(1) infinite;
+}
+
+.logo-frame-2 {
+  animation: flip-b 0.35s steps(1) infinite;
+}
+
+/* 跳舞动作：上下弹跳 + 左右摇摆 + 微旋转，模拟原地扭动跳舞 */
+@keyframes crab-dance {
+  0%   { transform: translateY(0)     rotate(0deg); }
+  12%  { transform: translateY(-2.67vw) rotate(-6deg); }
+  25%  { transform: translateY(0)     rotate(0deg); }
+  37%  { transform: translateY(-2.13vw) rotate(6deg); }
+  50%  { transform: translateY(0)     rotate(0deg); }
+  62%  { transform: translateY(-2.67vw) rotate(-4deg); }
+  75%  { transform: translateY(0)     rotate(0deg); }
+  87%  { transform: translateY(-1.6vw) rotate(4deg); }
+  100% { transform: translateY(0)     rotate(0deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(2.67vw); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.logo-title {
+  font-size: 9.07vw;
+  font-weight: 800;
+  letter-spacing: 1.6vw;
+  color: #1A5F7A;
+}
+
+.logo-title-image {
+  width: 72vw;
+  height: auto;
+  object-fit: contain;
+}
+
+.logo-subtitle {
+  font-size: 4.8vw;
+  color: #1A5F7A;
+  margin-top: 0.53vw;
+  letter-spacing: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.en-subtitle {
+  font-family: system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 3.73vw;
+  margin-right: 1.07vw;
+  letter-spacing: 0.27vw;
+  font-weight: 500;
+  opacity: 0.85; /* 稍微降低透明度，让它不去抢主中文的视觉重心 */
+}
+
+/* ========== 入口栏（替代原信息栏） ========== */
+
+.entry-bar {
+  display: flex;
+  gap: 2.67vw;
+  width: 100%;
+  flex-shrink: 0;
+  margin-bottom: 2.13vw;
+  animation: fadeIn 0.8s ease 0.2s both;
+}
+
+.entry-btn {
+  flex: 1;
+  height: 18.67vw;
+  border-radius: 2.13vw;
+  position: relative;
+  transition: all 0.2s ease;
+  background: #fff;
+  box-shadow: 0 0.53vw 2.13vw rgba(0, 0, 0, 0.08);
+}
+
+.entry-btn:active {
+  transform: scale(0.95);
+  opacity: 0.85;
+}
+
+.entry-btn-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 2.13vw;
+}
+
+/* ========== 模式卡片 ========== */
+
+.mode-cards {
+  display: flex;
+  gap: 2.67vw;
+  width: 100%;
+  flex-shrink: 0;
+  margin-bottom: 2.13vw;
+  animation: fadeIn 0.8s ease 0.3s both;
+}
+
+.mode-card {
+  position: relative;
+  width: calc(50% - 1.33vw);
+  flex: none;
+  background: #fff;
+  border-radius: 3.2vw;
+  padding: 3.2vw 2.67vw 2.67vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0.53vw 2.67vw rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* 动画展示区域 */
+.card-crab-area {
+  width: 100%;
+  height: 16vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 1.6vw;
+}
+
+/* 每日挑战 - 小猪球状翻滚 */
+.animate-roll {
+  width: 16vw;
+  height: 16vw;
+  position: relative;
+  animation: roll-across 3s linear alternate infinite;
+}
+
+@keyframes roll-across {
+  0% { transform: translateX(-12vw) rotate(0deg); }
+  100% { transform: translateX(12vw) rotate(360deg); }
+}
+
+/* 螃蟹专属走动 */
+@keyframes walk-across {
+  0% { transform: translateX(-12vw); }
+  100% { transform: translateX(12vw); }
+}
+
+.animate-walk {
+  width: 16vw;
+  height: 16vw;
+  position: relative;
+  animation: walk-across 3s linear alternate infinite;
+}
+
+/* 飞行动物 */
+.animate-fly {
+  width: 16vw;
+  height: 16vw;
+  position: relative;
+}
+
+.animate-fly-horiz {
+  animation: walk-across 3s linear alternate infinite;
+}
+
+.animate-fly-bounce {
+  width: 100%;
+  height: 100%;
+  animation: fly-bounce 0.8s ease-in-out alternate infinite;
+}
+
+@keyframes fly-bounce {
+  0% { transform: translateY(0.27vw); }
+  100% { transform: translateY(-2.13vw); }
+}
+
+/* 章鱼游泳 */
+.animate-swim {
+  width: 16vw;
+  height: 16vw;
+  position: relative;
+}
+
+.animate-swim-horiz {
+  animation: walk-across 3.5s linear alternate infinite;
+}
+
+.animate-swim-bounce {
+  width: 100%;
+  height: 100%;
+  animation: swim-bounce 1.2s ease-out infinite;
+}
+
+@keyframes swim-bounce {
+  0% { transform: translateY(0); }
+  40% { transform: translateY(-3.47vw); }
+  60% { transform: translateY(-3.47vw); }
+  100% { transform: translateY(0); }
+}
+
+.swim-frame-squat {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: swim-flip-squat 1.2s steps(1) infinite;
+}
+
+.swim-frame-fly {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: swim-flip-fly 1.2s steps(1) infinite;
+}
+
+@keyframes swim-flip-squat {
+  0% { opacity: 1; }
+  20% { opacity: 0; }
+  80% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+@keyframes swim-flip-fly {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* 恐龙摔倒 */
+.animate-stumble {
+  width: 16vw;
+  height: 16vw;
+  position: relative;
+  animation: walk-across 4s linear alternate infinite;
+}
+
+.stumble-frame-walk {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: stumble-flip-walk 4s steps(1) infinite;
+}
+
+.stumble-frame-fall {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: stumble-flip-fall 4s steps(1) infinite;
+}
+
+@keyframes stumble-flip-walk {
+  0% { opacity: 1; }
+  35% { opacity: 0; }
+  60% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+@keyframes stumble-flip-fall {
+  0% { opacity: 0; }
+  35% { opacity: 1; }
+  60% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* 凤凰滑翔 */
+.animate-soar {
+  width: 18.67vw;
+  height: 18.67vw;
+  position: relative;
+  animation: walk-across 5s linear alternate infinite;
+}
+
+.soar-wave {
+  width: 100%;
+  height: 100%;
+  animation: soar-updown 2.5s ease-in-out alternate infinite;
+}
+
+.soar-frame-up {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: soar-flip-up 1.2s steps(1) infinite;
+}
+
+.soar-frame-down {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: soar-flip-down 1.2s steps(1) infinite;
+}
+
+@keyframes soar-flip-up {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes soar-flip-down {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+@keyframes soar-updown {
+  0% { transform: translateY(1.33vw); }
+  100% { transform: translateY(-6.67vw); }
+}
+
+/* 小松鼠跳跃 */
+.animate-hop {
+  width: 16vw;
+  height: 16vw;
+  position: relative;
+  animation: walk-across 3s linear alternate infinite;
+}
+
+.hop-bounce {
+  width: 100%;
+  height: 100%;
+  animation: hop-jump 0.8s ease-in-out infinite;
+}
+
+@keyframes hop-jump {
+  0% { transform: translateY(0) scale(1.1, 0.9); }
+  25% { transform: translateY(-4vw) scale(0.9, 1.1); }
+  50% { transform: translateY(-5.33vw) scale(1, 1); }
+  75% { transform: translateY(-2.67vw) scale(0.95, 1.05); }
+  100% { transform: translateY(0) scale(1.1, 0.9); }
+}
+
+.hop-frame-squat {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+  animation: hop-flip-squat 0.8s steps(1) infinite;
+}
+
+.hop-frame-jump {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+  animation: hop-flip-jump 0.8s steps(1) infinite;
+}
+
+@keyframes hop-flip-squat {
+  0% { opacity: 1; }
+  20% { opacity: 0; }
+  85% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+@keyframes hop-flip-jump {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  85% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* 鹦鹉在树枝上叽叽喳喳 */
+.animate-chirp {
+  width: 16vw;
+  height: 16vw;
+  position: relative;
+  animation: chirp-shift 2.5s ease-in-out infinite;
+}
+
+.chirp-sway {
+  width: 100%;
+  height: 100%;
+  animation: chirp-rock 0.6s ease-in-out infinite alternate;
+}
+
+.chirp-frame-closed {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+  /* 闭嘴帧始终显示，作为底层 */
+  opacity: 1;
+}
+
+.chirp-frame-open {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+  /* 张嘴帧间歇弹出覆盖：大部分时间隐藏，短暂显示模拟说话 */
+  animation: chirp-mouth 2.0s steps(1) infinite;
+}
+
+@keyframes chirp-mouth {
+  0%   { opacity: 0; }
+  15%  { opacity: 1; }
+  30%  { opacity: 0; }
+  45%  { opacity: 1; }
+  58%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* 身体左右小幅挪动，模拟在树枝上摇摆 */
+@keyframes chirp-shift {
+  0% { transform: translateX(-4vw); }
+  50% { transform: translateX(4vw); }
+  100% { transform: translateX(-4vw); }
+}
+
+/* 身体轻微左右摇摆 */
+@keyframes chirp-rock {
+  0% { transform: rotate(-3deg); }
+  100% { transform: rotate(3deg); }
+}
+
+/* 帧切换 */
+.walk-frame-1, .walk-frame-2 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.walk-frame-1 {
+  animation: flip-a 1s steps(1) infinite;
+}
+
+.walk-frame-2 {
+  animation: flip-b 1s steps(1) infinite;
+}
+
+@keyframes flip-a {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes flip-b {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* 生存模式卡片 */
+.survival-card {
+  position: relative;
+  overflow: hidden;
+  justify-content: flex-end;
+  padding: 0;
+}
+
+.card-crab-duel-bg {
+  position: absolute;
+  top: -14vw;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 4vw);
+  z-index: 0;
+  opacity: 0.95;
+  animation: duelPulse 3s ease-in-out infinite;
+}
+
+/* 皮肤生存模式位置微调（默认-14vw：猫头鹰/小章鱼/小松鼠） */
+.card-crab-duel-bg.skin-survival-crab {
+  top: -9vw;
+}
+.card-crab-duel-bg.skin-survival-parrot,
+.card-crab-duel-bg.skin-survival-turtle {
+  top: -11vw;
+}
+.card-crab-duel-bg.skin-survival-dino {
+  top: -11vw;
+}
+.card-crab-duel-bg.skin-survival-phoenix {
+  top: -13vw;
+}
+.card-crab-duel-bg.skin-survival-pig {
+  top: -15vw;
+}
+
+.survival-card .survival-btn {
+  position: relative;
+  z-index: 1;
+  width: calc(100% - 5.33vw);
+  margin: 0 2.67vw 2.67vw 2.67vw;
+}
+
+@keyframes duelPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+.card-tag {
+  width: 100%;
+  font-size: 3.73vw;
+  color: #5b87a1;
+  margin-bottom: 1.6vw;
+  text-align: center;
+}
+
+.card-btn {
+  width: 100%;
+  border-radius: 5.33vw;
+  padding: 1.87vw 0;
+  text-align: center;
+  margin-bottom: 1.07vw;
+  position: relative;
+}
+
+.daily-btn {
+  background: linear-gradient(135deg, #FFB347, #FF8E53);
+}
+
+.survival-btn {
+  background: linear-gradient(135deg, #A8D86E, #6BC04B);
+}
+
+.card-btn-text {
+  font-size: 4.8vw;
+  font-weight: 700;
+  color: #fff;
+  display: block;
+}
+
+.card-btn-sub {
+  font-size: 3.73vw;
+  color: rgba(255, 255, 255, 0.8);
+  display: block;
+}
+
+.btn-ad-icon-corner {
+  position: absolute;
+  top: -2.13vw;
+  right: 1.33vw;
+  width: 7.47vw;
+  height: 7.47vw;
+  transform: rotate(12deg);
+  animation: bounceAd 2s infinite ease-in-out;
+  filter: drop-shadow(0 0.53vw 1.07vw rgba(0, 0, 0, 0.2));
+  z-index: 5;
+}
+
+@keyframes bounceAd {
+  0%, 100% { transform: translateY(0) rotate(12deg) scale(1); }
+  50% { transform: translateY(-1.07vw) rotate(18deg) scale(1.08); }
+}
+
+.card-timer {
+  font-size: 3.73vw;
+  color: #6a92a9;
+  margin-top: 0.53vw;
+}
+
+/* ========== 开始游戏主按钮 ========== */
+
+.btn-start {
+  width: 80%;
+  background: linear-gradient(135deg, #4FC3F7, #2196F3);
+  color: #fff;
+  border: none;
+  border-radius: 8vw;
+  padding: 3.2vw 0;
+  box-shadow: 0 1.07vw 4vw rgba(33, 150, 243, 0.35);
+  transition: all 0.2s ease;
+  animation: fadeIn 0.8s ease 0.5s both;
+}
+
+.btn-start:active {
+  transform: scale(0.95);
+  box-shadow: 0 0.53vw 2.13vw rgba(33, 150, 243, 0.3);
+}
+
+.btn-text {
+  font-size: 6.4vw;
+  font-weight: 700;
+  letter-spacing: 1.07vw;
+  text-indent: 1.07vw; /* 修复 letter-spacing 导致文字整体偏左的问题 */
+}
+
+
+/* ========== 底部 ========== */
+
+.footer {
+  margin-top: 2.67vw;
+  animation: fadeIn 0.8s ease 0.6s both;
+}
+
+.footer-text {
+  font-size: 3.73vw;
+  color: #1A5F7A;
+  font-weight: 500;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.footer-icon {
+  width: 8.53vw;
+  height: 8.53vw;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 1.07vw;
+}
+
+/* 短屏手机媒体查询已禁用：现在使用固定 390×844 设计 + 整体缩放方案 */
+/*
+@media (max-height: 720px) {
+  .content {
+    padding-top: 3.2vw;
+    padding-bottom: 3.2vw;
+  }
+  .asset-bar {
+    margin-bottom: 1.33vw;
+  }
+  .logo-area {
+    margin-bottom: 1.07vw;
+  }
+  .logo-crab-static {
+    width: 22vw;
+    height: 22vw;
+    margin-bottom: -2.13vw;
+  }
+  .logo-title {
+    font-size: 7.47vw;
+  }
+  .logo-title-image {
+    width: 56vw;
+  }
+  .logo-subtitle {
+    font-size: 4vw;
+    margin-top: 0;
+  }
+  .entry-bar {
+    margin-bottom: 1.33vw;
+  }
+  .entry-btn {
+    height: 14.67vw;
+  }
+  .mode-cards {
+    height: 56vw;
+    margin-bottom: 1.33vw;
+  }
+  .mode-card {
+    height: 100%;
+    padding-top: 1.6vw;
+    padding-bottom: 1.6vw;
+  }
+  .card-crab-area,
+  .animate-walk,
+  .animate-fly,
+  .animate-swim,
+  .animate-stumble,
+  .animate-soar,
+  .animate-hop,
+  .animate-chirp {
+    height: 12vw;
+  }
+  .card-crab-area {
+    margin-bottom: 0.8vw;
+  }
+  .card-tag {
+    margin-bottom: 0.8vw;
+  }
+  .card-btn {
+    padding: 1.07vw 0;
+    margin-bottom: 0.53vw;
+  }
+  .card-btn-text {
+    font-size: 4.27vw;
+  }
+  .card-btn-sub,
+  .card-timer {
+    font-size: 3.2vw;
+  }
+  .btn-start {
+    padding: 2.4vw 0;
+  }
+  .checkin-entry-btn {
+    margin-top: 1.07vw;
+    padding-top: 0.8vw;
+    padding-bottom: 0.8vw;
+  }
+  .footer {
+    margin-top: 1.07vw;
+  }
+}
+*/
+
+/* ========== 弹窗通用 ========== */
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exchange-card {
+  width: 74.67vw;
+  background: #fff;
+  border-radius: 3.73vw;
+  padding: 5.33vw 4.8vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2.13vw 8vw rgba(0, 0, 0, 0.15);
+}
+
+.exchange-title {
+  font-size: 4.8vw;
+  font-weight: 700;
+  color: #2c5f7c;
+  margin-bottom: 3.73vw;
+}
+
+.exchange-rate {
+  display: flex;
+  align-items: center;
+  gap: 1.07vw;
+  margin-bottom: 3.73vw;
+  padding: 2.13vw 3.2vw;
+  background: #f0f7fb;
+  border-radius: 2.13vw;
+}
+
+.exchange-icon {
+  width: 6.67vw;
+  height: 6.67vw;
+}
+
+.exchange-text {
+  font-size: 3.73vw;
+  font-weight: 600;
+  color: #2c5f7c;
+}
+
+.exchange-row {
+  display: flex;
+  align-items: center;
+  gap: 2.13vw;
+  margin-bottom: 2.67vw;
+}
+
+.exchange-label {
+  font-size: 3.73vw;
+  color: #5b87a1;
+}
+
+.exchange-stepper {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.stepper-btn {
+  width: 7.47vw;
+  height: 7.47vw;
+  line-height: 7.2vw;
+  text-align: center;
+  font-size: 4.27vw;
+  font-weight: 700;
+  color: #2196F3;
+  background: #e8f4fd;
+  border-radius: 1.6vw;
+}
+
+.stepper-btn:active {
+  background: #c8e6f9;
+}
+
+.stepper-value {
+  width: 10.67vw;
+  text-align: center;
+  font-size: 4.27vw;
+  font-weight: 700;
+  color: #2c5f7c;
+}
+
+.exchange-cost {
+  font-size: 3.73vw;
+  color: #ff8e53;
+  font-weight: 600;
+  margin-bottom: 3.2vw;
+}
+
+.exchange-btn {
+  width: 100%;
+  padding: 2.67vw 0;
+  text-align: center;
+  background: linear-gradient(135deg, #4FC3F7, #2196F3);
+  color: #fff;
+  font-size: 3.73vw;
+  font-weight: 700;
+  border-radius: 5.33vw;
+}
+
+.exchange-btn:active {
+  opacity: 0.85;
+  transform: scale(0.97);
+}
+
+/* ========== 赚金币弹窗 ========== */
+
+.recharge-card {
+  width: 80vw;
+}
+
+.coin-ad-banner {
+  width: 100%;
+  background: #f0f7fb;
+  border-radius: 2.13vw;
+  padding: 5.33vw 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 4vw;
+}
+
+.coin-ad-icons {
+  display: flex;
+  align-items: center;
+  gap: 1.6vw;
+  margin-bottom: 2.13vw;
+}
+
+.coin-ad-coin-icon {
+  width: 8.53vw;
+  height: 8.53vw;
+}
+
+.coin-ad-amount {
+  font-size: 6.4vw;
+  font-weight: 900;
+  color: #FFB347;
+  text-shadow: 0 0.27vw 0.53vw rgba(255, 179, 71, 0.3);
+}
+
+.coin-ad-desc {
+  font-size: 3.73vw;
+  color: #5b87a1;
+}
+
+.coin-ad-btn-wrapper {
+  width: 100%;
+  margin-bottom: 2.67vw;
+}
+
+.coin-ad-btn {
+  background: linear-gradient(135deg, #FFB347, #FF8E53);
+  color: #fff;
+  border-radius: 5.33vw;
+  padding: 2.93vw 0;
+  text-align: center;
+  font-size: 4vw;
+  font-weight: 700;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 1.07vw 2.67vw rgba(255, 142, 83, 0.3);
+}
+
+.coin-ad-btn::after {
+  display: none;
+}
+
+.coin-ad-btn[disabled] {
+  background: #ccc;
+  color: #fff;
+  box-shadow: none;
+}
+
+.coin-ad-footer {
+  font-size: 3.73vw;
+  color: #9aaeca;
+}
+
+/* =========================================
+   启动加载屏 (Splash Screen) - 完美复刻006
+========================================= */
+
+.splash-screen {
+  /* 两个刻意拉开的间距：标题→CADPA（红圈1）、健康忠告→进度条（红圈2） */
+  --splash-gap-big: 17vw;
+  /* CADPA→健康忠告，保持原本的紧凑间距 */
+  --splash-gap-mid: 6.67vw;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #3b4b61;
+  z-index: 99999;
+  border-radius: inherit;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10.67vw 0 21.33vw 0;
+  box-sizing: border-box;
+}
+
+/* CADPA 8+ 右上角标（纯CSS绘制高保真） */
+.splash-cadpa {
+  margin-left: 5.33vw;
+  border: 0.53vw solid #fff;
+  border-radius: 1.6vw;
+  width: 22vw;
+  height: auto;
+  min-height: 16vw;
+  background: #50a133;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 1.07vw 0.53vw;
+}
+.cadpa-age {
+  font-size: 5.6vw;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 0.8vw;
+}
+.cadpa-line {
+  width: 80%;
+  height: 0.27vw;
+  background: #fff;
+  margin-bottom: 0.53vw;
+}
+.cadpa-text {
+  text-align: center;
+}
+.cadpa-text div {
+  font-size: calc(2.67vw);
+  line-height: 1.1;
+  font-weight: bold;
+}
+
+/* 中心视界 */
+.splash-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: none;            /* 不再吞掉剩余空间，间距全部由固定 margin 控制 */
+  justify-content: flex-start;
+  padding: 0 8vw;
+}
+
+/* Logo 和标题之间靠近 */
+.splash-center .splash-title {
+  margin-top: 2.67vw;
+}
+
+/* 标题和 CADPA 之间的距离 —— 红圈1，刻意拉开 */
+.splash-center .splash-cadpa {
+  margin-left: 0;
+  margin-top: var(--splash-gap-big);
+}
+
+/* CADPA 和健康忠告之间的距离 —— 保持紧凑 */
+.splash-center .splash-health-advice {
+  margin-top: var(--splash-gap-mid);
+}
+
+.splash-logo-bg {
+  width: 29.33vw;
+  height: 29.33vw;
+  background: transparent;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 1.33vw 4vw rgba(0, 0, 0, 0.2);
+}
+
+.splash-logo-img {
+  width: 29.33vw;
+  height: 29.33vw;
+  border-radius: 50%;
+}
+
+.splash-title {
+  color: #fff;
+  font-size: 5.6vw;
+  font-weight: bold;
+  margin-top: 3.2vw;
+  letter-spacing: 0.27vw;
+}
+
+/* 底部功能区域 —— 红圈2：改为固定 margin，不再依赖 space-between 的剩余空间 */
+.splash-bottom-area {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: var(--splash-gap-big);
+}
+
+/* 进度槽结构 */
+.splash-progress-wrapper {
+  width: 70%;
+  position: relative;
+  height: 4.8vw;
+  margin-bottom: 3.2vw;
+}
+
+/* 延迟卡顿提醒 */
+.splash-network-warning {
+  font-size: 3.73vw;
+  color: #fff;
+  opacity: 0.8;
+  margin-bottom: 8vw;
+  text-align: center;
+  letter-spacing: 0.27vw;
+  padding: 0 5.33vw;
+  line-height: 1.6;
+}
+
+.splash-enter-btn {
+  background: linear-gradient(135deg, #FFD54F, #FF8F00);
+  color: #5D4037;
+  border: none;
+  border-radius: 8vw;
+  padding: 3.5vw 12vw;
+  font-size: 5vw;
+  font-weight: 800;
+  letter-spacing: 0.8vw;
+  box-shadow: 0 1.33vw 4vw rgba(255, 143, 0, 0.5);
+  animation: enter-pulse 1.5s ease-in-out infinite;
+  margin-bottom: 6vw;
+}
+@keyframes enter-pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 1.33vw 4vw rgba(255, 143, 0, 0.5); }
+  50% { transform: scale(1.06); box-shadow: 0 1.33vw 5.33vw rgba(255, 143, 0, 0.7); }
+}
+
+.splash-progress-track {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 2.4vw;
+  overflow: hidden;
+  position: relative;
+}
+
+.splash-progress-fill {
+  height: 100%;
+  background: #ffcc00;
+  border-radius: 2.4vw 0 0 2.4vw;
+  transition: width 0.05s linear; /* 保证平滑过渡 */
+}
+
+.splash-progress-text {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-size: 3.73vw;
+  font-weight: 900;
+  color: #000;
+  top: 0;
+  line-height: 4.8vw;
+}
+
+/* 跑动的螃蟹与烟尘尾迹 */
+.splash-runner {
+  position: absolute;
+  bottom: 80%; /* 坐立在进度条之上 */
+  left: 0;
+  transform: translateX(-30%); /* 中心偏移一点点，让屁股冒烟合适 */
+  width: 8.53vw;
+  height: 8.53vw;
+  transition: left 0.05s linear;
+  z-index: 10;
+}
+
+.runner-anim {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.runner-frame-1, .runner-frame-2 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+}
+
+.runner-frame-1 { animation: run-flip-a 0.25s steps(1) infinite; }
+.runner-frame-2 { animation: run-flip-b 0.25s steps(1) infinite; }
+
+@keyframes run-flip-a { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes run-flip-b { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
+
+/* 奔跑飞尘粒子 */
+.dust-particle {
+  position: absolute;
+  bottom: 0.67vw;
+  width: 1.87vw;
+  height: 1.87vw;
+  background: #ffffff;
+  border-radius: 50%;
+  opacity: 0;
+  z-index: 8;
+}
+.d1 { right: 4vw; animation: dust-anim 0.5s infinite 0.0s; }
+.d2 { right: 5.33vw; bottom: 2vw; width: 1.33vw; height: 1.33vw; animation: dust-anim 0.6s infinite 0.2s; }
+.d3 { right: 2.67vw; bottom: 0; width: 1.07vw; height: 1.07vw; animation: dust-anim 0.5s infinite 0.4s; }
+
+@keyframes dust-anim {
+  0% { transform: translateX(0) scale(0.5); opacity: 0.9; }
+  100% { transform: translateX(-5.33vw) scale(1.5); opacity: 0; }
+}
+
+/* 健康游戏忠告排版 */
+.splash-health-advice {
+  text-align: center;
+  color: #fff;
+}
+
+.advice-title {
+  font-size: 3.73vw;
+  font-weight: bold;
+  margin-bottom: 1.6vw;
+}
+
+.advice-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8vw;
+  text-align: center;
+  opacity: 0.8;
+  font-size: 3.73vw;
+  align-items: center;
+}
+
+/* ========== 每日打卡入口 ========== */
+.checkin-entry-btn {
+  margin-top: 2.13vw;
+  padding: 1.33vw 5.33vw;
+  background: rgba(255, 255, 255, 0.2);
+  border: 0.27vw solid rgba(255, 255, 255, 0.4);
+  border-radius: 5.33vw;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.checkin-entry-text {
+  font-size: 4.8vw;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0.27vw 0.53vw rgba(0,0,0,0.3);
+}
+.red-dot {
+  position: absolute;
+  top: -1vw;
+  right: 2vw;
+  width: 4vw;
+  height: 4vw;
+  background-color: #ff4757;
+  border-radius: 50%;
+  border: 0.53vw solid #fff;
+  box-shadow: 0 0.53vw 1.33vw rgba(255, 71, 87, 0.4);
+  animation: dot-pulse 1.5s ease-in-out infinite;
+  z-index: 5;
+}
+
+@keyframes dot-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.8; }
+}
+
+/* ========== 每日打卡全屏页 ========== */
+.checkin-fullpage {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg, #1a3c5e, #0d2137);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* 垂直居中靠 header/按钮的 auto 外边距实现；上下留出返回按钮的安全距离 */
+  padding: 18.67vw 5.33vw;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+/* 返回按钮 */
+.checkin-back-btn {
+  position: absolute;
+  top: 16vw;
+  left: 4vw;
+  display: flex;
+  align-items: center;
+  gap: 1.07vw;
+  padding: 1.6vw 3.2vw;
+  z-index: 10;
+}
+.checkin-back-arrow {
+  font-size: 5.33vw;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: bold;
+}
+.checkin-back-text {
+  font-size: 3.73vw;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.checkin-header {
+  text-align: center;
+  /* auto：与底部按钮的 auto 一起把剩余空间均分，实现垂直居中；内容超高时自动归零不裁切 */
+  margin-top: auto;
+  margin-bottom: 5.33vw;
+}
+.checkin-title {
+  font-size: 6.4vw;
+  font-weight: 900;
+  color: #FFD54F;
+  display: block;
+}
+.checkin-sub {
+  font-size: 3.73vw;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 1.07vw;
+  display: block;
+}
+
+.checkin-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.67vw;
+  margin-bottom: 6.67vw;
+}
+
+.checkin-day {
+  background: rgba(44, 95, 124, 0.5);
+  border: 0.27vw solid rgba(97, 183, 226, 0.3);
+  border-radius: 2.67vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3.2vw 2.13vw;
+  position: relative;
+  overflow: hidden;
+  min-height: 26.67vw;
+  text-align: center;
+}
+
+.checkin-day * {
+  text-align: center;
+}
+
+/* 第7天占满整行 */
+.checkin-day.day-7 {
+  grid-column: 1 / -1;
+  justify-content: center;
+  min-height: 21.33vw;
+  background: linear-gradient(135deg, rgba(255, 213, 79, 0.15), rgba(255, 143, 0, 0.15));
+  border-color: rgba(255, 213, 79, 0.5);
+}
+
+.checkin-day.current {
+  border-color: #FFD54F;
+  background: rgba(255, 213, 79, 0.2);
+  box-shadow: 0 0 2.67vw rgba(255, 213, 79, 0.5);
+  animation: checkin-current-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes checkin-current-pulse {
+  0%, 100% { box-shadow: 0 0 2.67vw rgba(255, 213, 79, 0.5); }
+  50% { box-shadow: 0 0 4.8vw rgba(255, 213, 79, 0.8); }
+}
+
+/* locked 状态：奖励可见但略微降饱和 */
+.checkin-day.locked {
+  opacity: 0.55;
+  filter: saturate(0.6);
+}
+
+.checkin-day-num {
+  font-size: 3.73vw;
+  color: #aed6f1;
+  margin-bottom: 2.13vw;
+  font-weight: 600;
+}
+
+.day-7 .checkin-day-num {
+  margin-bottom: 0;
+  font-size: 4vw;
+  font-weight: bold;
+  color: #FFD54F;
+}
+
+.checkin-rewards {
+  width: 100%;
+  display: flex;
+  gap: 1.6vw;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkin-day:has(.checkin-reward-item:nth-child(2)) .checkin-reward-item {
+  width: calc(50% - 0.8vw);
+  max-width: calc(50% - 0.8vw);
+}
+
+.checkin-day:has(.checkin-reward-item:nth-child(3)) .checkin-reward-item {
+  width: calc(33.333% - 1.07vw);
+  max-width: calc(33.333% - 1.07vw);
+}
+
+.checkin-reward-item {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.checkin-icon {
+  width: 8.53vw;
+  height: 8.53vw;
+}
+.checkin-icon-text {
+  font-size: 6.4vw;
+  height: 8.53vw;
+  line-height: 8.53vw;
+}
+.day-7 .checkin-icon {
+  width: 10.67vw;
+  height: 10.67vw;
+}
+.day-7 .checkin-icon-text {
+  font-size: 8.53vw;
+  height: 10.67vw;
+  line-height: 10.67vw;
+}
+
+.checkin-count {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  font-size: 3.73vw;
+  color: #fff;
+  margin-top: 0.8vw;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.checkin-mask {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+.mask-claimed { background: rgba(0,0,0,0.6); }
+
+.checkin-mask-icon {
+  width: 9.6vw;
+  height: 9.6vw;
+  opacity: 0.9;
+}
+
+.checkin-btn {
+  width: 100%;
+  height: 12.8vw;
+  border-radius: 6.4vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4.53vw;
+  font-weight: bold;
+  margin-bottom: auto;
+}
+.checkin-btn.btn-active {
+  background: linear-gradient(135deg, #FFD54F, #FF8F00);
+  color: #fff;
+  box-shadow: 0 1.07vw 2.67vw rgba(255, 143, 0, 0.5);
+}
+.checkin-btn.btn-disabled {
+  background: #555;
+  color: #999;
+}
+
+.debug-overlay {
+  position: absolute;
+  top: 2.67vw;
+  right: 2.67vw;
+  background: rgba(255,255,255,0.9);
+  padding: 1.07vw 1.6vw;
+  border-radius: 1.6vw;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.debug-text {
+  font-size: 3.73vw;
+  color: #ff4d4f;
+  margin-top: 0.53vw;
+}
+.checkin-entry-btn .red-dot {
+  top: -1vw;
+  right: -1vw;
+}
+/* ========== 007通关打卡面板样式 ========== */
+.c007-win-panel {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6vw;
+}
+
+.c007-title-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.07vw;
+}
+.c007-skin-icon {
+  width: 7.47vw;
+  height: 7.47vw;
+  margin-right: 1.6vw;
+}
+.c007-title {
+  width: 100%;
+  font-size: 4.8vw;
+  font-weight: 800;
+  color: #799ad6; /* 偏紫蓝色 */
+  letter-spacing: 0.27vw;
+  text-align: center;
+}
+
+.c007-time-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.c007-time-val {
+  font-size: 5.87vw;
+  font-weight: 900;
+  color: #f78022; /* 亮橘色 */
+}
+
+.c007-rank-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+.c007-rank-label {
+  font-size: 3.73vw;
+  color: #666;
+  font-weight: 600;
+}
+.c007-rank-hl {
+  font-size: 5.07vw;
+  color: #e55c3c; /* 橙红色 */
+  font-weight: 900;
+  margin: 0 0.8vw;
+}
+
+.c007-streak-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 2.67vw;
+  margin-top: 0.8vw;
+}
+.c007-laurel-l, .c007-laurel-r {
+  font-size: 5.33vw;
+  color: #F7B500;
+  text-shadow: 0 0.53vw 1.6vw rgba(247, 181, 0, 0.4);
+  animation: c007LaurelShimmer 2s ease-in-out infinite alternate;
+}
+.c007-laurel-r {
+  transform: scaleX(-1);
+}
+@keyframes c007LaurelShimmer {
+  0% { opacity: 0.7; filter: brightness(1); }
+  100% { opacity: 1; filter: brightness(1.3); }
+}
+.c007-streak-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.c007-streak-label {
+  font-size: 3.73vw;
+  color: #666;
+  font-weight: 600;
+}
+.c007-streak-hl {
+  font-size: 4.8vw;
+  color: #e55c3c;
+  font-weight: 900;
+  margin: 0 0.8vw;
+}
+
+/* ========== 齿轮设置按钮 ========== */
+
+.gear-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 9.33vw;
+  height: 9.33vw;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  border: 0.13vw solid rgba(255, 255, 255, 0.6);
+  transition: all 0.2s ease;
+}
+
+.gear-btn:active {
+  transform: scale(0.9) rotate(30deg);
+  opacity: 0.8;
+}
+
+.gear-icon {
+  width: 6.67vw;
+  height: 6.67vw;
+}
+
+/* ========== 设置弹窗 ========== */
+
+.settings-card {
+  width: 74.67vw;
+  background: #fff;
+  border-radius: 4.27vw;
+  padding: 6.4vw 5.33vw 4.8vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2.67vw 8vw rgba(0, 0, 0, 0.15);
+}
+
+.settings-title {
+  font-size: 5.33vw;
+  font-weight: 700;
+  color: #2c5f7c;
+  margin-bottom: 4.8vw;
+}
+
+.settings-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 3.2vw 0;
+  border-bottom: 0.27vw solid rgba(0, 0, 0, 0.05);
+}
+
+.settings-icon {
+  width: 5.87vw;
+  height: 5.87vw;
+  margin-right: 2.13vw;
+}
+
+.settings-label {
+  flex: 1;
+  font-size: 4vw;
+  color: #333;
+  font-weight: 500;
+}
+
+/* ========== 设置弹窗版本号 ========== */
+.settings-version-text {
+  font-size: 4vw;
+  color: #1A5F7A;
+  font-weight: 400;
+}
+
+/* ========== 设置弹窗返回按钮 ========== */
+.settings-back-btn {
+  margin-top: 4.8vw;
+  width: 100%;
+  background: linear-gradient(135deg, #4FC3F7, #2196F3);
+  border-radius: 6.4vw;
+  padding: 2.93vw 0;
+  text-align: center;
+}
+
+.settings-back-btn:active {
+  opacity: 0.85;
+  transform: scale(0.97);
+}
+
+.settings-back-text {
+  color: #fff;
+  font-size: 4.27vw;
+  font-weight: 700;
+}
+
+/* ========== 奖励获得动画浮层 ========== */
+
+.reward-anim-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  animation: rewardOverlayFade 1s ease forwards;
+}
+
+@keyframes rewardOverlayFade {
+  0% { opacity: 1; }
+  60% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* 中心弹出区域 */
+.reward-anim-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: rewardBounceIn 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+}
+
+@keyframes rewardBounceIn {
+  0% { transform: scale(0.3); opacity: 0; }
+  60% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.reward-anim-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3vw;
+}
+
+.reward-anim-icons img:not(:only-child) {
+  width: 12vw;
+  height: 12vw;
+}
+
+.reward-anim-icon {
+  width: 16vw;
+  height: 16vw;
+  filter: drop-shadow(0 1.07vw 2.67vw rgba(255, 179, 71, 0.6));
+  animation: rewardIconPulse 0.8s ease-in-out 0.3s infinite alternate;
+}
+
+@keyframes rewardIconPulse {
+  0% { transform: scale(1) rotate(0deg); }
+  100% { transform: scale(1.15) rotate(5deg); }
+}
+
+.reward-anim-text {
+  margin-top: 2.13vw;
+  font-size: 5.87vw;
+  font-weight: 900;
+  color: #0a2540;
+  text-shadow: 0 0 2vw rgba(255, 255, 255, 0.95),
+               0 0 4vw rgba(255, 255, 255, 0.6),
+               0 0.27vw 0.53vw rgba(255, 255, 255, 0.8);
+  animation: rewardTextFloat 0.8s ease-out forwards;
+  letter-spacing: 0.53vw;
+}
+
+@keyframes rewardTextFloat {
+  0% { transform: translateY(0) scale(0.8); opacity: 0; }
+  30% { transform: translateY(-1.33vw) scale(1.1); opacity: 1; }
+  100% { transform: translateY(-4vw) scale(1); opacity: 1; }
+}
+
+/* 飞行粒子容器 */
+.reward-particles {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.reward-particle {
+  position: absolute;
+  width: 5.33vw;
+  height: 5.33vw;
+  opacity: 0;
+  filter: drop-shadow(0 0.53vw 0.8vw rgba(255, 179, 71, 0.4));
+}
+
+/* 8个粒子各自不同方向的飞散动画 */
+.rp-0 { animation: rpFly0 1.0s ease-out forwards; }
+.rp-1 { animation: rpFly1 1.0s ease-out forwards; }
+.rp-2 { animation: rpFly2 1.0s ease-out forwards; }
+.rp-3 { animation: rpFly3 1.0s ease-out forwards; }
+.rp-4 { animation: rpFly4 1.0s ease-out forwards; }
+.rp-5 { animation: rpFly5 1.0s ease-out forwards; }
+.rp-6 { animation: rpFly6 1.0s ease-out forwards; }
+.rp-7 { animation: rpFly7 1.0s ease-out forwards; }
+
+@keyframes rpFly0 {
+  0% { transform: translate(0, 0) scale(0.3) rotate(0deg); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translate(-21.33vw, -26.67vw) scale(0.5) rotate(180deg); opacity: 0; }
+}
+@keyframes rpFly1 {
+  0% { transform: translate(0, 0) scale(0.3) rotate(0deg); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translate(18.67vw, -29.33vw) scale(0.4) rotate(-200deg); opacity: 0; }
+}
+@keyframes rpFly2 {
+  0% { transform: translate(0, 0) scale(0.3) rotate(0deg); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translate(-26.67vw, -8vw) scale(0.6) rotate(120deg); opacity: 0; }
+}
+@keyframes rpFly3 {
+  0% { transform: translate(0, 0) scale(0.3) rotate(0deg); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translate(25.33vw, -10.67vw) scale(0.5) rotate(-150deg); opacity: 0; }
+}
+@keyframes rpFly4 {
+  0% { transform: translate(0, 0) scale(0.3) rotate(0deg); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translate(-16vw, 24vw) scale(0.45) rotate(220deg); opacity: 0; }
+}
+@keyframes rpFly5 {
+  0% { transform: translate(0, 0) scale(0.3) rotate(0deg); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translate(21.33vw, 21.33vw) scale(0.55) rotate(-180deg); opacity: 0; }
+}
+@keyframes rpFly6 {
+  0% { transform: translate(0, 0) scale(0.3) rotate(0deg); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translate(-8vw, -37.33vw) scale(0.35) rotate(260deg); opacity: 0; }
+}
+@keyframes rpFly7 {
+  0% { transform: translate(0, 0) scale(0.3) rotate(0deg); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translate(10.67vw, 26.67vw) scale(0.5) rotate(-120deg); opacity: 0; }
+}
+

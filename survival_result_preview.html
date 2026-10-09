@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=375, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+  <title>生存模式结算预览</title>
+  <style>
+    body, html { margin: 0; padding: 0; height: 100%; font-family: -apple-system, sans-serif; background: #e8e8e8; }
+    .iphone-frame { width: 375px; height: 812px; margin: 20px auto; background: #0b1a2c; position: relative; overflow: hidden; border-radius: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); border: 8px solid #333; }
+    .daily-result-page { width: 100%; height: 100%; background: linear-gradient(180deg, #caefff 0%, #aaebff 50%, #8adeff 100%); color: #2c5f7c; box-sizing: border-box; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    @keyframes pulse-pulse { 0%{transform:scale(1)} 50%{transform:scale(1.05)} 100%{transform:scale(1)} }
+    @keyframes scale-up-bounce { 0%{transform:scale(0.5);opacity:0} 70%{transform:scale(1.2);opacity:1} 100%{transform:scale(1);opacity:1} }
+    @keyframes bounceAd { 0%,100%{transform:translateY(0) rotate(12deg) scale(1)} 50%{transform:translateY(-4px) rotate(18deg) scale(1.08)} }
+    .animate-pulse-btn { animation: pulse-pulse 2s infinite ease-in-out; }
+    @keyframes shoot-left { 0%{transform:translate(0,0) scale(0.3) rotate(0deg);opacity:1} 60%{opacity:1} 100%{transform:translate(var(--tx),var(--ty)) scale(1) rotate(var(--rot));opacity:0} }
+    @keyframes shoot-right { 0%{transform:translate(0,0) scale(0.3) rotate(0deg);opacity:1} 60%{opacity:1} 100%{transform:translate(var(--tx),var(--ty)) scale(1) rotate(var(--rot));opacity:0} }
+    .cannon-container { position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;overflow:hidden;z-index:1; }
+    .cannon-particle { position:absolute;bottom:-10px;width:6px;height:6px;border-radius:1px;opacity:0; }
+    .cp-l1{left:0%;background:#FF6B6B;animation:shoot-left 1.2s cubic-bezier(.1,.8,.3,1) .2s infinite;--tx:50px;--ty:-175px;--rot:260deg;width:7px;height:7px;border-radius:50%}
+    .cp-l2{left:3%;background:#FFE57F;animation:shoot-left 1.3s cubic-bezier(.1,.8,.3,1) .3s infinite;--tx:100px;--ty:-225px;--rot:420deg}
+    .cp-l3{left:-2%;background:#4FC3F7;animation:shoot-left 1.1s cubic-bezier(.1,.8,.3,1) .4s infinite;--tx:75px;--ty:-140px;--rot:180deg;width:4px;height:10px}
+    .cp-l4{left:2%;background:#A8D86E;animation:shoot-left 1.4s cubic-bezier(.1,.8,.3,1) .2s infinite;--tx:125px;--ty:-175px;--rot:300deg}
+    .cp-l5{left:5%;background:#CE93D8;animation:shoot-left 1.5s cubic-bezier(.1,.8,.3,1) .5s infinite;--tx:150px;--ty:-275px;--rot:500deg;border-radius:50%}
+    .cp-l6{left:-4%;background:#FF8E53;animation:shoot-left 1.0s cubic-bezier(.1,.8,.3,1) .3s infinite;--tx:40px;--ty:-100px;--rot:120deg;width:8px;height:4px}
+    .cp-l7{left:1%;background:#FF6B6B;animation:shoot-left 1.6s cubic-bezier(.1,.8,.3,1) .4s infinite;--tx:175px;--ty:-200px;--rot:360deg}
+    .cp-l8{left:7%;background:#FFE57F;animation:shoot-left 1.2s cubic-bezier(.1,.8,.3,1) .2s infinite;--tx:90px;--ty:-250px;--rot:480deg;width:5px;height:12px}
+    .cp-l9{left:-1%;background:#4FC3F7;animation:shoot-left 1.3s cubic-bezier(.1,.8,.3,1) .6s infinite;--tx:140px;--ty:-150px;--rot:-120deg;border-radius:50%;width:6px;height:6px}
+    .cp-l10{left:4%;background:#A8D86E;animation:shoot-left 1.5s cubic-bezier(.1,.8,.3,1) .3s infinite;--tx:110px;--ty:-300px;--rot:540deg;width:8px;height:8px}
+    .cp-l11{left:6%;background:#CE93D8;animation:shoot-left 1.1s cubic-bezier(.1,.8,.3,1) .4s infinite;--tx:65px;--ty:-125px;--rot:240deg}
+    .cp-l12{left:-3%;background:#FF8E53;animation:shoot-left 1.4s cubic-bezier(.1,.8,.3,1) .5s infinite;--tx:160px;--ty:-225px;--rot:320deg;width:4px;height:8px}
+    .cp-r1{right:0%;background:#FF6B6B;animation:shoot-right 1.2s cubic-bezier(.1,.8,.3,1) .2s infinite;--tx:-50px;--ty:-175px;--rot:-260deg;width:7px;height:7px;border-radius:50%}
+    .cp-r2{right:3%;background:#FFE57F;animation:shoot-right 1.3s cubic-bezier(.1,.8,.3,1) .3s infinite;--tx:-100px;--ty:-225px;--rot:-420deg}
+    .cp-r3{right:-2%;background:#4FC3F7;animation:shoot-right 1.1s cubic-bezier(.1,.8,.3,1) .4s infinite;--tx:-75px;--ty:-140px;--rot:-180deg;width:4px;height:10px}
+    .cp-r4{right:2%;background:#A8D86E;animation:shoot-right 1.4s cubic-bezier(.1,.8,.3,1) .2s infinite;--tx:-125px;--ty:-175px;--rot:-300deg}
+    .cp-r5{right:5%;background:#CE93D8;animation:shoot-right 1.5s cubic-bezier(.1,.8,.3,1) .5s infinite;--tx:-150px;--ty:-275px;--rot:-500deg;border-radius:50%}
+    .cp-r6{right:-4%;background:#FF8E53;animation:shoot-right 1.0s cubic-bezier(.1,.8,.3,1) .3s infinite;--tx:-40px;--ty:-100px;--rot:-120deg;width:8px;height:4px}
+    .cp-r7{right:1%;background:#FF6B6B;animation:shoot-right 1.6s cubic-bezier(.1,.8,.3,1) .4s infinite;--tx:-175px;--ty:-200px;--rot:-360deg}
+    .cp-r8{right:7%;background:#FFE57F;animation:shoot-right 1.2s cubic-bezier(.1,.8,.3,1) .2s infinite;--tx:-90px;--ty:-250px;--rot:-480deg;width:5px;height:12px}
+    .cp-r9{right:-1%;background:#4FC3F7;animation:shoot-right 1.3s cubic-bezier(.1,.8,.3,1) .6s infinite;--tx:-140px;--ty:-150px;--rot:120deg;border-radius:50%;width:6px;height:6px}
+    .cp-r10{right:4%;background:#A8D86E;animation:shoot-right 1.5s cubic-bezier(.1,.8,.3,1) .3s infinite;--tx:-110px;--ty:-300px;--rot:-540deg;width:8px;height:8px}
+    .cp-r11{right:6%;background:#CE93D8;animation:shoot-right 1.1s cubic-bezier(.1,.8,.3,1) .4s infinite;--tx:-65px;--ty:-125px;--rot:-240deg}
+    .cp-r12{right:-3%;background:#FF8E53;animation:shoot-right 1.4s cubic-bezier(.1,.8,.3,1) .5s infinite;--tx:-160px;--ty:-225px;--rot:-320deg;width:4px;height:8px}
+    .daily-top-row { position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:60px 20px 0 20px;box-sizing:border-box;z-index:10; }
+    .daily-r1-home { width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#5B7FBF,#4A6DAF);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(74,109,175,0.5);cursor:pointer; }
+    .daily-r1-home svg { width:22px;height:22px; }
+    .daily-r2-shell { display:flex;align-items:center;background:rgba(255,255,255,0.4);padding:4px 16px;border-radius:20px;color:#2c5f7c; }
+    .shell-text { font-weight:bold;font-size:16px;margin-right:4px; }
+    .asset-plus { width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,#4FC3F7,#2196F3);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin-left:4px; }
+    .content-center { display:flex;flex-direction:column;align-items:center;width:100%;z-index:2; }
+    .survival-title { font-size:26px;font-weight:900;color:#1a3c5a;margin-bottom:14px;text-align:center;text-shadow:0 2px 6px rgba(255,255,255,0.8); }
+    .red-text { color:#FF6B6B;font-size:32px; }
+
+    .survival-record {
+      font-size: 34px; font-weight: 900; margin-bottom: 20px;
+      padding: 0;
+      display: flex; justify-content: center; align-items: center; position: relative;
+      letter-spacing: 2px;
+      animation: scale-up-bounce 1s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards, text-pulse-flash 2s 1s ease-in-out infinite;
+    }
+    .local-cannon {
+      overflow: visible !important;
+      z-index: -1; top: 50%; bottom: auto; left: 50%; right: auto;
+    }
+    @keyframes text-pulse-flash {
+      0%, 100% { transform: scale(1); opacity: 1; filter: brightness(1); }
+      50% { transform: scale(1.08); opacity: 0.8; filter: brightness(1.3); }
+    }
+    /* 金色发光字 */
+    .glow-gold {
+      color: #FACC15;
+      text-shadow: 
+        0 1px 0 #CA8A04, 0 2px 0 #A16207, 0 3px 0 #854D0E,
+        -2px -2px 0 #fff, 0 -2px 0 #fff, 2px -2px 0 #fff,
+        -2px 0 0 #fff,                   2px 0 0 #fff,
+        -2px 2px 0 #fff,                 2px 2px 0 #fff,
+        -2px 4px 0 #fff,                 2px 4px 0 #fff,
+        -2px 5px 0 #fff, 0 5px 0 #fff, 2px 5px 0 #fff,
+        0 8px 5px rgba(0,0,0,0.3);
+    }
+    /* 银色发光字 */
+    .glow-silver {
+      color: #94A3B8;
+      text-shadow: 
+        0 1px 0 #64748B, 0 2px 0 #475569, 0 3px 0 #334155,
+        -2px -2px 0 #fff, 0 -2px 0 #fff, 2px -2px 0 #fff,
+        -2px 0 0 #fff,                   2px 0 0 #fff,
+        -2px 2px 0 #fff,                 2px 2px 0 #fff,
+        -2px 4px 0 #fff,                 2px 4px 0 #fff,
+        -2px 5px 0 #fff, 0 5px 0 #fff, 2px 5px 0 #fff,
+        0 8px 5px rgba(0,0,0,0.3);
+    }
+
+    .survival-crabs { display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.5);padding:8px 24px;border-radius:20px;margin-bottom:16px;font-size:17px;font-weight:bold;color:#2c5f7c;box-shadow:inset 0 2px 5px rgba(255,255,255,0.8); }
+    .survival-time { font-size:18px;font-weight:800;color:#3b5998;margin-bottom:10px; }
+    .survival-stat-text { font-size:19px;font-weight:800;color:#3b5998;margin:8px 0;text-align:center; }
+    .daily-r5-reward { display:flex;justify-content:center;width:100%;margin-top:20px;margin-bottom:20px; }
+    .r5-reward-box { background:rgba(255,255,255,0.4);border-radius:20px;padding:4px 15px;display:flex;align-items:center; }
+    .r5-txt { font-size:20px;font-weight:900; }
+    .yellow { color:#E8B84B; }
+    .cyan { color:#2c5f7c; }
+    .win-bottom-actions { display:flex;gap:12px;width:290px;margin:0 auto 12px auto;justify-content:center;align-items:center; }
+    .btn-share-icon { width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#10B981,#34D399);display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;box-shadow:0 2px 6px rgba(16,185,129,0.4);flex-shrink:0; }
+    .btn-share-icon svg { width:26px;height:26px;fill:white; }
+    .btn-home-icon { width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#5B7FBF,#4A6DAF);display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;box-shadow:0 2px 6px rgba(74,109,175,0.5);flex-shrink:0;padding:0; }
+    .btn-home-icon svg { width:24px;height:24px; }
+    .btn-ad-boost-short { flex:1;height:50px;border-radius:18px;border:none;color:white;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;position:relative;overflow:visible;cursor:pointer;box-shadow:0 2px 6px rgba(74,144,226,0.4); }
+    .btn-next-level-short { flex:1;height:50px;border-radius:18px;border:none;color:white;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;cursor:pointer;background:linear-gradient(135deg,#FF6B6B,#FF8E53);position:relative;overflow:visible;box-shadow:0 5px 10px rgba(255,107,107,0.4); }
+    .btn-next-level-short.btn-double-line { height:60px;flex-direction:column;line-height:1.2;padding:0; }
+    .r8-ad-inner { display:flex;flex-direction:column;align-items:center;justify-content:center; }
+    .r8-btn-txt { font-size:17px;font-weight:700;display:block; }
+    .r8-btn-sub { font-size:11px;color:rgba(255,255,255,0.9);display:block;margin-top:1px; }
+    .full-width-btn-wrap { width:280px;margin-bottom:12px;align-self:center;display:flex;flex-direction:column; }
+    .btn-ad-icon-corner { position:absolute;top:-10px;right:-5px;width:30px;height:30px;transform:rotate(12deg);animation:bounceAd 2s infinite ease-in-out;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.2));z-index:5; }
+    .daily-r8-ad-btn { background:linear-gradient(135deg,#4A90E2,#9E58FF);color:#fff;padding:0;width:100%;height:55px;border-radius:28px;border:none;cursor:pointer;box-shadow:0 2px 6px rgba(74,144,226,0.4);display:flex;align-items:center;justify-content:center;position:relative;overflow:visible; }
+    .preview-controls { position:fixed;top:10px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:100; }
+    .preview-controls button { padding:10px 15px;border-radius:8px;border:none;font-weight:bold;cursor:pointer;background:#333;color:white;border:2px solid transparent;font-size:14px; }
+    .preview-controls button.active { border-color:#00e5ff;background:#005f73; }
+    
+    .confetti-container { position: absolute; top:0; left:0; right:0; bottom:0; pointer-events:none; overflow:hidden; z-index:10; }
+    .confetti { position: absolute; opacity:0; animation: confetti-fall 2.5s linear infinite; }
+    @keyframes confetti-fall {
+        0% { transform: translateY(-80px) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(120vh) rotate(1080deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+<div class="preview-controls">
+  <button id="btn-win" class="active" onclick="toggleView('win')">查看通关版(>=10关)</button>
+  <button id="btn-lose" onclick="toggleView('lose')">查看失败版(<10关)</button>
+</div>
+<div class="iphone-frame">
+  <div class="daily-result-page">
+    <div class="daily-top-row">
+      <div class="daily-r1-home"><svg viewBox="0 0 24 24" fill="#ffffff"><path d="M12 3L2 12h3v8h5v-6h4v6h5v-8h3L12 3z"/></svg></div>
+      <div class="daily-r2-shell"><span style="font-size:20px;margin-right:6px">🐚</span><span class="shell-text">8/8</span><div class="asset-plus">+</div></div>
+    </div>
+    <div class="content-center">
+      <!-- 胜利版本 -->
+      <div id="win-view" style="width:100%;display:flex;flex-direction:column;align-items:center;">
+        <div class="confetti-container" id="confetti-box"></div>
+        <div class="survival-title"><span>恭喜你撑过了</span><span class="red-text"> 10 </span><span>关！</span></div>
+        <div class="survival-record glow-gold">
+          新纪录
+          <div class="cannon-container local-cannon">
+            <div class="cannon-particle cp-l1"></div><div class="cannon-particle cp-l2"></div><div class="cannon-particle cp-l3"></div><div class="cannon-particle cp-l4"></div><div class="cannon-particle cp-l5"></div><div class="cannon-particle cp-l6"></div><div class="cannon-particle cp-l7"></div><div class="cannon-particle cp-l8"></div><div class="cannon-particle cp-l9"></div><div class="cannon-particle cp-l10"></div><div class="cannon-particle cp-l11"></div><div class="cannon-particle cp-l12"></div>
+            <div class="cannon-particle cp-r1"></div><div class="cannon-particle cp-r2"></div><div class="cannon-particle cp-r3"></div><div class="cannon-particle cp-r4"></div><div class="cannon-particle cp-r5"></div><div class="cannon-particle cp-r6"></div><div class="cannon-particle cp-r7"></div><div class="cannon-particle cp-r8"></div><div class="cannon-particle cp-r9"></div><div class="cannon-particle cp-r10"></div><div class="cannon-particle cp-r11"></div><div class="cannon-particle cp-r12"></div>
+          </div>
+        </div>
+        <div class="survival-crabs"><span style="font-size:30px;margin-right:10px;">🦀</span><span>找到了 142 只螃蟹</span></div>
+        <div class="survival-time">用时 <span class="red-text">12分45秒</span></div>
+        <div class="daily-r5-reward">
+          <div class="r5-reward-box"><span style="font-size:24px;margin-right:6px;">💰</span><span class="r5-txt yellow">+20</span></div>
+          <div class="r5-reward-box" style="margin-left:20px;"><span style="font-size:24px;margin-right:6px;">🐚</span><span class="r5-txt cyan">+4</span></div>
+        </div>
+        <div class="win-bottom-actions">
+          <button class="btn-share-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="white"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11A2.99 2.99 0 0 0 18 8a3 3 0 1 0-3-3c0 .24.04.47.09.7L8.04 9.81A2.99 2.99 0 0 0 6 9a3 3 0 1 0 0 6c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65a2.93 2.93 0 0 0 3 2.88 2.93 2.93 0 0 0 2.88-3A2.93 2.93 0 0 0 18 16.08z"/></svg></button>
+          <button class="btn-ad-boost-short animate-pulse-btn" style="background:linear-gradient(135deg,#4A90E2,#9E58FF);"><img src="images/ad_icon_transparent.png" class="btn-ad-icon-corner" /><span>双倍体力</span></button>
+        </div>
+        <div class="win-bottom-actions">
+          <button class="btn-home-icon"><svg viewBox="0 0 24 24" fill="#ffffff"><path d="M12 3L2 12h3v8h5v-6h4v6h5v-8h3L12 3z"/></svg></button>
+          <button class="btn-next-level-short btn-double-line animate-pulse-btn" style="background:linear-gradient(135deg,#10B981,#34D399);box-shadow:0 5px 10px rgba(16,185,129,0.4);">
+            <img src="images/ad_icon_transparent.png" class="btn-ad-icon-corner" />
+            <div class="r8-ad-inner"><span class="r8-btn-txt">复活继续</span><span class="r8-btn-sub">(看广告继续挑战 +60秒)</span></div>
+          </button>
+        </div>
+      </div>
+      <!-- 失败版本 -->
+      <div id="lose-view" style="width:100%;display:none;flex-direction:column;align-items:center;">
+        <div class="survival-title"><span>你没达到第10关！</span></div>
+        <div class="survival-record glow-silver">关卡结算</div>
+        <div class="survival-crabs"><span style="font-size:30px;margin-right:10px;">🦀</span><span>找到了 58 只螃蟹</span></div>
+        <div class="survival-stat-text">关数 <span class="red-text">6</span></div>
+        <div class="survival-stat-text">用时 <span class="red-text">4分12秒</span></div>
+        <div class="daily-r5-reward" style="margin-bottom:20px;"><div class="r5-reward-box"><span style="font-size:24px;margin-right:6px;">🐚</span><span class="r5-txt cyan">+2</span></div></div>
+        <div class="full-width-btn-wrap"><button class="daily-r8-ad-btn animate-pulse-btn"><img src="images/ad_icon_transparent.png" class="btn-ad-icon-corner" /><div class="r8-ad-inner"><span class="r8-btn-txt" style="font-size:19px;">重新挑战</span><span class="r8-btn-sub">(重新开始本局)</span></div></button></div>
+        <div class="full-width-btn-wrap"><button class="daily-r8-ad-btn animate-pulse-btn"><img src="images/ad_icon_transparent.png" class="btn-ad-icon-corner" /><div class="r8-ad-inner"><span class="r8-btn-txt" style="font-size:19px;">双倍体力</span></div></button></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function toggleView(type) {
+    document.getElementById('btn-win').className = type === 'win' ? 'active' : '';
+    document.getElementById('btn-lose').className = type === 'lose' ? 'active' : '';
+    document.getElementById('win-view').style.display = type === 'win' ? 'flex' : 'none';
+    document.getElementById('lose-view').style.display = type === 'lose' ? 'flex' : 'none';
+  }
+  
+  // 生成飘落彩带 (尺寸变大版)
+  const cBox = document.getElementById('confetti-box');
+  const colors = ['#FF6B6B', '#FFE57F', '#4FC3F7', '#A8D86E', '#CE93D8', '#FF8E53'];
+  for(let i=0; i<30; i++) {
+      let el = document.createElement('div');
+      el.className = 'confetti';
+      el.style.left = Math.random() * 95 + '%';
+      el.style.background = colors[i % colors.length];
+      el.style.animationDuration = (1.8 + Math.random() * 1.5) + 's';
+      el.style.animationDelay = (Math.random() * 2) + 's';
+      if(i%3 === 0) el.style.borderRadius = '50%';
+      el.style.width = (7 + Math.random()*6) + 'px'; // 缩小尺寸
+      el.style.height = el.style.width;
+      cBox.appendChild(el);
+  }
+</script>
+</body>
+</html>

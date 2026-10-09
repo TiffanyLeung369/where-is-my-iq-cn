@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>提取标题文字</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px;
+      background: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
+
+    #text-canvas {
+      border: 2px solid #333;
+      background: white;
+      cursor: crosshair;
+    }
+
+    .controls {
+      margin-top: 20px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    .info {
+      margin-top: 15px;
+      text-align: center;
+      color: #333;
+    }
+
+    input[type="number"] {
+      width: 80px;
+      padding: 8px;
+      font-size: 14px;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Where's My IQ 标题文字提取器</h1>
+
+  <canvas id="text-canvas"></canvas>
+
+  <div class="controls">
+    <label>
+      字号（px）:
+      <input type="number" id="font-size-input" value="120" min="40" max="500" step="10">
+    </label>
+    <button onclick="updateCanvas()">刷新</button>
+    <button onclick="downloadText()">下载 PNG（透明背景）</button>
+  </div>
+
+  <div class="info">
+    <p>高分辨率、透明背景的标题文字</p>
+    <p>字体：-apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue"</p>
+    <p>字重：800 (Extra Bold)</p>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('text-canvas');
+    const ctx = canvas.getContext('2d');
+    const fontSizeInput = document.getElementById('font-size-input');
+
+    function updateCanvas() {
+      const fontSize = parseInt(fontSizeInput.value);
+
+      // 使用项目中的字体栈
+      ctx.font = `800 ${fontSize}px -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif`;
+
+      const text = "Where's My IQ";
+
+      // 测量文字宽度
+      const metrics = ctx.measureText(text);
+      const textWidth = metrics.width;
+      const textHeight = fontSize * 1.5; // 留一些上下空间
+
+      // 设置 canvas 尺寸（高分辨率）
+      const scale = 2; // 2倍分辨率
+      canvas.width = (textWidth + 40) * scale;
+      canvas.height = textHeight * scale;
+
+      // 缩放上下文
+      ctx.scale(scale, scale);
+
+      // 清空画布（透明背景）
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // 重新设置字体（scale 后需要重设）
+      ctx.font = `800 ${fontSize}px -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif`;
+      ctx.fillStyle = '#1A5F7A'; // 项目中的标题颜色
+      ctx.textBaseline = 'middle';
+      ctx.textAlign = 'left';
+
+      // 绘制文字
+      ctx.fillText(text, 20, textHeight / 2);
+
+      // 显示实际尺寸
+      document.querySelector('.info p:first-child').textContent =
+        `尺寸: ${canvas.width}×${canvas.height} 像素（2倍分辨率）`;
+    }
+
+    function downloadText() {
+      const link = document.createElement('a');
+      link.download = 'wheres_my_iq_title_transparent.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    // 初始绘制
+    updateCanvas();
+  </script>
+</body>
+</html>

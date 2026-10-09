@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>岛屿变体预览</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #1a3c5e; font-family: -apple-system, sans-serif; padding: 20px; }
+h1 { color: #fff; text-align: center; margin-bottom: 6px; font-size: 22px; }
+h2 { color: rgba(255,255,255,0.7); text-align: center; margin-bottom: 16px; font-size: 14px; font-weight: 400; }
+.section-title {
+  color: #FFD54F;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 20px 0 10px;
+  text-align: center;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 8px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.island-cell {
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+  padding: 4px;
+  text-align: center;
+}
+.island-cell .label {
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+.island-cell .label .sub {
+  display: block;
+  font-size: 9px;
+  color: rgba(255,255,255,0.5);
+  font-weight: 400;
+}
+.island-cell img {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+}
+</style>
+</head>
+<body>
+<h1>🗺️ 岛屿变体预览</h1>
+<h2>对比原版（第1-9岛）与第一轮变体（第10-18岛）的视觉差异</h2>
+
+<div class="section-title">▼ 原版 · 第 1-9 岛（cycle 0）</div>
+<div class="grid" id="row-original"></div>
+
+<div class="section-title">▼ 第一轮变体 · 第 10-18 岛（cycle 1）</div>
+<div class="grid" id="row-cycle1"></div>
+
+<div class="section-title">▼ 第二轮变体 · 第 19-27 岛（cycle 2）</div>
+<div class="grid" id="row-cycle2"></div>
+
+<div class="section-title">▼ 第三轮变体 · 第 28-36 岛（cycle 3）</div>
+<div class="grid" id="row-cycle3"></div>
+
+<script>
+const NAMES = ['热带丛林', '冰雪大陆', '云端仙境', '沙漠绿洲', '珊瑚礁', '星空魔法', '樱花和风', '火山海岛', '夕阳金秋'];
+
+// 变体公式
+function getTransform(cycle) {
+  if (cycle === 0) return 'none';
+  const rot = ((cycle * 2) % 5) - 2;           // -2, 0, 1, -1, 2 度
+  const hue = (cycle * 25) % 360;               // 色相偏移
+  const bright = 1 + ((cycle % 3) - 1) * 0.08;  // 0.92, 1.0, 1.08
+  const sat = 1 + ((cycle % 4) - 2) * 0.1;      // 0.8, 0.9, 1.0, 1.1
+  return `rotate(${rot}deg) hue-rotate(${hue}deg) brightness(${bright.toFixed(2)}) saturate(${sat.toFixed(2)})`;
+}
+
+function getFilterOnly(cycle) {
+  if (cycle === 0) return {};
+  const rot = ((cycle * 2) % 5) - 2;
+  const hue = (cycle * 25) % 360;
+  const bright = 1 + ((cycle % 3) - 1) * 0.08;
+  const sat = 1 + ((cycle % 4) - 2) * 0.1;
+  return {
+    transform: `rotate(${rot}deg)`,
+    filter: `hue-rotate(${hue}deg) brightness(${bright.toFixed(2)}) saturate(${sat.toFixed(2)})`
+  };
+}
+
+function buildRow(containerId, cycleNum) {
+  const container = document.getElementById(containerId);
+  for (let i = 0; i < 9; i++) {
+    const islandIdx = cycleNum * 9 + i + 1;
+    const baseIdx = i + 1;
+    const imgSrc = `assets/images/island_${baseIdx}.png`;
+    const style = getFilterOnly(cycleNum);
+
+    const cell = document.createElement('div');
+    cell.className = 'island-cell';
+
+    let styleStr = '';
+    if (style.transform) styleStr += `transform:${style.transform};`;
+    if (style.filter) styleStr += `filter:${style.filter};`;
+
+    const info = cycleNum === 0 ? '' : `<span class="sub">基于 island_${baseIdx}</span>`;
+
+    cell.innerHTML = `
+      <div class="label">第${islandIdx}岛 ${NAMES[i]}${info}</div>
+      <img src="${imgSrc}" style="${styleStr}" />
+    `;
+    container.appendChild(cell);
+  }
+}
+
+buildRow('row-original', 0);
+buildRow('row-cycle1', 1);
+buildRow('row-cycle2', 2);
+buildRow('row-cycle3', 3);
+</script>
+</body>
+</html>

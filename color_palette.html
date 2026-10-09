@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>藏在哪 - 头像取色板</title>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; background: #2c3e50; margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+        .container { text-align: center; }
+        h2 { color: white; margin-bottom: 20px; letter-spacing: 2px;}
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 160px); 
+            grid-template-rows: repeat(3, 160px); 
+            gap: 12px; 
+            padding: 24px; 
+            background: #fff; 
+            border-radius: 16px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+        }
+        .cell { 
+            border-radius: 12px; 
+            display: flex; 
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center; 
+            font-weight: bold; 
+            color: #fff; 
+            text-shadow: 0px 2px 4px rgba(0,0,0,0.3); 
+        }
+        .desc { font-size: 14px; opacity: 0.9; margin-top: 8px; font-weight: normal;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🎨 请直接使用吸管工具吸取色块</h2>
+        <div class="grid">
+            <div class="cell" style="background-color: #F09541;">#F09541<div class="desc">活力橘</div></div>
+            <div class="cell" style="background-color: #506999;">#506999<div class="desc">深丹宁蓝</div></div>
+            <div class="cell" style="background-color: #F3E073;">#F3E073<div class="desc">奶油黄</div></div>
+            
+            <div class="cell" style="background-color: #4DBEB0;">#4DBEB0<div class="desc">青绿</div></div>
+            <div class="cell" style="background-color: #CD91D8;">#CD91D8<div class="desc">紫罗兰 (螃蟹在内)</div></div>
+            <div class="cell" style="background-color: #A8D86E;">#A8D86E<div class="desc">青柠绿</div></div>
+            
+            <div class="cell" style="background-color: #E88BAD;">#E88BAD<div class="desc">粉红</div></div>
+            <div class="cell" style="background-color: #948BCE;">#948BCE<div class="desc">鸢尾紫</div></div>
+            <div class="cell" style="background-color: #78C5E3;">#78C5E3<div class="desc">天蓝</div></div>
+        </div>
+    </div>
+</body>
+</html>

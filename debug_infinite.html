@@ -1,0 +1,9 @@
+<html><body><script>
+var raw = localStorage.getItem('gameData');
+var data = raw ? JSON.parse(raw) : {};
+// 设置 5 分钟无限体力
+data.infinitePlayEndTime = Date.now() + 5 * 60 * 1000;
+data.shells = 3;
+localStorage.setItem('gameData', JSON.stringify(data));
+window.location.href = 'index.html';
+</script></body></html>

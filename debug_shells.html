@@ -1,0 +1,11 @@
+<html><body><script>
+var raw = localStorage.getItem('gameData');
+if (raw) {
+  var data = JSON.parse(raw);
+  data.shells = 0;
+  localStorage.setItem('gameData', JSON.stringify(data));
+} else {
+  localStorage.setItem('gameData', JSON.stringify({shells:0, coins:162}));
+}
+window.location.href = 'index.html';
+</script></body></html>

@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pwd && echo \"---WORKDIR---\" && ls -a && echo \"---A Projects---\" && ls \"/d/A Projects/\")",
+      "Bash(cd \"/d/A Projects/藏在哪_H5海外版_源代码备份_20260923\" && find . -type f | sort > /tmp/src.txt; cd \"/d/A Projects/看你智商藏哪_国内H5Web版\" && find . -type f -not -path \"./.claude/*\" -not -name \"项目规则.md\" | sort > /tmp/dst.txt; diff /tmp/src.txt /tmp/dst.txt)",
+      "Bash(grep -rnoE \"'[A-Z][A-Za-z ]{6,40}'|\\\\\"[A-Z][A-Za-z ]{6,40}\\\\\"\" js/pages js/components js/app.js)",
+      "Bash(grep -oE \">[^<>]*[A-Za-z]{4,}[^<>]*<\")",
+      "Bash(python -)",
+      "Bash(cp \"/d/A Projects/藏在哪_H5海外版_源代码备份_20260923/.claude/launch.json\" \"/d/A Projects/看你智商藏哪_国内H5Web版/.claude/launch.json\" && echo \"已拷贝，施工现场 .claude 现状：\" && ls -la \"/d/A Projects/看你智商藏哪_国内H5Web版/.claude/\")",
+      "Bash(node --check js/pages/home.js)",
+      "Bash(node --check js/pages/game.js)",
+      "Bash(preview_list)",
+      "Bash(pkill -f \"python.*http.server\")",
+      "Bash(node --check js/lang/zh.js)",
+      "Bash(node --check js/utils/shareManager.js)",
+      "Bash(node --check js/lang/en.js)",
+      "Bash(python -c ' *)"
+    ]
+  }
+}

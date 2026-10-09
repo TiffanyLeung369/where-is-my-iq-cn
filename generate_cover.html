@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generate Cover - Where's My IQ</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #1a3c5e;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
+
+    #cover-canvas {
+      border: 2px solid #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      cursor: pointer;
+    }
+
+    .controls {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    .info {
+      color: white;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="color: white;">Where's My IQ - itch.io 封面生成器</h1>
+  <canvas id="cover-canvas" width="630" height="500"></canvas>
+
+  <div class="controls">
+    <button onclick="downloadCover()">下载封面 (630×500)</button>
+    <button onclick="regenerate()">重新生成</button>
+  </div>
+
+  <div class="info">
+    <p>点击"下载封面"保存为 PNG 图片，然后上传到 itch.io</p>
+    <p>尺寸：630×500 像素（itch.io 推荐尺寸）</p>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('cover-canvas');
+    const ctx = canvas.getContext('2d');
+
+    const creatures = ['crab', 'dino', 'pig', 'turtle', 'octopus', 'squirrel', 'owl', 'parrot', 'phoenix'];
+    let selectedCreature = creatures[Math.floor(Math.random() * creatures.length)];
+
+    function drawCover() {
+      // 背景渐变
+      const gradient = ctx.createLinearGradient(0, 0, 0, 500);
+      gradient.addColorStop(0, '#BBEBFF');
+      gradient.addColorStop(1, '#7EC8E3');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 630, 500);
+
+      // 装饰圆点
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+      for (let i = 0; i < 20; i++) {
+        const x = Math.random() * 630;
+        const y = Math.random() * 500;
+        const r = Math.random() * 30 + 10;
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // 游戏标题
+      ctx.fillStyle = '#1a3c5e';
+      ctx.font = 'bold 72px Arial, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText("Where's My IQ", 315, 120);
+
+      // 副标题
+      ctx.fillStyle = '#2d5a7b';
+      ctx.font = '24px Arial, sans-serif';
+      ctx.fillText('A Logic Puzzle Game', 315, 180);
+
+      // 加载生物图片
+      const img = new Image();
+      img.onload = function() {
+        // 居中绘制生物图片（放大）
+        const scale = 2.5;
+        const w = img.width * scale;
+        const h = img.height * scale;
+        const x = (630 - w) / 2;
+        const y = 500 - h - 40;
+
+        // 阴影
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
+        ctx.shadowBlur = 20;
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 10;
+
+        ctx.drawImage(img, x, y, w, h);
+
+        // 重置阴影
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 0;
+
+        // 底部装饰文字
+        ctx.fillStyle = 'rgba(26, 60, 94, 0.6)';
+        ctx.font = 'italic 18px Arial, sans-serif';
+        ctx.fillText('Find the Hidden Creatures with Pure Deduction', 315, 460);
+      };
+      img.src = `assets/images/${selectedCreature}.png`;
+    }
+
+    function downloadCover() {
+      const link = document.createElement('a');
+      link.download = 'wheres_my_iq_cover_630x500.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    function regenerate() {
+      selectedCreature = creatures[Math.floor(Math.random() * creatures.length)];
+      drawCover();
+    }
+
+    // 初始绘制
+    drawCover();
+  </script>
+</body>
+</html>

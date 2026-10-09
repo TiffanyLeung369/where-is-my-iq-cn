@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>12×12 谜题生成器 v2</title>
+  <style>
+    body { font-family: monospace; padding: 20px; background: #1a1a2e; color: #e0e0e0; }
+    h1 { color: #FFD700; }
+    #status { font-size: 18px; margin: 10px 0; color: #4FC3F7; }
+    #log { max-height: 300px; overflow-y: auto; }
+    #output { white-space: pre-wrap; word-break: break-all; background: #0d0d1a; padding: 15px; border-radius: 8px; max-height: 400px; overflow-y: auto; font-size: 12px; }
+    button { padding: 12px 24px; font-size: 16px; cursor: pointer; background: #FFD700; color: #000; border: none; border-radius: 8px; font-weight: bold; margin: 5px; }
+    button:disabled { opacity: 0.5; }
+    .success { color: #4CAF50; }
+    .warn { color: #FFA726; }
+    .info { color: #4FC3F7; }
+  </style>
+</head>
+<body>
+  <h1>🦀 藏在哪 - 12×12 谜题生成器 v2（迭代消解法）</h1>
+  <p>策略：先造区域 → 找多余解 → 针对性修改区域消灭多余解 → 直到唯一</p>
+  <p>目标：<input id="countInput" type="number" value="20" min="1" max="100" style="width:60px;font-size:16px;"> 个</p>
+  <button id="startBtn" onclick="startGeneration()">🚀 开始生成</button>
+  <button onclick="document.getElementById('log').innerHTML=''">清除日志</button>
+  <div id="status">等待开始...</div>
+  <div id="log"></div>
+  <h3>生成结果（JSON）：</h3>
+  <div id="output">尚无结果</div>
+
+<script>
+const N = 12;
+
+function shuffleArray(a) {
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+}
+
+function adj4(r, c) {
+  const a = [];
+  if (r > 0) a.push({r:r-1,c});
+  if (r < N-1) a.push({r:r+1,c});
+  if (c > 0) a.push({r,c:c-1});
+  if (c < N-1) a.push({r,c:c+1});
+  return a;
+}
+
+function isConnected(grid, rid) {
+  const cells = [];
+  for (let r = 0; r < N; r++) for (let c = 0; c < N; c++) if (grid[r][c] === rid) cells.push(r*N+c);
+  if (cells.length === 0) return false;
+  const visited = new Set([cells[0]]);
+  const queue = [cells[0]];
+  while (queue.length > 0) {
+    const k = queue.shift();
+    const cr = Math.floor(k/N), cc = k%N;
+    for (const nb of adj4(cr, cc)) {
+      const nk = nb.r*N+nb.c;
+      if (!visited.has(nk) && grid[nb.r][nb.c] === rid) { visited.add(nk); queue.push(nk); }
+    }
+  }
+  return visited.size === cells.length;
+}
+
+// 生成合法星星位置
+function genStars() {
+  const cols = new Array(N).fill(-1);
+  const used = new Set();
+  function bt(row) {
+    if (row === N) return true;
+    const order = Array.from({length:N},(_,i)=>i); shuffleArray(order);
+    for (const c of order) {
+      if (used.has(c)) continue;
+      if (row > 0 && Math.abs(c - cols[row-1]) <= 1) continue;
+      cols[row] = c; used.add(c);
+      if (bt(row+1)) return true;
+      cols[row] = -1; used.delete(c);
+    }
+    return false;
+  }
+  return bt(0) ? cols : null;
+}
+
+// BFS 多源扩展造区域
+function buildRegions(starCols) {
+  const grid = Array.from({length:N}, ()=>Array(N).fill(-1));
+  const queues = [];
+  for (let r = 0; r < N; r++) {
+    grid[r][starCols[r]] = r;
+    const nbs = adj4(r, starCols[r]).filter(({r:nr,c:nc})=>grid[nr][nc]===-1);
+    shuffleArray(nbs);
+    queues.push(nbs);
+  }
+  let total = N;
+  while (total < N*N) {
+    let progress = false;
+    for (let i = 0; i < N; i++) {
+      while (queues[i].length > 0) {
+        const cell = queues[i].shift();
+        if (grid[cell.r][cell.c] !== -1) continue;
+        grid[cell.r][cell.c] = i; total++; progress = true;
+        const nbs = adj4(cell.r, cell.c).filter(({r,c})=>grid[r][c]===-1);
+        shuffleArray(nbs); queues[i].push(...nbs);
+        break;
+      }
+    }
+    if (!progress) {
+      for (let r = 0; r < N; r++) for (let c = 0; c < N; c++) {
+        if (grid[r][c] !== -1) continue;
+        for (const nb of adj4(r, c)) {
+          if (grid[nb.r][nb.c] !== -1) { grid[r][c] = grid[nb.r][nb.c]; total++; break; }
+        }
+      }
+      break;
+    }
+  }
+  return grid;
+}
+
+// S=1 快速求解器
+function solveS1(regions, maxSol) {
+  const solutions = [];
+  const placement = new Array(N).fill(-1);
+  const usedC = new Uint8Array(N);
+  const usedR = new Uint8Array(N);
+
+  function bt(row) {
+    if (solutions.length >= maxSol) return;
+    if (row === N) { solutions.push(placement.slice()); return; }
+    for (let c = 0; c < N; c++) {
+      if (usedC[c]) continue;
+      const rid = regions[row][c];
+      if (usedR[rid]) continue;
+      if (row > 0 && Math.abs(c - placement[row-1]) <= 1) continue;
+
+      placement[row] = c; usedC[c] = 1; usedR[rid] = 1;
+
+      // 前向检查
+      let ok = true;
+      for (let fr = row+1; fr < N && ok; fr++) {
+        let found = false;
+        for (let fc = 0; fc < N && !found; fc++) {
+          if (usedC[fc]) continue;
+          if (usedR[regions[fr][fc]]) continue;
+          if (fr === row+1 && Math.abs(fc-c) <= 1) continue;
+          found = true;
+        }
+        if (!found) ok = false;
+      }
+      if (ok) {
+        for (let reg = 0; reg < N && ok; reg++) {
+          if (usedR[reg]) continue;
+          let found = false;
+          for (let fr = row+1; fr < N && !found; fr++) {
+            for (let fc = 0; fc < N && !found; fc++) {
+              if (regions[fr][fc] !== reg) continue;
+              if (usedC[fc]) continue;
+              if (fr === row+1 && Math.abs(fc-c) <= 1) continue;
+              found = true;
+            }
+          }
+          if (!found) ok = false;
+        }
+      }
+
+      if (ok) bt(row+1);
+      placement[row] = -1; usedC[c] = 0; usedR[rid] = 0;
+    }
+  }
+  bt(0);
+  return solutions;
+}
+
+// 核心：迭代消解法 —— 找到多余解后，针对性修改区域边界来消灭它
+function refinePuzzle(regions, starCols) {
+  const starSet = new Set();
+  for (let r = 0; r < N; r++) starSet.add(r * N + starCols[r]);
+
+  for (let refine = 0; refine < 100; refine++) {
+    const sols = solveS1(regions, 3);
+    if (sols.length === 1) return sols[0]; // 唯一解！
+    if (sols.length === 0) return null; // 无解，放弃
+
+    // 找到主解(s0=starCols对应的)和另一个解(alt)
+    const s0 = starCols;
+    const alt = sols.find(s => {
+      for (let r = 0; r < N; r++) if (s[r] !== s0[r]) return true;
+      return false;
+    }) || sols[1];
+
+    if (!alt) return null;
+
+    // 找差异行：alt在这行放了不同列
+    let fixed = false;
+    const diffRows = [];
+    for (let r = 0; r < N; r++) if (alt[r] !== s0[r]) diffRows.push(r);
+    shuffleArray(diffRows);
+
+    for (const dr of diffRows) {
+      const altCol = alt[dr];
+      const altKey = dr * N + altCol;
+      if (starSet.has(altKey)) continue; // 不能动星星格
+
+      const oldReg = regions[dr][altCol];
+
+      // 尝试将 (dr, altCol) 交给相邻的不同区域
+      const nbs = adj4(dr, altCol);
+      shuffleArray(nbs);
+      for (const nb of nbs) {
+        const nbReg = regions[nb.r][nb.c];
+        if (nbReg === oldReg) continue;
+
+        regions[dr][altCol] = nbReg;
+        if (isConnected(regions, oldReg) && isConnected(regions, nbReg)) {
+          fixed = true;
+          break;
+        }
+        regions[dr][altCol] = oldReg; // 回滚
+      }
+      if (fixed) break;
+    }
+
+    if (!fixed) {
+      // 无法消灭 alt, 做一批随机扰动
+      for (let i = 0; i < 50; i++) {
+        const r = Math.floor(Math.random()*N), c = Math.floor(Math.random()*N);
+        if (starSet.has(r*N+c)) continue;
+        const myR = regions[r][c];
+        const nbs = adj4(r, c);
+        const nb = nbs[Math.floor(Math.random()*nbs.length)];
+        const nbR = regions[nb.r][nb.c];
+        if (myR === nbR) continue;
+        regions[r][c] = nbR;
+        if (!isConnected(regions, myR) || !isConnected(regions, nbR)) regions[r][c] = myR;
+      }
+    }
+  }
+  return null; // 100轮还没唯一解
+}
+
+// 主流程
+let running = false;
+function startGeneration() {
+  if (running) return;
+  running = true;
+  document.getElementById('startBtn').disabled = true;
+  const targetCount = parseInt(document.getElementById('countInput').value) || 20;
+  const results = [];
+  let mainAttempts = 0;
+  const logEl = document.getElementById('log');
+  const statusEl = document.getElementById('status');
+  const outputEl = document.getElementById('output');
+  statusEl.textContent = `正在生成... 0/${targetCount}`;
+
+  function step() {
+    const t0 = Date.now();
+    while (Date.now() - t0 < 200) { // 每 200ms 释放一次 UI
+      if (results.length >= targetCount) break;
+      mainAttempts++;
+
+      const starCols = genStars();
+      if (!starCols) continue;
+      const regions = buildRegions(starCols);
+      const solution = refinePuzzle(regions, starCols);
+      if (!solution) continue;
+
+      // 构建 solution grid
+      const solGrid = Array.from({length:N}, ()=>Array(N).fill(0));
+      for (let r = 0; r < N; r++) solGrid[r][solution[r]] = 1;
+
+      results.push({ size: N, starsPerUnit: 1, regions, solution: solGrid });
+      logEl.innerHTML += `<span class="success">✅ ${results.length}/${targetCount}（第 ${mainAttempts} 次主尝试）</span><br>`;
+      logEl.scrollTop = logEl.scrollHeight;
+      statusEl.textContent = `正在生成... ${results.length}/${targetCount}（主尝试: ${mainAttempts}）`;
+    }
+
+    if (results.length >= targetCount) {
+      statusEl.innerHTML = `<span class="success">🎉 完成！共 ${results.length} 个（主尝试: ${mainAttempts}）</span>`;
+      outputEl.textContent = JSON.stringify(results);
+      document.getElementById('startBtn').disabled = false;
+      running = false;
+      // 自动选中
+      const range = document.createRange(); range.selectNodeContents(outputEl);
+      const sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+    } else {
+      statusEl.textContent = `正在生成... ${results.length}/${targetCount}（主尝试: ${mainAttempts}）`;
+      setTimeout(step, 0);
+    }
+  }
+  setTimeout(step, 100);
+}
+</script>
+</body>
+</html>
