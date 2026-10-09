@@ -11,7 +11,7 @@
   <meta name="format-detection" content="telephone=no">
   <meta name="description" content="看你智商藏哪 - 一款超烧脑的益智推理游戏！在网格中找到所有隐藏的螃蟹吧！">
 
-  <!-- Open Graph / 社交分享标签（og:url 与 og:image 待 EdgeOne 域名确定后补全绝对地址） -->
+  <!-- Open Graph / 社交分享标签 -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="看你智商藏哪">
   <meta property="og:description" content="看你智商藏哪 - 一款超烧脑的益智推理游戏！在网格中找到所有隐藏的螃蟹吧！">
@@ -24,16 +24,7 @@
   <link rel="apple-touch-icon" href="./assets/images/logo.png">
   <title>看你智商藏哪</title>
 
-  <!-- 全局样式 -->
-  <link rel="stylesheet" href="./css/global.css?v=35">
-  <link rel="stylesheet" href="./css/home.css?v=106">
-  <link rel="stylesheet" href="./css/game.css?v=46">
-  <link rel="stylesheet" href="./css/map.css?v=34">
-  <link rel="stylesheet" href="./css/shop.css?v=33">
-
-  <!-- Toast / Modal 样式 -->
   <style>
-    /* ==================== 竖版容器 ==================== */
     html, body {
       margin: 0;
       padding: 0;
@@ -42,335 +33,30 @@
       background: #1a3c5e;
       overflow: hidden;
       -webkit-tap-highlight-color: transparent;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
     }
-
-    #app-wrapper {
-      --app-radius: 12px;
-      width: 100vw;
-      width: 100dvw;
-      height: 100vh;
-      height: 100dvh;
-      min-height: 100vh;
-      min-height: 100dvh;
-      max-width: 100vw;
-      max-width: 100dvw;
-      margin: 0;
-      position: fixed;
-      top: 0;
-      left: 50%;
-      right: auto;
-      bottom: 0;
-      overflow: hidden;
-      border-radius: 0;
-      clip-path: none;
-      isolation: isolate;
-      background: #BBEBFF;
-    }
-
-    /* 页面边界只由 app-wrapper 控制，内部页面不得使用视口尺寸或独立圆角。 */
-    #app {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      border-radius: 0;
-    }
-    #app > .page {
-      position: relative !important;
-      top: 0 !important;
-      left: 0 !important;
-      width: 100% !important;
-      height: 100% !important;
-      min-height: 0 !important;
-      border-radius: 0 !important;
-    }
-    .page-container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: none;
-    }
-    .page-container.active {
-      display: block;
-    }
-
-    /* ==================== Toast ==================== */
-    #toast-container {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 10000;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.25s ease;
-    }
-    #toast-container.toast-visible {
-      opacity: 1;
-    }
-    .toast-box {
-      background: rgba(0, 0, 0, 0.75);
-      color: #fff;
-      padding: 3vw 6vw;
-      border-radius: 3vw;
-      font-size: 4vw;
-      font-weight: 600;
-      text-align: center;
-      max-width: 72vw;
-      word-break: break-word;
-      animation: toastBounceIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    @keyframes toastBounceIn {
-      0%   { transform: scale(0.7); opacity: 0; }
-      100% { transform: scale(1);   opacity: 1; }
-    }
-    .toast-icon {
-      font-size: 9vw;
-      margin-bottom: 1.5vw;
-    }
-    .toast-icon-success { color: #2ecc71; }
-    .toast-icon-error { color: #e74c3c; }
-
-    /* ==================== Modal ==================== */
-    #modal-container {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      z-index: 9999;
-      display: none;
-    }
-    #modal-container.modal-visible {
+    body {
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: flex-start;
     }
-    .modal-mask {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.5);
-    }
-    .modal-dialog {
-      position: relative;
-      background: #fff;
-      border-radius: 16px;
-      width: 80%;
-      max-width: 320px;
-      padding: 24px;
-      text-align: center;
-      animation: bounceIn 0.3s ease;
-    }
-    .modal-title {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 12px;
-      color: #333;
-    }
-    .modal-content {
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
-    .difficulty-title-en,
-    .difficulty-title-zh,
-    .difficulty-content-en,
-    .difficulty-content-zh {
-      display: block;
-    }
-    .difficulty-title-zh {
-      margin-top: 4px;
-      color: #333;
-      font-size: 14px;
-    }
-    .difficulty-content-zh {
-      margin-top: 4px;
-      color: #666;
-      font-size: 13px;
-    }
-    .modal-footer {
-      display: flex;
-      gap: 12px;
-    }
-    .modal-btn {
-      flex: 1;
-      padding: 10px 0;
+    #game-frame {
       border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      max-width: 430px;
     }
-    .modal-btn-cancel {
-      background: #f0f0f0;
-      color: #666;
-    }
-    .modal-btn-confirm {
-      background: linear-gradient(135deg, #FF6B35, #FF4444);
-      color: #fff;
-    }
-
-    /* ==================== Switch 开关 ==================== */
-    .switch-input {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 51px;
-      height: 31px;
-      border-radius: 16px;
-      background: #ddd;
-      position: relative;
-      cursor: pointer;
-      transition: background 0.3s;
-      vertical-align: middle;
-    }
-    .switch-input:checked {
-      background: #4cd964;
-    }
-    .switch-input::after {
-      content: '';
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      width: 27px;
-      height: 27px;
-      border-radius: 50%;
-      background: #fff;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-      transition: transform 0.3s;
-    }
-    .switch-input:checked::after {
-      transform: translateX(20px);
+    /* 桌面端：给 iframe 加圆角和阴影，模拟手机屏幕 */
+    @media (min-width: 500px) {
+      body { align-items: center; }
+      #game-frame {
+        max-height: 932px;
+        border-radius: 16px;
+        box-shadow: 0 0 60px rgba(0, 0, 0, 0.4);
+      }
     }
   </style>
 </head>
 <body>
-  <div id="app-wrapper">
-    <div id="app">
-      <!-- 页面由 Vue 动态渲染 -->
-      <component :is="currentPageComponent"></component>
-    </div>
-  </div>
-
-  <!-- Toast 容器 -->
-  <div id="toast-container"></div>
-  <!-- Modal 容器 -->
-  <div id="modal-container"></div>
-
-  <!-- 宽屏适配（iPad等）：缩放到手机比例，两侧留黑边 -->
-  <script>
-  (function() {
-    var TARGET_W = 390;
-    var TARGET_H = 844;
-    var RADIUS = 12;
-    var retryFrame = 0;
-    var scheduledFrame = 0;
-
-    function adapt() {
-      retryFrame = 0;
-
-      var vw = window.innerWidth || document.documentElement.clientWidth;
-      var vh = window.innerHeight || document.documentElement.clientHeight;
-      var w = document.getElementById('app-wrapper');
-
-      // Browser Preview may briefly report a 0 × 0 viewport while its pane is
-      // being created or restored. Keep the last valid layout and retry when
-      // the browser can render again instead of collapsing the app to 0px.
-      if (!w || vw <= 0 || vh <= 0) {
-        if (!retryFrame) retryFrame = requestAnimationFrame(adapt);
-        return;
-      }
-
-      // 计算按宽度和高度分别适配的缩放比例，取最小值确保内容完整显示
-      var scaleW = vw / TARGET_W;
-      var scaleH = vh / TARGET_H;
-      var scale = Math.min(scaleW, scaleH);
-
-      // app-wrapper 始终保持 390x844 的设计尺寸，通过 transform scale 缩放
-      w.style.width = TARGET_W + 'px';
-      w.style.height = TARGET_H + 'px';
-      // 解除 CSS 中 min-height/max-width 的视口限制，否则高屏下画布被撑高、底部被裁切。
-      w.style.minHeight = '0';
-      w.style.maxWidth = 'none';
-      // 宽屏直开时将固定竖屏画布水平居中，窄屏手机布局保持不变。
-      w.style.transform = 'translateX(-50%) scale(' + scale + ')';
-      w.style.transformOrigin = 'top center';
-      w.style.setProperty('--app-radius', RADIUS + 'px');
-
-      // 设置 body 的实际高度为缩放后的高度，避免滚动条
-      document.documentElement.style.setProperty('--app-h', (TARGET_H * scale) + 'px');
-      document.documentElement.classList.toggle('is-scaled', scale < 1);
-    }
-
-    function scheduleAdapt() {
-      if (scheduledFrame) cancelAnimationFrame(scheduledFrame);
-      scheduledFrame = requestAnimationFrame(function() {
-        scheduledFrame = 0;
-        adapt();
-      });
-    }
-
-    // Run immediately because this script is placed after #app-wrapper.
-    // Lifecycle listeners cover restored/background preview panes that do not
-    // consistently emit a normal window resize event.
-    adapt();
-    document.addEventListener('DOMContentLoaded', scheduleAdapt, { once: true });
-    window.addEventListener('resize', scheduleAdapt);
-    window.addEventListener('pageshow', scheduleAdapt);
-    document.addEventListener('visibilitychange', function() {
-      if (!document.hidden) scheduleAdapt();
-    });
-    if (window.visualViewport) {
-      window.visualViewport.addEventListener('resize', scheduleAdapt);
-    }
-  })();
-  </script>
-
-  <!-- Vue 3 -->
-  <script src="./js/lib/vue.global.prod.js"></script>
-
-  <!-- i18n -->
-  <script src="./js/utils/i18n.js?v=31"></script>
-  <script src="./js/lang/zh.js?v=47"></script>
-  <script src="./js/lang/en.js?v=51"></script>
-  <script>I18n.init();</script>
-
-  <!-- Utils（加载顺序重要：先加载无依赖的，再加载有依赖的） -->
-  <script src="./js/utils/gameConfig.js?v=35"></script>
-  <script src="./js/utils/presetPuzzles.js?v=30"></script>
-  <script src="./js/utils/puzzleGenerator.js?v=32"></script>
-  <script src="./js/utils/dailyPuzzles.js?v=30"></script>
-
-  <!-- 核心框架 -->
-  <script src="./js/utils/audioManager.js?v=31"></script>
-  <script src="./js/utils/adManager.js?v=32"></script>
-  <script src="./js/utils/shareManager.js?v=32"></script>
-  <script src="./js/components/toast.js?v=30"></script>
-  <script src="./js/components/modal.js?v=31"></script>
-  <script src="./js/app.js?v=40"></script>
-  <script src="./js/router.js?v=30"></script>
-
-  <!-- 页面组件 -->
-  <script src="./js/pages/home.js?v=48"></script>
-  <script src="./js/pages/game.js?v=76"></script>
-  <script src="./js/pages/map.js?v=38"></script>
-  <script src="./js/pages/shop.js?v=33"></script>
-
-  <!-- 应用入口 -->
-  <script src="./js/main.js?v=31"></script>
-
-  <!-- 诊断脚本 -->
-  <script src="./diagnose.js"></script>
-
-  <!-- 禁止所有图片长按保存（配合全局 CSS 防长按） -->
-  <script>
-  document.addEventListener('contextmenu', function(e) {
-    if (e.target.tagName === 'IMG') e.preventDefault();
-  }, true);
-  </script>
+  <iframe id="game-frame" src="./app.html" allow="autoplay; fullscreen" allowfullscreen></iframe>
 </body>
 </html>
