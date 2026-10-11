@@ -59,13 +59,13 @@ const MapPage = {
       <span class="back-arrow">‹</span>
     </div>
     <span class="map-title">{{ t('map.island_map') }}</span>
-    <div style="width:8vw"></div>
+    <div style="width:8cqw"></div>
   </div>
 
 
   <!-- 岛屿列表 -->
   <div class="map-body">
-    <div style="height: 80vh;"></div>
+    <div style="height: 80cqh;"></div>
     <template v-for="(item, index) in islands" :key="item.index">
       <div class="island-section" :id="'island-' + item.index" :ref="'island-' + item.index">
 
@@ -125,7 +125,7 @@ const MapPage = {
       </div>
     </template>
 
-    <div style="height: 55vh;"></div>
+    <div style="height: 55cqh;"></div>
   </div>
 
   <!-- 金币兑换贝壳弹窗 -->
@@ -154,8 +154,8 @@ const MapPage = {
   <!-- 抽奖弹窗 -->
   <div class="modal-bg" v-if="showLottery" @click="onCloseLottery">
     <div class="lottery-card" @click.stop="preventBubble">
-      <div style="display:flex; align-items:center; gap:1.6vw; margin-bottom: 1.07vw;">
-        <img :src="IMG.gift" style="width:6.4vw;height:6.4vw;object-fit:contain" />
+      <div style="display:flex; align-items:center; gap:1.6cqw; margin-bottom: 1.07cqw;">
+        <img :src="IMG.gift" style="width:6.4cqw;height:6.4cqw;object-fit:contain" />
         <span class="lc-title" style="margin:0;">{{ t('map.full_star_gift') }}</span>
       </div>
       <span class="lc-sub">{{ t('map.island_reward', {island: lotteryIsland}) }}</span>

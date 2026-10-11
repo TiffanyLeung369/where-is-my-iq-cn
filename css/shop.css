@@ -1,8 +1,8 @@
 /* ========== 皮肤商城样式 ========== */
 
 .page {
-  height: 100vh;
-  height: 100dvh;
+  height: 100cqh;
+  height: 100cqh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -28,9 +28,9 @@
   background: radial-gradient(circle, #fff, transparent);
 }
 
-.bubble-1 { width: 40vw; height: 40vw; top: -6.67vw; left: -10.67vw; }
-.bubble-2 { width: 26.67vw; height: 26.67vw; top: 40vw; right: -5.33vw; }
-.bubble-3 { width: 53.33vw; height: 53.33vw; bottom: 13.33vw; left: -13.33vw; }
+.bubble-1 { width: 40cqw; height: 40cqw; top: -6.67cqw; left: -10.67cqw; }
+.bubble-2 { width: 26.67cqw; height: 26.67cqw; top: 40cqw; right: -5.33cqw; }
+.bubble-3 { width: 53.33cqw; height: 53.33cqw; bottom: 13.33cqw; left: -13.33cqw; }
 
 /* ========== 顶栏 ========== */
 
@@ -41,14 +41,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 13.33vw 4.27vw 2.67vw;
+  padding: 13.33cqw 4.27cqw 2.67cqw;
   box-sizing: border-box;
 }
 
 .shop-title {
-  font-size: 5.6vw;
+  font-size: 5.6cqw;
   font-weight: 600;
-  letter-spacing: 1.6vw;
+  letter-spacing: 1.6cqw;
   color: #1A5F7A;
   white-space: nowrap;
 }
@@ -57,12 +57,12 @@
 
 .spotlight {
   position: absolute;
-  top: 24vw;
+  top: 24cqw;
   left: 50%;
   transform: translateX(-50%);
-  top: 14.13vw;
-  width: 53.33vw;
-  height: 53.33vw;
+  top: 14.13cqw;
+  width: 53.33cqw;
+  height: 53.33cqw;
   background: radial-gradient(circle, rgba(255,255,255,0.35) 0%, transparent 70%);
   border-radius: 50%;
   z-index: 1;
@@ -74,8 +74,8 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  height: 74.67vw;
-  margin-top: 5.33vw;
+  height: 74.67cqw;
+  margin-top: 5.33cqw;
   overflow: hidden;
   touch-action: pan-y;
   -webkit-user-select: none;
@@ -88,10 +88,10 @@
 }
 
 .skin-swiper-slide {
-  flex: 0 0 78vw;
-  width: 78vw;
+  flex: 0 0 78cqw;
+  width: 78cqw;
   box-sizing: border-box;
-  padding: 0 1vw;
+  padding: 0 1cqw;
 }
 
 .skin-slide {
@@ -100,10 +100,10 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  margin: 0 0.5vw;
+  margin: 0 0.5cqw;
   background: rgba(180, 200, 215, 0.4);
-  border-radius: 3.73vw;
-  border: 0.27vw solid rgba(255, 255, 255, 0.5);
+  border-radius: 3.73cqw;
+  border: 0.27cqw solid rgba(255, 255, 255, 0.5);
   transition: all 0.3s ease;
   transform: scale(0.92);
   opacity: 0.7;
@@ -115,7 +115,7 @@
   transform: scale(1);
   opacity: 1;
   background: rgba(255, 255, 255, 0.85);
-  box-shadow: 0 1.07vw 5.33vw rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1.07cqw 5.33cqw rgba(0, 0, 0, 0.1);
 }
 
 .lock-overlay {
@@ -126,61 +126,61 @@
   align-items: center;
   justify-content: center;
   z-index: 10;
-  border-radius: 3.73vw;
+  border-radius: 3.73cqw;
 }
 
 .lock-icon {
-  font-size: 8vw;
+  font-size: 8cqw;
 }
 
 /* ========== 皮肤预览动画区 ========== */
 
 .skin-preview {
-  width: 26.67vw;
-  height: 26.67vw;
+  width: 26.67cqw;
+  height: 26.67cqw;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  margin-bottom: 2.67vw;
+  margin-bottom: 2.67cqw;
 }
 
 .skin-name {
-  font-size: 4.27vw;
+  font-size: 4.27cqw;
   font-weight: 700;
   color: #2c5f7c;
-  margin-top: 1.07vw;
+  margin-top: 1.07cqw;
 }
 
 /* ========== 复用六套动画（从首页搬运） ========== */
 
 .animate-roll {
-  width: 21.33vw;
-  height: 21.33vw;
+  width: 21.33cqw;
+  height: 21.33cqw;
   position: relative;
   animation: roll-across 3s linear alternate infinite;
 }
 
 @keyframes roll-across {
-  0% { transform: translateX(-8vw) rotate(0deg); }
-  100% { transform: translateX(8vw) rotate(360deg); }
+  0% { transform: translateX(-8cqw) rotate(0deg); }
+  100% { transform: translateX(8cqw) rotate(360deg); }
 }
 
 @keyframes walk-across {
-  0% { transform: translateX(-8vw); }
-  100% { transform: translateX(8vw); }
+  0% { transform: translateX(-8cqw); }
+  100% { transform: translateX(8cqw); }
 }
 
 .animate-walk {
-  width: 21.33vw;
-  height: 21.33vw;
+  width: 21.33cqw;
+  height: 21.33cqw;
   position: relative;
   animation: walk-across 3s linear alternate infinite;
 }
 
 .animate-fly {
-  width: 21.33vw;
-  height: 21.33vw;
+  width: 21.33cqw;
+  height: 21.33cqw;
   position: relative;
 }
 
@@ -195,13 +195,13 @@
 }
 
 @keyframes fly-bounce {
-  0% { transform: translateY(0.27vw); }
-  100% { transform: translateY(-2.13vw); }
+  0% { transform: translateY(0.27cqw); }
+  100% { transform: translateY(-2.13cqw); }
 }
 
 .animate-swim {
-  width: 21.33vw;
-  height: 21.33vw;
+  width: 21.33cqw;
+  height: 21.33cqw;
   position: relative;
 }
 
@@ -217,8 +217,8 @@
 
 @keyframes swim-bounce {
   0% { transform: translateY(0); }
-  40% { transform: translateY(-3.47vw); }
-  60% { transform: translateY(-3.47vw); }
+  40% { transform: translateY(-3.47cqw); }
+  60% { transform: translateY(-3.47cqw); }
   100% { transform: translateY(0); }
 }
 
@@ -238,7 +238,7 @@
 }
 
 .animate-stumble {
-  width: 21.33vw; height: 21.33vw;
+  width: 21.33cqw; height: 21.33cqw;
   position: relative;
   animation: walk-across 4s linear alternate infinite;
 }
@@ -259,7 +259,7 @@
 }
 
 .animate-soar {
-  width: 24vw; height: 24vw;
+  width: 24cqw; height: 24cqw;
   position: relative;
   animation: walk-across 5s linear alternate infinite;
 }
@@ -284,14 +284,14 @@
   0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 1; }
 }
 @keyframes soar-updown {
-  0% { transform: translateY(1.33vw); }
-  100% { transform: translateY(-6.67vw); }
+  0% { transform: translateY(1.33cqw); }
+  100% { transform: translateY(-6.67cqw); }
 }
 
 /* 小松鼠跳跃 */
 .animate-hop {
-  width: 21.33vw;
-  height: 21.33vw;
+  width: 21.33cqw;
+  height: 21.33cqw;
   position: relative;
   animation: walk-across 3s linear alternate infinite;
 }
@@ -304,9 +304,9 @@
 
 @keyframes hop-jump {
   0% { transform: translateY(0) scale(1.1, 0.9); }
-  25% { transform: translateY(-4vw) scale(0.9, 1.1); }
-  50% { transform: translateY(-5.33vw) scale(1, 1); }
-  75% { transform: translateY(-2.67vw) scale(0.95, 1.05); }
+  25% { transform: translateY(-4cqw) scale(0.9, 1.1); }
+  50% { transform: translateY(-5.33cqw) scale(1, 1); }
+  75% { transform: translateY(-2.67cqw) scale(0.95, 1.05); }
   100% { transform: translateY(0) scale(1.1, 0.9); }
 }
 
@@ -327,8 +327,8 @@
 
 /* 鹦鹉在树枝上叽叽喳喳 */
 .animate-chirp {
-  width: 21.33vw;
-  height: 21.33vw;
+  width: 21.33cqw;
+  height: 21.33cqw;
   position: relative;
   animation: chirp-shift 2.5s ease-in-out infinite;
 }
@@ -357,9 +357,9 @@
 }
 
 @keyframes chirp-shift {
-  0% { transform: translateX(-4vw); }
-  50% { transform: translateX(4vw); }
-  100% { transform: translateX(-4vw); }
+  0% { transform: translateX(-4cqw); }
+  50% { transform: translateX(4cqw); }
+  100% { transform: translateX(-4cqw); }
 }
 
 @keyframes chirp-rock {
@@ -387,26 +387,26 @@
 .action-area {
   position: relative;
   z-index: 2;
-  width: 75vw;
-  height: 28vw;
+  width: 75cqw;
+  height: 28cqw;
   flex-shrink: 0;
   box-sizing: border-box;
-  margin-top: 2.67vw;
+  margin-top: 2.67cqw;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 2.13vw;
+  gap: 2.13cqw;
 }
 
 .action-btn {
   width: 100%;
-  padding: 3.2vw 0;
+  padding: 3.2cqw 0;
   text-align: center;
-  border-radius: 6.67vw;
+  border-radius: 6.67cqw;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.07vw;
+  gap: 1.07cqw;
   transition: all 0.2s ease;
 }
 
@@ -416,16 +416,16 @@
 }
 
 .action-text {
-  font-size: 4vw;
+  font-size: 4cqw;
   font-weight: 700;
   color: #fff;
 }
 
 .btn-locked {
-  min-height: 18vw;
-  padding: 1.6vw 3.2vw;
+  min-height: 18cqw;
+  padding: 1.6cqw 3.2cqw;
   flex-direction: column;
-  gap: 0.8vw;
+  gap: 0.8cqw;
 }
 
 .lock-requirement-text {
@@ -441,55 +441,55 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.8vw;
+  gap: 0.8cqw;
   white-space: nowrap;
 }
 
 .action-coin {
-  width: 8.53vw;
-  height: 8.53vw;
+  width: 8.53cqw;
+  height: 8.53cqw;
 }
 
 .action-ad-icon {
-  width: 8.53vw;
-  height: 8.53vw;
+  width: 8.53cqw;
+  height: 8.53cqw;
   animation: bounceShopAd 2s infinite ease-in-out;
 }
 
 @keyframes bounceShopAd {
   0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-0.53vw) scale(1.1); }
+  50% { transform: translateY(-0.53cqw) scale(1.1); }
 }
 
 .btn-current {
   background: linear-gradient(135deg, #FFB347, #FF8E53);
-  box-shadow: 0 0.8vw 3.2vw rgba(255, 142, 83, 0.35);
+  box-shadow: 0 0.8cqw 3.2cqw rgba(255, 142, 83, 0.35);
 }
 
 .btn-equip {
   background: linear-gradient(135deg, #4FC3F7, #2196F3);
-  box-shadow: 0 0.8vw 3.2vw rgba(33, 150, 243, 0.35);
+  box-shadow: 0 0.8cqw 3.2cqw rgba(33, 150, 243, 0.35);
 }
 
 .btn-ad {
   background: linear-gradient(135deg, #A8D86E, #6BC04B);
-  box-shadow: 0 0.8vw 3.2vw rgba(107, 192, 75, 0.35);
+  box-shadow: 0 0.8cqw 3.2cqw rgba(107, 192, 75, 0.35);
 }
 
 .btn-unlock {
   background: linear-gradient(135deg, #A8D86E, #6BC04B);
-  box-shadow: 0 0.8vw 3.2vw rgba(107, 192, 75, 0.35);
+  box-shadow: 0 0.8cqw 3.2cqw rgba(107, 192, 75, 0.35);
 }
 
 .btn-locked {
   background: linear-gradient(135deg, #B0B8C1, #8E99A4);
-  box-shadow: 0 0.8vw 3.2vw rgba(142, 153, 164, 0.25);
+  box-shadow: 0 0.8cqw 3.2cqw rgba(142, 153, 164, 0.25);
   opacity: 0.8;
 }
 
 .lock-price-icon {
-  width: 4.8vw;
-  height: 4.8vw;
+  width: 4.8cqw;
+  height: 4.8cqw;
 }
 
 /* ========== 换肤提示覆盖层 ========== */
@@ -529,7 +529,7 @@
 }
 .confetti {
   position: absolute;
-  top: -6.67vw;
+  top: -6.67cqw;
   background-color: #FFC107;
   opacity: 0;
   /* 我们沿用之前在 game 里的彩带帧动画 */
@@ -584,8 +584,8 @@
 .c40 { left: 100%; animation-delay: 3.2s; }
 
 @keyframes fall {
-  0% { transform: translateY(-6.67vw) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(120vh) rotate(720deg); opacity: 0; }
+  0% { transform: translateY(-6.67cqw) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(120cqh) rotate(720deg); opacity: 0; }
 }
 
 /* 核心内容区 */
@@ -596,7 +596,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10.67vw;
+  margin-bottom: 10.67cqw;
 }
 
 /* 炫光射线容器 */
@@ -604,23 +604,23 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 106.67vw;
-  height: 106.67vw;
-  margin-top: -61.33vw;
-  margin-left: -53.33vw;
+  width: 106.67cqw;
+  height: 106.67cqw;
+  margin-top: -61.33cqw;
+  margin-left: -53.33cqw;
   z-index: -1;
   animation: spinRays 25s linear infinite;
   display: flex;
   justify-content: center;
   align-items: center;
-  filter: blur(1.6vw);
+  filter: blur(1.6cqw);
 }
 
 .light-rays-container::after {
   content: '';
   position: absolute;
-  width: 60vw;
-  height: 60vw;
+  width: 60cqw;
+  height: 60cqw;
   background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 65%);
   border-radius: 50%;
   animation: softPulse 3s ease-in-out infinite alternate;
@@ -634,8 +634,8 @@
 /* 单条射线（扇形） */
 .light-ray {
   position: absolute;
-  width: 9.33vw;
-  height: 60vw;
+  width: 9.33cqw;
+  height: 60cqw;
   background: linear-gradient(to top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.25) 100%);
   transform-origin: bottom center;
   bottom: 50%;
@@ -649,9 +649,9 @@
 
 /* 放大展示的皮肤 */
 .showcase-skin {
-  width: 42.67vw;
-  height: 42.67vw;
-  margin-bottom: 8vw;
+  width: 42.67cqw;
+  height: 42.67cqw;
+  margin-bottom: 8cqw;
   animation: floatSkin 2s ease-in-out infinite alternate;
 }
 
@@ -662,16 +662,16 @@
 
 @keyframes floatSkin {
   0% { transform: translateY(0); }
-  100% { transform: translateY(-4vw); }
+  100% { transform: translateY(-4cqw); }
 }
 
 /* 恭喜文字 */
 .modal-title-text {
-  font-size: 6.93vw;
+  font-size: 6.93cqw;
   font-weight: 900;
   color: #fff;
-  letter-spacing: 0.8vw;
-  text-shadow: 0 0.53vw 1.6vw rgba(0,0,0,0.5), 0 0 2.67vw #FFD700;
+  letter-spacing: 0.8cqw;
+  text-shadow: 0 0.53cqw 1.6cqw rgba(0,0,0,0.5), 0 0 2.67cqw #FFD700;
   animation: pulseTitle 1.5s ease-in-out infinite alternate;
 }
 
@@ -684,21 +684,21 @@
 .modal-btn-home {
   position: relative;
   z-index: 1000;
-  width: 53.33vw;
-  height: 13.33vw;
+  width: 53.33cqw;
+  height: 13.33cqw;
   background: linear-gradient(135deg, #FFB347, #FF8E53);
-  border-radius: 6.67vw;
+  border-radius: 6.67cqw;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 1.07vw 4.27vw rgba(255, 142, 83, 0.4);
+  box-shadow: 0 1.07cqw 4.27cqw rgba(255, 142, 83, 0.4);
 }
 
 .modal-btn-home, .modal-btn-home span {
   color: #fff;
-  font-size: 4.8vw;
+  font-size: 4.8cqw;
   font-weight: bold;
-  letter-spacing: 0.53vw;
+  letter-spacing: 0.53cqw;
 }
 
 .modal-btn-home:active {

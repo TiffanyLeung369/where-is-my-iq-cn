@@ -70,6 +70,8 @@
       clip-path: none;
       isolation: isolate;
       background: #BBEBFF;
+      /* 内部 cqw/cqh 以画布（390×844）为基准，而不是浏览器窗口 */
+      container-type: size;
     }
 
     /* 页面边界只由 app-wrapper 控制，内部页面不得使用视口尺寸或独立圆角。 */
@@ -118,12 +120,12 @@
     .toast-box {
       background: rgba(0, 0, 0, 0.75);
       color: #fff;
-      padding: 3vw 6vw;
-      border-radius: 3vw;
-      font-size: 4vw;
+      padding: 3cqw 6cqw;
+      border-radius: 3cqw;
+      font-size: 4cqw;
       font-weight: 600;
       text-align: center;
-      max-width: 72vw;
+      max-width: 72cqw;
       word-break: break-word;
       animation: toastBounceIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
@@ -132,8 +134,8 @@
       100% { transform: scale(1);   opacity: 1; }
     }
     .toast-icon {
-      font-size: 9vw;
-      margin-bottom: 1.5vw;
+      font-size: 9cqw;
+      margin-bottom: 1.5cqw;
     }
     .toast-icon-success { color: #2ecc71; }
     .toast-icon-error { color: #e74c3c; }
@@ -254,12 +256,12 @@
       <!-- 页面由 Vue 动态渲染 -->
       <component :is="currentPageComponent"></component>
     </div>
-  </div>
 
-  <!-- Toast 容器 -->
-  <div id="toast-container"></div>
-  <!-- Modal 容器 -->
-  <div id="modal-container"></div>
+    <!-- Toast 容器（放在画布内，跟随画布缩放） -->
+    <div id="toast-container"></div>
+    <!-- Modal 容器（放在画布内，跟随画布缩放） -->
+    <div id="modal-container"></div>
+  </div>
 
   <!-- 宽屏适配（iPad等）：缩放到手机比例，两侧留黑边 -->
   <script>
@@ -293,8 +295,14 @@
       // app-wrapper 始终保持 390x844 的设计尺寸，通过 transform scale 缩放
       w.style.width = TARGET_W + 'px';
       w.style.height = TARGET_H + 'px';
+      w.style.minHeight = '0';
+      w.style.maxWidth = 'none';
       w.style.transform = 'scale(' + scale + ')';
       w.style.transformOrigin = 'top center';
+      // 宽屏居中：用 margin auto 而不是 translateX(-50%)
+      w.style.left = '0';
+      w.style.right = '0';
+      w.style.margin = '0 auto';
       w.style.setProperty('--app-radius', RADIUS + 'px');
 
       // 设置 body 的实际高度为缩放后的高度，避免滚动条

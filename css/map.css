@@ -4,9 +4,9 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  height: 100dvh;
+  width: 100cqw;
+  height: 100cqh;
+  height: 100cqh;
   z-index: 100;
   display: block;
   overflow-y: auto !important;
@@ -29,13 +29,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 3.2vw 3vw 2.4vw;
+  padding: 3.2cqw 3cqw 2.4cqw;
   background: linear-gradient(135deg, #4FC3F7, #2196F3);
-  border-bottom: 0.27vw solid rgba(255,255,255,0.2);
+  border-bottom: 0.27cqw solid rgba(255,255,255,0.2);
 }
 .map-back-btn {
-  width: 8vw;
-  height: 8vw;
+  width: 8cqw;
+  height: 8cqw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,22 +44,22 @@
   cursor: pointer;
 }
 .back-arrow {
-  font-size: 5.5vw;
+  font-size: 5.5cqw;
   color: #fff;
   line-height: 1;
-  margin-top: -0.5vw;
+  margin-top: -0.5cqw;
 }
 .map-title {
-  font-size: 4.27vw;
+  font-size: 4.27cqw;
   font-weight: 500;
   color: #fff;
-  letter-spacing: 1.07vw;
+  letter-spacing: 1.07cqw;
 }
 
 /* 岛名牌红点脉动 */
 .tag-red-dot {
-  width: 2.4vw;
-  height: 2.4vw;
+  width: 2.4cqw;
+  height: 2.4cqw;
   border-radius: 50%;
   background: #ff3b3b;
   animation: map-pulse 1.4s ease-in-out infinite;
@@ -72,7 +72,7 @@
 
 /* 地图主体 */
 .map-body {
-  padding: 12vw 2.13vw 0;
+  padding: 12cqw 2.13cqw 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -109,19 +109,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.33vw;
-  padding: 1.6vw 3.73vw;
-  margin-bottom: 1.6vw;
+  gap: 1.33cqw;
+  padding: 1.6cqw 3.73cqw;
+  margin-bottom: 1.6cqw;
 }
 
 .tag-name {
-  font-size: 3.73vw;
+  font-size: 3.73cqw;
   font-weight: 800;
   color: #2c3e50;
 }
 
 .tag-range {
-  font-size: 3.73vw;
+  font-size: 3.73cqw;
   color: rgba(0,0,0,0.4);
 }
 
@@ -152,20 +152,20 @@
 /* 路径小圆点 */
 .trail {
   position: absolute;
-  width: 1.07vw;
-  height: 1.07vw;
+  width: 1.07cqw;
+  height: 1.07cqw;
   border-radius: 50%;
   background: rgba(255,255,255,0.45);
   transform: translate(-50%, -50%);
-  box-shadow: 0 0 0.53vw rgba(255,255,255,0.3);
+  box-shadow: 0 0 0.53cqw rgba(255,255,255,0.3);
 }
 
 /* ========== 关卡圆形节点 ========== */
 
 .node {
   position: absolute;
-  width: 8.53vw;
-  height: 8.53vw;
+  width: 8.53cqw;
+  height: 8.53cqw;
   border-radius: 50%;
   transform: translate(-50%, -50%);
   display: flex;
@@ -181,49 +181,49 @@
 /* 未解锁 */
 .n-locked {
   background: rgba(0,0,0,0.15);
-  border: 0.4vw dashed #78C5E3;
+  border: 0.4cqw dashed #78C5E3;
 }
-.node-lck { font-size: 3.73vw; opacity: 0.55; }
+.node-lck { font-size: 3.73cqw; opacity: 0.55; }
 
 /* 当前关 */
 .n-current {
   background: linear-gradient(135deg, #42A5F5, #1565C0);
-  border: 0.4vw solid #fff;
-  box-shadow: 0 0.53vw 2.67vw rgba(21,101,192,0.6);
+  border: 0.4cqw solid #fff;
+  box-shadow: 0 0.53cqw 2.67cqw rgba(21,101,192,0.6);
 }
 .n-current .node-lbl { color: #fff; font-weight: 800; }
 
 /* 已通关 */
 .n-passed {
   background: rgba(255,255,255,0.85);
-  border: 0.27vw solid rgba(255,255,255,0.9);
-  box-shadow: 0 0.27vw 1.33vw rgba(0,0,0,0.15);
+  border: 0.27cqw solid rgba(255,255,255,0.9);
+  box-shadow: 0 0.27cqw 1.33cqw rgba(0,0,0,0.15);
 }
 .n-passed .node-lbl { color: #666; }
 
 /* 满星 */
 .n-perfect {
   background: linear-gradient(135deg, #FFD54F, #FF8F00);
-  border: 0.4vw solid #fff;
-  box-shadow: 0 0.53vw 2.13vw rgba(255,143,0,0.5);
+  border: 0.4cqw solid #fff;
+  box-shadow: 0 0.53cqw 2.13cqw rgba(255,143,0,0.5);
 }
 .n-perfect .node-lbl { color: #fff; font-weight: 800; }
 
-.node-lck { width: 3.2vw; height: 3.2vw; opacity: 0.6; }
+.node-lck { width: 3.2cqw; height: 3.2cqw; opacity: 0.6; }
 
-.node-lbl { font-size: 3.73vw; font-weight: 700; line-height: 1; }
+.node-lbl { font-size: 3.73cqw; font-weight: 700; line-height: 1; }
 
 /* 星星 */
-.node-stars { display: flex; gap: 0.27vw; line-height: 1; margin-top: 0.27vw; }
-.s { font-size: 3.73vw; color: rgba(0,0,0,0.3); }
-.s.on { color: #FFD700; text-shadow: 0 0.13vw 0.4vw rgba(0,0,0,0.6); }
+.node-stars { display: flex; gap: 0.27cqw; line-height: 1; margin-top: 0.27cqw; }
+.s { font-size: 3.73cqw; color: rgba(0,0,0,0.3); }
+.s.on { color: #FFD700; text-shadow: 0 0.13cqw 0.4cqw rgba(0,0,0,0.6); }
 
 /* 当前关脉冲 */
 .node-ring {
   position: absolute;
-  inset: -1.33vw;
+  inset: -1.33cqw;
   border-radius: 50%;
-  border: 0.4vw solid #42A5F5;
+  border: 0.4cqw solid #42A5F5;
   animation: ring-pulse 1.6s ease-out infinite;
 }
 
@@ -238,20 +238,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.33vw;
-  padding: 1.6vw 2.67vw;
-  margin-top: 1.6vw;
+  gap: 1.33cqw;
+  padding: 1.6cqw 2.67cqw;
+  margin-top: 1.6cqw;
 }
 
-.gs-icon { width: 4.8vw; height: 4.8vw; }
-.gs-bar { width: 14.67vw; height: 1.33vw; background: rgba(0,0,0,0.08); border-radius: 0.8vw; overflow: hidden; }
-.gs-fill { height: 100%; background: linear-gradient(90deg, #f39c12, #e74c3c); border-radius: 0.8vw; }
-.gs-txt { font-size: 3.73vw; font-weight: 600; color: rgba(0,0,0,0.5); }
+.gs-icon { width: 4.8cqw; height: 4.8cqw; }
+.gs-bar { width: 14.67cqw; height: 1.33cqw; background: rgba(0,0,0,0.08); border-radius: 0.8cqw; overflow: hidden; }
+.gs-fill { height: 100%; background: linear-gradient(90deg, #f39c12, #e74c3c); border-radius: 0.8cqw; }
+.gs-txt { font-size: 3.73cqw; font-weight: 600; color: rgba(0,0,0,0.5); }
 
 /* 满星待领取状态 */
 .gift-ready {
   background: rgba(255, 235, 59, 0.9);
-  box-shadow: 0 0 2.67vw rgba(255, 215, 0, 0.6);
+  box-shadow: 0 0 2.67cqw rgba(255, 215, 0, 0.6);
   animation: strip-pulse 1.5s infinite;
 }
 @keyframes strip-pulse {
@@ -285,8 +285,8 @@
   background: rgba(0,0,0,0.25);
   z-index: 8;
 }
-.lock-icon { width: 9.6vw; height: 9.6vw; margin-bottom: 1.6vw; opacity: 0.8; }
-.lock-msg { font-size: 3.73vw; color: rgba(255,255,255,0.7); }
+.lock-icon { width: 9.6cqw; height: 9.6cqw; margin-bottom: 1.6cqw; opacity: 0.8; }
+.lock-msg { font-size: 3.73cqw; color: rgba(255,255,255,0.7); }
 
 /* ========== 海上航线 ========== */
 
@@ -294,26 +294,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2vw 0;
+  padding: 2cqw 0;
 }
 .lane-wave {
-  font-size: 5.6vw;
+  font-size: 5.6cqw;
   color: #4FC3F7;
   letter-spacing: 0;
 }
 .lane-mid {
   display: flex;
   align-items: center;
-  gap: 1vw;
+  gap: 1cqw;
 }
 .lane-ship {
-  font-size: 5.33vw;
+  font-size: 5.33cqw;
   animation: ship-bob 2.5s ease-in-out infinite;
 }
 
 @keyframes ship-bob {
   0%, 100% { transform: translateY(0) rotate(-5deg); }
-  50% { transform: translateY(-1.33vw) rotate(5deg); }
+  50% { transform: translateY(-1.33cqw) rotate(5deg); }
 }
 
 /* ========== 抽奖弹窗 ========== */
@@ -329,18 +329,18 @@
 }
 
 .lottery-card {
-  width: 74.67vw;
+  width: 74.67cqw;
   background: linear-gradient(180deg, #1a3c5e, #0d2137);
-  border-radius: 4.8vw;
-  padding: 5.33vw;
+  border-radius: 4.8cqw;
+  padding: 5.33cqw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 0.4vw solid rgba(255, 215, 0, 0.4);
-  box-shadow: 0 2.13vw 5.33vw rgba(0, 0, 0, 0.6), inset 0 0 5.33vw rgba(255, 215, 0, 0.1);
+  border: 0.4cqw solid rgba(255, 215, 0, 0.4);
+  box-shadow: 0 2.13cqw 5.33cqw rgba(0, 0, 0, 0.6), inset 0 0 5.33cqw rgba(255, 215, 0, 0.1);
 }
-.lc-title { font-size: 5.07vw; font-weight: 800; color: #FFE57F; }
-.lc-sub { font-size: 3.73vw; color: rgba(255,255,255,0.4); margin-bottom: 3.73vw; }
+.lc-title { font-size: 5.07cqw; font-weight: 800; color: #FFE57F; }
+.lc-sub { font-size: 3.73cqw; color: rgba(255,255,255,0.4); margin-bottom: 3.73cqw; }
 
 /* 礼盒开箱区 */
 .giftbox-zone {
@@ -348,24 +348,24 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 2.67vw;
-  min-height: 45.33vw;
+  margin-top: 2.67cqw;
+  min-height: 45.33cqw;
 }
 
 .gb-box {
-  width: 32vw;
-  height: 32vw;
+  width: 32cqw;
+  height: 32cqw;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 5.33vw;
+  margin-bottom: 5.33cqw;
   transition: transform 0.3s;
 }
 
 .gb-icon {
-  width: 21.33vw;
-  height: 21.33vw;
-  filter: drop-shadow(0 1.33vw 2.67vw rgba(0,0,0,0.5));
+  width: 21.33cqw;
+  height: 21.33cqw;
+  filter: drop-shadow(0 1.33cqw 2.67cqw rgba(0,0,0,0.5));
 }
 
 .shake-box {
@@ -380,18 +380,18 @@
 }
 
 .gb-btn {
-  width: 53.33vw;
-  height: 11.73vw;
-  border-radius: 5.87vw;
+  width: 53.33cqw;
+  height: 11.73cqw;
+  border-radius: 5.87cqw;
   background: linear-gradient(135deg, #FFD54F, #FF8F00);
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 1.07vw 2.13vw rgba(255, 143, 0, 0.4);
+  box-shadow: 0 1.07cqw 2.13cqw rgba(255, 143, 0, 0.4);
 }
 .gb-btn span, .gb-btn text {
-  font-size: 4.27vw;
+  font-size: 4.27cqw;
   font-weight: bold;
   color: #fff;
 }
@@ -403,34 +403,34 @@
 
 .claim-btn {
   background: linear-gradient(135deg, #4CAF50, #2E7D32);
-  box-shadow: 0 1.07vw 2.13vw rgba(76, 175, 80, 0.4);
+  box-shadow: 0 1.07cqw 2.13cqw rgba(76, 175, 80, 0.4);
 }
 
 .gb-prize-bg {
-  width: 42.67vw;
-  height: 42.67vw;
+  width: 42.67cqw;
+  height: 42.67cqw;
   border-radius: 50%;
   background: radial-gradient(circle at center, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 2.67vw;
+  margin-bottom: 2.67cqw;
 }
 
 .gb-prize-icons {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.6vw;
+  gap: 1.6cqw;
   width: 100%;
 }
 
 .gb-prize-icon {
-  width: 16vw;
-  height: 16vw;
-  margin-bottom: 2vw;
-  filter: drop-shadow(0 0.53vw 1.33vw rgba(0,0,0,0.3));
+  width: 16cqw;
+  height: 16cqw;
+  margin-bottom: 2cqw;
+  filter: drop-shadow(0 0.53cqw 1.33cqw rgba(0,0,0,0.3));
 }
 
 .gb-prize-icons .gb-prize-icon:only-child {
@@ -441,22 +441,22 @@
 /* 礼物箱奖励的红色徽章（贝壳满了时显示） */
 .gb-bonus-badge {
   position: absolute;
-  top: -1.5vw;
-  right: -1.5vw;
-  min-width: 4.8vw;
-  height: 4.8vw;
+  top: -1.5cqw;
+  right: -1.5cqw;
+  min-width: 4.8cqw;
+  height: 4.8cqw;
   background: linear-gradient(135deg, #FF6B6B 0%, #EE5A6F 100%);
-  border: 0.53vw solid white;
+  border: 0.53cqw solid white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3.2vw;
+  font-size: 3.2cqw;
   font-weight: bold;
   color: white;
-  box-shadow: 0 0.53vw 1.07vw rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0.53cqw 1.07cqw rgba(0, 0, 0, 0.25);
   z-index: 10;
-  padding: 0 1.07vw;
+  padding: 0 1.07cqw;
 }
 
 .prize-appear {
@@ -470,26 +470,26 @@
 .gb-prize-text {
   display: block;
   width: 100%;
-  padding: 0 2vw;
+  padding: 0 2cqw;
   box-sizing: border-box;
   text-align: center;
-  font-size: 5.6vw;
+  font-size: 5.6cqw;
   font-weight: 900;
   line-height: 1.2;
   color: #FFD54F;
-  text-shadow: 0 0.53vw 1.33vw rgba(0,0,0,0.6);
+  text-shadow: 0 0.53cqw 1.33cqw rgba(0,0,0,0.6);
 }
 
 /* 岛名牌红点（满星可领取） */
 .tag-red-dot {
-  width: 4vw;
-  height: 4vw;
+  width: 4cqw;
+  height: 4cqw;
   background-color: #ff4757;
   border-radius: 50%;
-  border: 0.53vw solid #fff;
-  box-shadow: 0 0.53vw 1.33vw rgba(255, 71, 87, 0.4);
+  border: 0.53cqw solid #fff;
+  box-shadow: 0 0.53cqw 1.33cqw rgba(255, 71, 87, 0.4);
   animation: dot-pulse 1.5s ease-in-out infinite;
-  margin-right: 0.53vw;
+  margin-right: 0.53cqw;
 }
 
 @keyframes dot-pulse {

@@ -320,7 +320,7 @@ const GamePage = {
         <span class="settings-label">{{t('game.settings_vibrate')}}</span>
         <input type="checkbox" class="switch-input" :checked="vibrateOn" @change="onToggleVibrate" />
       </div>
-      <div style="display:flex;gap:3vw;width:100%;margin-top:4.8vw;">
+      <div style="display:flex;gap:3cqw;width:100%;margin-top:4.8cqw;">
         <div class="settings-continue-btn" @click="onCloseSettings" style="flex:1;">
           <span class="settings-continue-text">{{t('game.continue_game')}}</span>
         </div>
@@ -418,27 +418,27 @@ const GamePage = {
           </div>
           <div class="daily-reward-row">
             <div class="daily-reward-item">
-              <img :src="IMG.coin" style="width:6.667vw;height:6.667vw;" />
+              <img :src="IMG.coin" style="width:6.667cqw;height:6.667cqw;" />
               <span class="daily-reward-text">+{{rewardCoins}}</span>
             </div>
             <div class="daily-reward-item">
-              <img :src="IMG.shell" style="width:6.667vw;height:6.667vw;" />
+              <img :src="IMG.shell" style="width:6.667cqw;height:6.667cqw;" />
               <span class="daily-reward-text">+{{survivalRewardShells}}</span>
             </div>
           </div>
           <div class="win-actions-row">
             <button class="btn-home-icon" @click="onGoHome">
-              <img :src="IMG.home" style="width:13.333vw;height:13.333vw;" />
+              <img :src="IMG.home" style="width:13.333cqw;height:13.333cqw;" />
             </button>
             <button class="btn-ad-boost-short pulse-wrapper" @click="onWatchAdBoost" v-if="!adBoosted">
               <img :src="IMG.ad_icon_clean" class="btn-ad-icon-corner pulse-corner" style="object-fit:contain" />
               <div style="display:flex;align-items:center;justify-content:center;">
-                <img :src="IMG.coin" style="width:6.933vw;height:6.933vw;margin-right:1.6vw;" />
-                <span style="color:#fff;font-weight:800;font-size:5.6vw;">× 5</span>
+                <img :src="IMG.coin" style="width:6.933cqw;height:6.933cqw;margin-right:1.6cqw;" />
+                <span style="color:#fff;font-weight:800;font-size:5.6cqw;">× 5</span>
               </div>
             </button>
             <div class="ad-boosted-tag-short" v-if="adBoosted">
-              <img :src="IMG.check" style="width:4.8vw;height:4.8vw;margin-right:1.067vw;vertical-align:middle;" />
+              <img :src="IMG.check" style="width:4.8cqw;height:4.8cqw;margin-right:1.067cqw;vertical-align:middle;" />
               <span>{{t('game.ad_boosted')}}</span>
             </div>
           </div>
@@ -446,8 +446,8 @@ const GamePage = {
 
         <!-- 普通模式胜利结算 -->
         <template v-else>
-          <div class="reward-row" style="margin-top:1.333vw;margin-bottom:4vw;position:relative;">
-            <img :src="IMG.coin" style="width:6.667vw;height:6.667vw;display:inline-block;vertical-align:middle;" />
+          <div class="reward-row" style="margin-top:1.333cqw;margin-bottom:4cqw;position:relative;">
+            <img :src="IMG.coin" style="width:6.667cqw;height:6.667cqw;display:inline-block;vertical-align:middle;" />
             <span class="reward-text"> +{{adBoosted ? boostedCoins : rewardCoins}} </span>
             <div class="flying-coins" v-if="showFlyingCoins">
               <img v-for="fc in flyingCoinsArray" :key="fc" class="fly-coin" :style="{animationDelay: fc * 0.1 + 's'}" :src="IMG.coin" style="object-fit:contain" />
@@ -455,23 +455,23 @@ const GamePage = {
           </div>
           <div class="win-actions-row" v-if="!(isTutorial || (mode === 'normal' && level === 1))">
             <button class="btn-home-icon" @click="onGoHome">
-              <img :src="IMG.home" style="width:13.333vw;height:13.333vw;" />
+              <img :src="IMG.home" style="width:13.333cqw;height:13.333cqw;" />
             </button>
             <button class="btn-ad-boost-short pulse-wrapper" @click="onWatchAdBoost" v-if="isFirstClear && !adBoosted">
               <img :src="IMG.ad_icon_clean" class="btn-ad-icon-corner pulse-corner" style="object-fit:contain" />
               <div style="display:flex;align-items:center;justify-content:center;">
-                <img :src="IMG.coin" style="width:6.933vw;height:6.933vw;margin-right:1.6vw;" />
-                <span style="color:#fff;font-weight:800;font-size:5.6vw;">× 5</span>
+                <img :src="IMG.coin" style="width:6.933cqw;height:6.933cqw;margin-right:1.6cqw;" />
+                <span style="color:#fff;font-weight:800;font-size:5.6cqw;">× 5</span>
               </div>
             </button>
             <div class="ad-boosted-tag-short" v-if="isFirstClear && adBoosted">
-              <img :src="IMG.check" style="width:4.8vw;height:4.8vw;margin-right:1.067vw;vertical-align:middle;" />
+              <img :src="IMG.check" style="width:4.8cqw;height:4.8cqw;margin-right:1.067cqw;vertical-align:middle;" />
               <span>{{t('game.ad_boosted')}}</span>
             </div>
           </div>
           <div class="win-bottom-actions">
             <button class="btn-share-icon" @click="share" v-if="!(isTutorial || (mode === 'normal' && level === 1))">
-              <img :src="IMG.share_filled" style="width:8vw;height:8vw;" />
+              <img :src="IMG.share_filled" style="width:8cqw;height:8cqw;" />
             </button>
             <button class="btn-next-level-short animate-pulse-btn" @click="onNextLevel" :style="(isTutorial || (mode === 'normal' && level === 1)) ? 'width:100%' : ''">
               <span>{{t('game.next_level')}}</span>
@@ -488,11 +488,11 @@ const GamePage = {
         <span class="result-desc" v-else-if="mode === 'normal'">{{t(skinData.failTextKey)}}</span>
         <span class="result-desc" v-else>{{t(skinData.failTextKey)}}</span>
 
-        <div class="result-desc" v-if="mode === 'normal' || mode === 'daily'" style="margin-top:-2.133vw;margin-bottom:3.2vw;color:#FF6B6B;font-weight:bold;">
+        <div class="result-desc" v-if="mode === 'normal' || mode === 'daily'" style="margin-top:-2.133cqw;margin-bottom:3.2cqw;color:#FF6B6B;font-weight:bold;">
           {{t('game.fail_remaining', {count: totalStars - foundCount})}}
         </div>
 
-        <div class="daily-r5-reward" v-if="mode === 'daily' && dailyFailRewardShells > 0" style="margin-top:1vw;margin-bottom:2vw;">
+        <div class="daily-r5-reward" v-if="mode === 'daily' && dailyFailRewardShells > 0" style="margin-top:1cqw;margin-bottom:2cqw;">
           <div class="r5-reward-box"><img :src="IMG.shell" class="r5-icon" style="object-fit:contain" /><span class="r5-txt cyan">+{{dailyFailRewardShells}}</span></div>
         </div>
 
@@ -503,11 +503,11 @@ const GamePage = {
           <template v-if="mode === 'daily'">
             <button class="btn-primary pulse-wrapper" @click="onDailyRevive" v-if="!dailyRevived">
               <img :src="IMG.ad_icon_clean" class="btn-ad-icon-corner pulse-corner" style="object-fit:contain" />
-              <span style="font-size:5.067vw;letter-spacing:0.533vw;">{{t('game.revive')}}</span>
+              <span style="font-size:5.067cqw;letter-spacing:0.533cqw;">{{t('game.revive')}}</span>
             </button>
             <button class="btn-primary pulse-wrapper" @click="onDailyRetry" v-if="dailyRevived">
               <img :src="IMG.ad_icon_clean" class="btn-ad-icon-corner pulse-corner" style="object-fit:contain" />
-              <span style="font-size:5.067vw;letter-spacing:0.533vw;">{{t('game.retry')}}</span>
+              <span style="font-size:5.067cqw;letter-spacing:0.533cqw;">{{t('game.retry')}}</span>
             </button>
           </template>
 
@@ -519,13 +519,13 @@ const GamePage = {
             </button>
             <button class="btn-primary pulse-wrapper" @click="onNormalRevive">
               <img :src="IMG.ad_icon_clean" class="btn-ad-icon-corner pulse-corner" style="object-fit:contain" />
-              <span style="font-size:5.067vw;letter-spacing:0.533vw;">{{t('game.watch_ad_revive')}}</span>
+              <span style="font-size:5.067cqw;letter-spacing:0.533cqw;">{{t('game.watch_ad_revive')}}</span>
             </button>
             <button class="btn-primary" @click="onRetry">
-              <div style="display:flex;align-items:center;justify-content:center;gap:1.067vw;">
-                <span style="font-size:5.067vw;letter-spacing:0.533vw;">{{t('game.retry')}}</span>
-                <img :src="IMG.shell" style="width:5.333vw;height:5.333vw;" />
-                <span style="font-size:4.533vw;font-weight:bold;">-1</span>
+              <div style="display:flex;align-items:center;justify-content:center;gap:1.067cqw;">
+                <span style="font-size:5.067cqw;letter-spacing:0.533cqw;">{{t('game.retry')}}</span>
+                <img :src="IMG.shell" style="width:5.333cqw;height:5.333cqw;" />
+                <span style="font-size:4.533cqw;font-weight:bold;">-1</span>
               </div>
             </button>
           </template>
@@ -538,7 +538,7 @@ const GamePage = {
     <div class="daily-result-page animate-fadeIn" v-if="isWin && mode === 'daily'">
       <div class="daily-top-row">
         <div class="daily-r1-home" @click="onGoHome">
-          <img :src="IMG.home" style="width:11.2vw;height:11.2vw;" />
+          <img :src="IMG.home" style="width:11.2cqw;height:11.2cqw;" />
         </div>
         <div class="asset-item" @click="onBuyShells">
           <img class="asset-icon" :src="IMG.shell" style="object-fit:contain" />
@@ -562,7 +562,7 @@ const GamePage = {
         </div>
 
         <!-- 皮肤动物跳舞 -->
-        <div class="celebrate-animal" style="width:34.667vw;height:34.667vw;">
+        <div class="celebrate-animal" style="width:34.667cqw;height:34.667cqw;">
           <template v-if="skinData.dailyAnimationType === 'walk'">
             <div class="logo-crab-dance" style="width:100%;height:100%;"><img class="logo-frame-1" :src="skinData.dailyImage" style="object-fit:contain" /><img class="logo-frame-2" :src="IMG.crab_walk_2" style="object-fit:contain" /></div>
           </template>
@@ -592,11 +592,11 @@ const GamePage = {
 
       <div class="daily-r5-reward">
         <div class="r5-reward-box"><img :src="IMG.coin" class="r5-icon" style="object-fit:contain" /><span class="r5-txt yellow">+10</span></div>
-        <div class="r5-reward-box" style="margin-left:5.333vw;"><img :src="IMG.shell" class="r5-icon" style="object-fit:contain" /><span class="r5-txt cyan">+{{dailyRewardShells}}</span></div>
+        <div class="r5-reward-box" style="margin-left:5.333cqw;"><img :src="IMG.shell" class="r5-icon" style="object-fit:contain" /><span class="r5-txt cyan">+{{dailyRewardShells}}</span></div>
       </div>
       <div class="daily-r6-time">
-        <span style="color:rgba(44,95,124,0.8);align-self:flex-end;padding-bottom:0.8vw;font-size:4vw;">{{t('game.time_spent')}}</span>
-        <span style="font-size:7.467vw;color:#FF6B6B;">{{dailyTimeText}}</span>
+        <span style="color:rgba(44,95,124,0.8);align-self:flex-end;padding-bottom:0.8cqw;font-size:4cqw;">{{t('game.time_spent')}}</span>
+        <span style="font-size:7.467cqw;color:#FF6B6B;">{{dailyTimeText}}</span>
       </div>
       <div class="daily-r7-rank">
         <span>{{t('game.daily_rank', {rank: dailyRank})}}</span>
@@ -607,12 +607,12 @@ const GamePage = {
         <div class="r8-ad-inner"><span class="r8-btn-txt">{{t('game.double_stamina')}}</span><span class="r8-btn-sub">{{t('game.double_stamina_sub')}}</span></div>
       </button>
       <div class="daily-r8-boosted" v-if="adBoosted">
-        <img class="pencil-icon" :src="IMG.check" style="width:3.733vw;height:3.733vw;margin-right:1.067vw;vertical-align:middle;" />
+        <img class="pencil-icon" :src="IMG.check" style="width:3.733cqw;height:3.733cqw;margin-right:1.067cqw;vertical-align:middle;" />
         <span>{{t('game.stamina_doubled')}}</span>
       </div>
 
-      <div class="win-bottom-actions" style="width:74.667vw;margin:5.333vw auto 3.2vw auto;padding:0;">
-        <button class="btn-share-icon" @click="share"><img :src="IMG.share_filled" style="width:8vw;height:8vw;" /></button>
+      <div class="win-bottom-actions" style="width:74.667cqw;margin:5.333cqw auto 3.2cqw auto;padding:0;">
+        <button class="btn-share-icon" @click="share"><img :src="IMG.share_filled" style="width:8cqw;height:8cqw;" /></button>
         <button class="btn-next-level-short" @click="onGoHome"><span>{{t('game.continue_playing')}}</span></button>
       </div>
 
@@ -630,7 +630,7 @@ const GamePage = {
     <!-- ========== 生存模式结算 ========== -->
     <div class="daily-result-page animate-fadeIn" v-if="showResult && mode === 'survival'">
       <div class="daily-top-row">
-        <div class="daily-r1-home" @click="onGoHome"><img :src="IMG.home" style="width:11.2vw;height:11.2vw;" /></div>
+        <div class="daily-r1-home" @click="onGoHome"><img :src="IMG.home" style="width:11.2cqw;height:11.2cqw;" /></div>
         <div class="asset-item" @click="onBuyShells">
           <img class="asset-icon" :src="IMG.shell" style="object-fit:contain" />
           <span v-if="isInfinitePlay" class="infinite-energy-value"><strong>∞</strong><span>{{infiniteTimeDisplay}}</span></span>
@@ -660,21 +660,21 @@ const GamePage = {
         </div>
         <div class="survival-crabs"><img class="small-crab-icon" :src="skinData.icon" style="object-fit:contain" /><span>{{t('game.survival_found', {count: survivalCrabsFound, skinName: t(skinData.nameKey)})}}</span></div>
         <div class="survival-time"><span>{{t('game.time_spent')}}</span><span class="red-text">{{survivalTimeText}}</span></div>
-        <div class="daily-r5-reward" style="margin-top:5.333vw;margin-bottom:5.333vw;">
+        <div class="daily-r5-reward" style="margin-top:5.333cqw;margin-bottom:5.333cqw;">
           <div class="r5-reward-box"><img :src="IMG.coin" class="r5-icon" style="object-fit:contain" /><span class="r5-txt yellow">+20</span></div>
-          <div class="r5-reward-box" style="margin-left:5.333vw;"><img :src="IMG.shell" class="r5-icon" style="object-fit:contain" /><span class="r5-txt cyan">+4</span></div>
+          <div class="r5-reward-box" style="margin-left:5.333cqw;"><img :src="IMG.shell" class="r5-icon" style="object-fit:contain" /><span class="r5-txt cyan">+4</span></div>
         </div>
-        <div class="win-bottom-actions" style="width:77.333vw;margin:0 auto 3.2vw auto;padding:0;">
-          <button class="btn-share-icon" @click="share"><img :src="IMG.share_filled" style="width:8vw;height:8vw;" /></button>
+        <div class="win-bottom-actions" style="width:77.333cqw;margin:0 auto 3.2cqw auto;padding:0;">
+          <button class="btn-share-icon" @click="share"><img :src="IMG.share_filled" style="width:8cqw;height:8cqw;" /></button>
           <button class="btn-ad-boost-short animate-pulse-btn" @click="onSurvivalDoubleRewards" v-if="!survivalRewardDoubled && survivalRewardShells > 0" style="flex:1;margin:0;background:linear-gradient(135deg,#4A90E2,#9E58FF);">
             <img :src="IMG.ad_icon_clean" class="btn-ad-icon-corner pulse-corner" style="object-fit:contain" />
-            <span style="font-size:5.067vw;color:#fff;font-weight:800;">{{t('game.double_stamina')}}</span>
+            <span style="font-size:5.067cqw;color:#fff;font-weight:800;">{{t('game.double_stamina')}}</span>
           </button>
           <button class="btn-ad-boost-short" v-if="survivalRewardDoubled" style="flex:1;margin:0;background:rgba(74,144,226,0.5);">
-            <img :src="IMG.check" style="width:4.8vw;height:4.8vw;margin-right:1.067vw;" /><span>{{t('game.already_doubled')}}</span>
+            <img :src="IMG.check" style="width:4.8cqw;height:4.8cqw;margin-right:1.067cqw;" /><span>{{t('game.already_doubled')}}</span>
           </button>
         </div>
-        <div class="win-bottom-actions" style="width:77.333vw;margin:0 auto;padding:0;">
+        <div class="win-bottom-actions" style="width:77.333cqw;margin:0 auto;padding:0;">
           <button class="btn-next-level-short animate-pulse-btn" @click="onGoHome" style="width:100%;margin:0;">
             <span>{{t('game.continue_playing')}}</span>
           </button>
@@ -690,28 +690,28 @@ const GamePage = {
         <div class="survival-crabs"><img class="small-crab-icon" :src="skinData.icon" style="object-fit:contain" /><span>{{t('game.survival_found', {count: survivalCrabsFound, skinName: t(skinData.nameKey)})}}</span></div>
         <div class="survival-stat-text"><span>{{t('game.survival_rounds', {round: survivalRound})}}</span></div>
         <div class="survival-stat-text"><span>{{t('game.time_spent')}}</span><span class="red-text">{{survivalTimeText}}</span></div>
-        <div class="daily-r5-reward" style="margin-top:5.333vw;margin-bottom:5.333vw;" v-if="survivalRewardShells > 0">
+        <div class="daily-r5-reward" style="margin-top:5.333cqw;margin-bottom:5.333cqw;" v-if="survivalRewardShells > 0">
           <div class="r5-reward-box"><img :src="IMG.shell" class="r5-icon" style="object-fit:contain" /><span class="r5-txt cyan">+{{survivalRewardShells}}</span></div>
         </div>
-        <div style="width:74.667vw;margin-bottom:3.2vw;" v-if="!survivalRevived">
+        <div style="width:74.667cqw;margin-bottom:3.2cqw;" v-if="!survivalRevived">
           <button class="daily-r8-ad-btn animate-pulse-btn" @click="onSurvivalRevive" style="width:100%;background:linear-gradient(135deg,#10B981,#34D399);">
             <img :src="IMG.ad_icon_clean" class="btn-ad-icon-corner" style="object-fit:contain" />
-            <div class="r8-ad-inner"><span class="r8-btn-txt" style="font-size:5.067vw;">{{t('game.revive_continue')}}</span><span class="r8-btn-sub">{{t('game.revive_sub')}}</span></div>
+            <div class="r8-ad-inner"><span class="r8-btn-txt" style="font-size:5.067cqw;">{{t('game.revive_continue')}}</span><span class="r8-btn-sub">{{t('game.revive_sub')}}</span></div>
           </button>
         </div>
-        <div style="width:74.667vw;margin-bottom:3.2vw;">
+        <div style="width:74.667cqw;margin-bottom:3.2cqw;">
           <button class="daily-r8-ad-btn animate-pulse-btn" @click="onSurvivalRetryFree" style="width:100%;">
             <img :src="IMG.ad_icon_clean" class="btn-ad-icon-corner" style="object-fit:contain" v-if="!survivalHasFreeRemain" />
-            <div class="r8-ad-inner"><span class="r8-btn-txt" style="font-size:5.067vw;">{{t('game.restart_challenge')}}</span><span class="r8-btn-sub">{{t('game.restart_sub')}}</span></div>
+            <div class="r8-ad-inner"><span class="r8-btn-txt" style="font-size:5.067cqw;">{{t('game.restart_challenge')}}</span><span class="r8-btn-sub">{{t('game.restart_sub')}}</span></div>
           </button>
         </div>
-        <div style="width:74.667vw;margin-bottom:3.2vw;">
+        <div style="width:74.667cqw;margin-bottom:3.2cqw;">
           <button class="daily-r8-ad-btn animate-pulse-btn" @click="onSurvivalDoubleRewards" v-if="!survivalRewardDoubled && survivalRewardShells > 0" style="width:100%;">
             <img :src="IMG.ad_icon_clean" class="btn-ad-icon-corner" style="object-fit:contain" />
-            <div class="r8-ad-inner"><span class="r8-btn-txt" style="font-size:5.067vw;">{{t('game.double_stamina')}}</span><span class="r8-btn-sub">{{t('game.double_stamina_sub')}}</span></div>
+            <div class="r8-ad-inner"><span class="r8-btn-txt" style="font-size:5.067cqw;">{{t('game.double_stamina')}}</span><span class="r8-btn-sub">{{t('game.double_stamina_sub')}}</span></div>
           </button>
           <div class="daily-r8-boosted" v-if="survivalRewardDoubled" style="justify-content:center;">
-            <img :src="IMG.check" style="width:3.733vw;height:3.733vw;margin-right:1.067vw;vertical-align:middle;" /><span>{{t('game.ad_boosted')}}</span>
+            <img :src="IMG.check" style="width:3.733cqw;height:3.733cqw;margin-right:1.067cqw;vertical-align:middle;" /><span>{{t('game.ad_boosted')}}</span>
           </div>
         </div>
       </template>
@@ -755,8 +755,8 @@ const GamePage = {
       </div>
       <span class="exchange-cost">{{t('game.cost_coins', {cost: buyPlaceOneCount * 50})}}</span>
       <div class="exchange-btn" @click="onConfirmBuyPlaceOne">{{t('game.confirm_purchase')}}</div>
-      <div class="exchange-btn" :style="{marginTop: '2vw', background: 'linear-gradient(135deg,#4A90E2,#9E58FF)', opacity: placeOneAdRemain > 0 ? 1 : 0.55, pointerEvents: placeOneAdRemain > 0 ? 'auto' : 'none'}" @click="onWatchAdForPlaceOne">
-        <img :src="IMG.ad_icon_clean" style="width:5vw;height:5vw;margin-right:1.5vw;vertical-align:middle;object-fit:contain" />
+      <div class="exchange-btn" :style="{marginTop: '2cqw', background: 'linear-gradient(135deg,#4A90E2,#9E58FF)', opacity: placeOneAdRemain > 0 ? 1 : 0.55, pointerEvents: placeOneAdRemain > 0 ? 'auto' : 'none'}" @click="onWatchAdForPlaceOne">
+        <img :src="IMG.ad_icon_clean" style="width:5cqw;height:5cqw;margin-right:1.5cqw;vertical-align:middle;object-fit:contain" />
         <span>{{placeOneAdRemain > 0 ? t('game.watch_ad_place_one') : t('game.daily_limit')}}</span>
       </div>
       <span class="coin-ad-footer">{{t('game.place_one_daily_remaining', {remain: placeOneAdRemain})}}</span>
@@ -783,12 +783,12 @@ const GamePage = {
       </div>
       <span class="exchange-cost">{{t('game.cost_coins', {cost: buyHintCount * 30})}}</span>
       <div class="exchange-btn" @click="onConfirmBuyHint">{{t('game.confirm_purchase')}}</div>
-      <div class="exchange-btn" style="margin-top:2vw;background:linear-gradient(135deg,#4A90E2,#9E58FF);" @click="onShareForHint" v-if="canShareHint">
-        <img :src="IMG.share_filled" style="width:5vw;height:5vw;margin-right:1.5vw;vertical-align:middle;object-fit:contain" />
+      <div class="exchange-btn" style="margin-top:2cqw;background:linear-gradient(135deg,#4A90E2,#9E58FF);" @click="onShareForHint" v-if="canShareHint">
+        <img :src="IMG.share_filled" style="width:5cqw;height:5cqw;margin-right:1.5cqw;vertical-align:middle;object-fit:contain" />
         <span>{{t('game.share_hint', {daily: 2 - shareHintDailyCount})}}</span>
       </div>
-      <div class="exchange-btn" style="margin-top:2vw;background:linear-gradient(135deg,#4A90E2,#9E58FF);" @click="onWatchAdForHint">
-        <img :src="IMG.ad_icon_clean" style="width:5vw;height:5vw;margin-right:1.5vw;vertical-align:middle;object-fit:contain" />
+      <div class="exchange-btn" style="margin-top:2cqw;background:linear-gradient(135deg,#4A90E2,#9E58FF);" @click="onWatchAdForHint">
+        <img :src="IMG.ad_icon_clean" style="width:5cqw;height:5cqw;margin-right:1.5cqw;vertical-align:middle;object-fit:contain" />
         <span>{{t('game.watch_ad_hint')}}</span>
       </div>
     </div>
@@ -1007,12 +1007,12 @@ const GamePage = {
 
     // 格子尺寸（vw）
     cellSizeVw() {
-      return (this.cellSize / 750 * 100) + 'vw';
+      return (this.cellSize / 750 * 100) + 'cqw';
     },
 
     // 格子间距 rpx→vw
     cellGapVw() {
-      return (6 / 750 * 100) + 'vw';
+      return (6 / 750 * 100) + 'cqw';
     },
 
     // 教程手指位置的动态样式
@@ -1022,10 +1022,10 @@ const GamePage = {
       const gapVw = 6 / 750 * 100;
       const padVw = 8 / 750 * 100;
       return {
-        top: (this.tutFingerPos.row * cellVw + this.tutFingerPos.row * gapVw + padVw) + 'vw',
-        left: (this.tutFingerPos.col * cellVw + this.tutFingerPos.col * gapVw + padVw) + 'vw',
-        width: cellVw + 'vw',
-        height: cellVw + 'vw',
+        top: (this.tutFingerPos.row * cellVw + this.tutFingerPos.row * gapVw + padVw) + 'cqw',
+        left: (this.tutFingerPos.col * cellVw + this.tutFingerPos.col * gapVw + padVw) + 'cqw',
+        width: cellVw + 'cqw',
+        height: cellVw + 'cqw',
       };
     },
 
@@ -1035,9 +1035,9 @@ const GamePage = {
       const gapVw = 6 / 750 * 100;
       const padVw = 8 / 750 * 100;
       return {
-        top: (2 * cellVw + 2 * gapVw + padVw) + 'vw',
+        top: (2 * cellVw + 2 * gapVw + padVw) + 'cqw',
         width: '100%',
-        height: cellVw + 'vw',
+        height: cellVw + 'cqw',
       };
     },
 
@@ -1341,7 +1341,7 @@ const GamePage = {
       const puzzle = { size, starsPerUnit: 1, regions, solution };
       this._puzzle = puzzle;
 
-      const screenWidth = window.innerWidth;
+      const screenWidth = document.getElementById('app-wrapper').getBoundingClientRect().width;
       const ratio = 750 / screenWidth;
       const sidePadding = Math.round(screenWidth * 0.09);
       const availableWidth = screenWidth - sidePadding * 2;
@@ -1530,7 +1530,7 @@ const GamePage = {
       this.boostedCoins = 0;
       this.isFirstClear = false;
 
-      const screenWidth = window.innerWidth;
+      const screenWidth = document.getElementById('app-wrapper').getBoundingClientRect().width;
       const ratio = 750 / screenWidth;
       const sidePadding = Math.round(screenWidth * 0.09);
       const availableWidth = screenWidth - sidePadding * 2;
@@ -1625,7 +1625,7 @@ const GamePage = {
       const rect = this._gridRect;
       const size = this.size;
       if (!this._rpxRatio) {
-        this._rpxRatio = window.innerWidth / 750;
+        this._rpxRatio = document.getElementById('app-wrapper').getBoundingClientRect().width / 750;
       }
       const padPx = 8 * this._rpxRatio;
       const innerW = rect.width - padPx * 2;
@@ -1853,7 +1853,7 @@ const GamePage = {
       this._puzzle = puzzle;
       this._gameOver = false;
 
-      const screenWidth = window.innerWidth;
+      const screenWidth = document.getElementById('app-wrapper').getBoundingClientRect().width;
       const ratio = 750 / screenWidth;
       const sidePadding = Math.round(screenWidth * 0.09);
       const availableWidth = screenWidth - sidePadding * 2;
@@ -1943,7 +1943,7 @@ const GamePage = {
       this._survivalPuzzleKeys.push(survivalPuzzleKey(puzzle));
       this._puzzle = puzzle;
       const actualSize = puzzle.size;
-      const screenWidth = window.innerWidth;
+      const screenWidth = document.getElementById('app-wrapper').getBoundingClientRect().width;
       const ratio = 750 / screenWidth;
       const sidePadding = Math.round(screenWidth * 0.09);
       const availableWidth = screenWidth - sidePadding * 2;

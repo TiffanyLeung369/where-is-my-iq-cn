@@ -19,10 +19,10 @@ const ShopPage = {
   <!-- 顶栏（自定义导航） -->
   <div class="top-bar" style="flex-direction:column;align-items:stretch;">
     <!-- 第一行：标题居中 -->
-    <div class="shop-title" style="text-align:center;margin-bottom:3vw;">{{ t('shop.skin_closet') }}</div>
+    <div class="shop-title" style="text-align:center;margin-bottom:3cqw;">{{ t('shop.skin_closet') }}</div>
     <!-- 第二行：home靠左 + 金币靠右 -->
     <div style="display:flex;align-items:center;justify-content:space-between;width:100%;">
-      <img :src="IMG.home" style="width:10.67vw; height:10.67vw; margin-left: 1.6vw; object-fit:contain" @click="onBack" />
+      <img :src="IMG.home" style="width:10.67cqw; height:10.67cqw; margin-left: 1.6cqw; object-fit:contain" @click="onBack" />
       <div class="asset-item" @click="onBuyCoins">
         <img class="asset-icon" :src="IMG.coin" style="object-fit:contain" />
         <span class="asset-value">{{coins}}</span>
@@ -159,7 +159,7 @@ const ShopPage = {
         <img class="action-ad-icon pencil-icon" :src="IMG.ad_icon_clean" style="object-fit:contain" />
         <span class="action-text">{{ t('shop.watch_ad_progress', {watched: pigAdWatched}) }}</span>
       </div>
-      <div class="action-btn btn-unlock" style="margin-top: 2.13vw;" @click="onUnlock">
+      <div class="action-btn btn-unlock" style="margin-top: 2.13cqw;" @click="onUnlock">
         <img class="action-coin" :src="IMG.coin" style="object-fit:contain" />
         <span class="action-text">{{ t('shop.unlock_price', {price: currentSkinData.price}) }}</span>
       </div>
@@ -266,13 +266,13 @@ const ShopPage = {
       ];
     },
 
-    // track 样式：slide 宽度 78vw
+    // track 样式：slide 宽度 78cqw
     trackStyle() {
       const sw = 78; // 每个 slide 宽度 vw
       const center = -sw + (100 - sw) / 2; // 让第2个slide居中
       const x = center + this.trackOffset;
       return {
-        transform: `translateX(${x}vw)`,
+        transform: `translateX(${x}cqw)`,
         transition: this.animating ? 'transform 0.3s ease' : 'none',
       };
     },
@@ -357,7 +357,7 @@ const ShopPage = {
       }
       if (this.swiping) {
         // px 转 vw 跟手
-        this.trackOffset = dx / window.innerWidth * 100;
+        this.trackOffset = dx / document.getElementById('app-wrapper').getBoundingClientRect().width * 100;
         e.preventDefault();
       }
     },

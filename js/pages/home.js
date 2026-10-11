@@ -157,7 +157,7 @@ const HomePage = {
 
       <!-- 每日挑战 -->
       <div class="mode-card daily-card" @click="onDailyChallenge"
-           :style="hasPlayedDaily ? 'padding:3.2vw 1.6vw; justify-content:space-around;' : ''">
+           :style="hasPlayedDaily ? 'padding:3.2cqw 1.6cqw; justify-content:space-around;' : ''">
 
         <template v-if="!hasPlayedDaily">
 
@@ -255,13 +255,13 @@ const HomePage = {
 
             <!-- 耗时 -->
             <div class="c007-time-row">
-              <span style="font-size: 4.533vw; margin-right: 1.067vw;">⏱️</span>
+              <span style="font-size: 4.533cqw; margin-right: 1.067cqw;">⏱️</span>
               <span class="c007-time-val">{{dailyChallengeTime}}</span>
             </div>
 
             <!-- 排名 -->
             <div class="c007-rank-row">
-              <span style="font-size: 3.467vw; margin-right: 0.8vw;"></span>
+              <span style="font-size: 3.467cqw; margin-right: 0.8cqw;"></span>
               <span class="c007-rank-label">{{ t('home.daily_beat') }}</span>
               <span class="c007-rank-hl">{{dailyChallengeRank}}%</span>
               <span class="c007-rank-label">{{ t('home.daily_players') }}</span>
@@ -318,8 +318,8 @@ const HomePage = {
 
     <!-- 每日打卡入口 -->
     <div class="checkin-entry-btn" @click="onOpenCheckIn">
-      <div style="display:flex; align-items:center; justify-content:center; gap:1.067vw;">
-        <img class="pencil-icon" :src="IMG.calendar" style="width:4.8vw; height:4.8vw;" />
+      <div style="display:flex; align-items:center; justify-content:center; gap:1.067cqw;">
+        <img class="pencil-icon" :src="IMG.calendar" style="width:4.8cqw; height:4.8cqw;" />
         <span class="checkin-entry-text">{{ t('home.daily_checkin') }}</span>
       </div>
       <div class="red-dot" v-if="!hasCheckedInToday"></div>
@@ -411,8 +411,8 @@ const HomePage = {
 
     <!-- 标题区域 -->
     <div class="checkin-header">
-      <div style="display:flex;align-items:center;justify-content:center;gap:1.6vw;margin-bottom:1.067vw;">
-        <img :src="IMG.calendar_2" style="width:7.467vw;height:7.467vw;" />
+      <div style="display:flex;align-items:center;justify-content:center;gap:1.6cqw;margin-bottom:1.067cqw;">
+        <img :src="IMG.calendar_2" style="width:7.467cqw;height:7.467cqw;" />
         <span class="checkin-title" style="margin:0;">{{ t('home.daily_checkin') }}</span>
       </div>
       <span class="checkin-sub">{{ t('home.checkin_subtitle') }}</span>

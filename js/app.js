@@ -334,19 +334,19 @@ function generateConfetti(count) {
     const fallDur = (3.5 + Math.random() * 3).toFixed(2) + 's';
     const swayDur = (1.2 + Math.random() * 2).toFixed(2) + 's';
     const delay = (Math.random() * 3).toFixed(2) + 's';
-    const sway = ((Math.random() > 0.5 ? 1 : -1) * (3 + Math.random() * 12)).toFixed(1) + 'vw';
+    const sway = ((Math.random() > 0.5 ? 1 : -1) * (3 + Math.random() * 12)).toFixed(1) + 'cqw';
     const isRound = Math.random() > 0.6;
     const isRibbon = Math.random() > 0.7;
-    let finalW, finalH, borderR = '0.53vw';
+    let finalW, finalH, borderR = '0.53cqw';
     if (isRound) {
-      const sz = (1.5 + Math.random() * 3.5).toFixed(2) + 'vw';
+      const sz = (1.5 + Math.random() * 3.5).toFixed(2) + 'cqw';
       finalW = sz; finalH = sz; borderR = '50%';
     } else if (isRibbon) {
-      finalW = (0.8 + Math.random() * 1).toFixed(2) + 'vw';
-      finalH = (3 + Math.random() * 3).toFixed(2) + 'vw';
+      finalW = (0.8 + Math.random() * 1).toFixed(2) + 'cqw';
+      finalH = (3 + Math.random() * 3).toFixed(2) + 'cqw';
     } else {
-      finalW = (1.5 + Math.random() * 3).toFixed(2) + 'vw';
-      finalH = (1.5 + Math.random() * 3).toFixed(2) + 'vw';
+      finalW = (1.5 + Math.random() * 3).toFixed(2) + 'cqw';
+      finalH = (1.5 + Math.random() * 3).toFixed(2) + 'cqw';
     }
     pieces.push({
       position: 'absolute',

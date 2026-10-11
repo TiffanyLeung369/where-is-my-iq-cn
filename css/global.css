@@ -27,7 +27,7 @@
 html, body {
   overflow-x: hidden;
   width: 100%;
-  max-width: 100vw;
+  max-width: 100cqw;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -82,7 +82,7 @@ button::after {
 /* ========== 通用工具类 ========== */
 
 .pencil-icon {
-  border-radius: 1.07vw;
+  border-radius: 1.07cqw;
 }
 
 .flex-center {
@@ -98,7 +98,7 @@ button::after {
 }
 
 .text-shadow {
-  text-shadow: 0 0.27vw 1.07vw rgba(0, 0, 0, 0.3);
+  text-shadow: 0 0.27cqw 1.07cqw rgba(0, 0, 0, 0.3);
 }
 
 /* ========== 按钮通用样式 ========== */
@@ -107,29 +107,29 @@ button::after {
   background: linear-gradient(135deg, #FF6B6B, #FF8E53);
   color: #fff;
   border: none;
-  border-radius: 6.67vw;
-  padding: 3.2vw 10.67vw;
-  font-size: 4.53vw;
+  border-radius: 6.67cqw;
+  padding: 3.2cqw 10.67cqw;
+  font-size: 4.53cqw;
   font-weight: 600;
-  letter-spacing: 0.53vw;
-  box-shadow: 0 1.07vw 3.2vw rgba(255, 107, 107, 0.4);
+  letter-spacing: 0.53cqw;
+  box-shadow: 0 1.07cqw 3.2cqw rgba(255, 107, 107, 0.4);
   transition: all 0.2s ease;
 }
 
 .btn-primary:active {
   transform: scale(0.95);
-  box-shadow: 0 0.53vw 1.6vw rgba(255, 107, 107, 0.3);
+  box-shadow: 0 0.53cqw 1.6cqw rgba(255, 107, 107, 0.3);
 }
 
 .btn-secondary {
   background: linear-gradient(135deg, #D4FAFF, #8ADEFF); /* 改用海洋主题的明亮蓝渐变，摒弃惨白 */
   color: #2c5f7c;
   border: none; /* 原本为了白色外挂的边框去除了，保持扁平圆润渐变 */
-  border-radius: 6.67vw;
-  padding: 2.93vw 8vw; /* 取消border后高度找补回来一点 */
-  font-size: 4vw;
+  border-radius: 6.67cqw;
+  padding: 2.93cqw 8cqw; /* 取消border后高度找补回来一点 */
+  font-size: 4cqw;
   font-weight: 600;
-  box-shadow: 0 0.53vw 1.6vw rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0.53cqw 1.6cqw rgba(0, 0, 0, 0.05);
   transition: all 0.2s ease;
 }
 
@@ -141,7 +141,7 @@ button::after {
 /* ========== 动画 ========== */
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(2.67vw); }
+  from { opacity: 0; transform: translateY(2.67cqw); }
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -153,8 +153,8 @@ button::after {
 
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
-  20%, 60% { transform: translateX(-1.07vw); }
-  40%, 80% { transform: translateX(1.07vw); }
+  20%, 60% { transform: translateX(-1.07cqw); }
+  40%, 80% { transform: translateX(1.07cqw); }
 }
 
 @keyframes pulse {
@@ -190,80 +190,80 @@ button::after {
 }
 
 .stamina-m-card {
-  width: 77.33vw;
+  width: 77.33cqw;
   background: #fff;
-  border-radius: 5.33vw;
-  padding: 5.33vw 5.33vw 5.33vw;
+  border-radius: 5.33cqw;
+  padding: 5.33cqw 5.33cqw 5.33cqw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 2.13vw 5.33vw rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2.13cqw 5.33cqw rgba(0, 0, 0, 0.2);
 }
 
 .stamina-m-title {
-  font-size: 5.87vw;
+  font-size: 5.87cqw;
   font-weight: 800;
   color: #4a668c;
-  margin-bottom: 1.6vw;
+  margin-bottom: 1.6cqw;
 }
 
 .stamina-m-sub {
-  font-size: 3.73vw;
+  font-size: 3.73cqw;
   color: #8da1b9;
-  margin-bottom: 4vw;
+  margin-bottom: 4cqw;
 }
 
 .stamina-m-banner {
   width: 100%;
   background: linear-gradient(180deg, #ffbb00, #ff9500);
-  border-radius: 4vw;
-  padding: 5.33vw 2.67vw;
+  border-radius: 4cqw;
+  padding: 5.33cqw 2.67cqw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 1.33vw 2.67vw rgba(255, 149, 0, 0.3);
-  margin-bottom: 5.33vw;
+  box-shadow: 0 1.33cqw 2.67cqw rgba(255, 149, 0, 0.3);
+  margin-bottom: 5.33cqw;
 }
 
 .stamina-m-icons {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 2.13vw;
+  margin-bottom: 2.13cqw;
 }
 .stamina-m-shell {
-  width: 13.33vw;
-  height: 13.33vw;
-  margin-right: -1.33vw;
+  width: 13.33cqw;
+  height: 13.33cqw;
+  margin-right: -1.33cqw;
   z-index: 10;
-  filter: drop-shadow(0.53vw 0.53vw 0px rgba(0,0,0,0.2));
+  filter: drop-shadow(0.53cqw 0.53cqw 0px rgba(0,0,0,0.2));
 }
 .stamina-m-val {
-  font-size: 10.67vw;
+  font-size: 10.67cqw;
   font-weight: 900;
   color: #fff;
-  text-shadow: -0.27vw -0.27vw 0 #5b799e, 0.27vw -0.27vw 0 #5b799e, -0.27vw 0.27vw 0 #5b799e, 0.27vw 0.27vw 0 #5b799e, 0 0.8vw 0 #5b799e;
+  text-shadow: -0.27cqw -0.27cqw 0 #5b799e, 0.27cqw -0.27cqw 0 #5b799e, -0.27cqw 0.27cqw 0 #5b799e, 0.27cqw 0.27cqw 0 #5b799e, 0 0.8cqw 0 #5b799e;
 }
 
 .stamina-m-hint {
-  font-size: 3.73vw;
+  font-size: 3.73cqw;
   color: rgba(255, 255, 255, 0.95);
   font-weight: bold;
 }
 
 .stamina-btn-ad, .stamina-btn-share {
-  width: 58.67vw;
-  height: 12.8vw;
-  border-radius: 6.4vw;
+  width: 58.67cqw;
+  height: 12.8cqw;
+  border-radius: 6.4cqw;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 4.53vw;
+  font-size: 4.53cqw;
   font-weight: bold;
   color: #fff;
-  margin-bottom: 3.47vw;
+  margin-bottom: 3.47cqw;
   padding: 0;
-  box-shadow: 0 0.8vw 2.13vw rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0.8cqw 2.13cqw rgba(0, 0, 0, 0.15);
 }
 .stamina-btn-ad { background: #3982f6; }
 .stamina-btn-share { background: #56c243; }
@@ -276,18 +276,18 @@ button::after {
 /* 完美移植角标律动 */
 .pulse-corner {
   position: absolute;
-  top: -2.13vw;
-  right: 1.33vw;
-  width: 8.53vw;
-  height: 8.53vw;
+  top: -2.13cqw;
+  right: 1.33cqw;
+  width: 8.53cqw;
+  height: 8.53cqw;
   transform: rotate(12deg);
   animation: bounceAd 2s infinite ease-in-out;
-  filter: drop-shadow(0 0.53vw 1.07vw rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 0.53cqw 1.07cqw rgba(0, 0, 0, 0.2));
   z-index: 5;
 }
 @keyframes bounceAd {
   0%, 100% { transform: translateY(0) rotate(12deg) scale(1); }
-  50% { transform: translateY(-1.07vw) rotate(18deg) scale(1.08); }
+  50% { transform: translateY(-1.07cqw) rotate(18deg) scale(1.08); }
 }
 
 .s-btn-inner {
@@ -299,9 +299,9 @@ button::after {
 
 /* 纯 CSS 还原经典微信分享图腾节点网络 */
 .svg-share-icon {
-  width: 5.87vw;
-  height: 5.87vw;
-  margin-right: 1.87vw;
+  width: 5.87cqw;
+  height: 5.87cqw;
+  margin-right: 1.87cqw;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='18' cy='5' r='3'/%3E%3Ccircle cx='6' cy='12' r='3'/%3E%3Ccircle cx='18' cy='19' r='3'/%3E%3Cline x1='8.59' y1='13.51' x2='15.42' y2='17.49'/%3E%3Cline x1='15.41' y1='6.51' x2='8.59' y2='10.49'/%3E%3C/svg%3E");
   background-size: cover;
   background-repeat: no-repeat;
@@ -309,37 +309,37 @@ button::after {
 }
 
 .s-btn-icon {
-  width: 5.87vw;
-  height: 5.87vw;
-  margin-right: 1.6vw;
+  width: 5.87cqw;
+  height: 5.87cqw;
+  margin-right: 1.6cqw;
 }
 
 .stamina-m-footer {
-  font-size: 3.73vw;
+  font-size: 3.73cqw;
   color: #5B799E;
   font-weight: bold;
-  margin-top: 1.87vw;
+  margin-top: 1.87cqw;
 }
 
 .stamina-close-btn {
-  width: 10.67vw;
-  height: 10.67vw;
-  border: 0.8vw solid rgba(255, 255, 255, 0.6);
+  width: 10.67cqw;
+  height: 10.67cqw;
+  border: 0.8cqw solid rgba(255, 255, 255, 0.6);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 6.67vw;
+  margin-top: 6.67cqw;
   position: relative;
   cursor: pointer;
 }
 .stamina-close-btn::before, .stamina-close-btn::after {
   content: '';
   position: absolute;
-  width: 4.27vw;
-  height: 0.8vw;
+  width: 4.27cqw;
+  height: 0.8cqw;
   background: rgba(255, 255, 255, 0.7);
-  border-radius: 0.4vw;
+  border-radius: 0.4cqw;
 }
 .stamina-close-btn::before { transform: rotate(45deg); }
 .stamina-close-btn::after { transform: rotate(-45deg); }
@@ -361,70 +361,70 @@ button::after {
 
 .confetti {
   position: absolute;
-  width: 2.67vw;
-  height: 2.67vw;
-  border-radius: 0.53vw;
+  width: 2.67cqw;
+  height: 2.67cqw;
+  border-radius: 0.53cqw;
   opacity: 0;
   /* 同时播放下落 + 水平摆动两个动画 */
   animation: confetti-fall 2.5s ease-out infinite, confetti-sway 2.5s ease-in-out infinite;
 }
 
 /* 第 1-10 个：较大的碎片，每个有不同的 sway 摆幅和方向 */
-.c1  { background: #FF6B6B; left: 8%;  animation-duration: 4.7s, 2.1s; animation-delay: 0s;   width: 4.27vw; height: 4.27vw; border-radius: 50%; --sway: 8vw; }
-.c2  { background: #FFE57F; left: 27%; animation-duration: 4.2s, 1.7s; animation-delay: 0.3s; width: 3.73vw; height: 3.73vw; --sway: -6vw; }
-.c3  { background: #4FC3F7; left: 52%; animation-duration: 5.1s, 2.4s; animation-delay: 0.1s; width: 4vw;    height: 4vw;    border-radius: 50%; --sway: 10vw; }
-.c4  { background: #A8D86E; left: 73%; animation-duration: 4.3s, 1.9s; animation-delay: 0.5s; width: 4.8vw;  height: 4.8vw;  --sway: -9vw; }
-.c5  { background: #FF8E53; left: 88%; animation-duration: 4.8s, 2.3s; animation-delay: 0.2s; width: 3.2vw;  height: 3.2vw;  border-radius: 50%; --sway: -12vw; }
-.c6  { background: #CE93D8; left: 17%; animation-duration: 4.5s, 2.0s; animation-delay: 0.4s; width: 3.73vw; height: 3.73vw; --sway: 7vw; }
-.c7  { background: #FF6B6B; left: 37%; animation-duration: 4.9s, 1.6s; animation-delay: 0.7s; width: 4vw;    height: 4vw;    border-radius: 50%; --sway: -5vw; }
-.c8  { background: #FFE57F; left: 58%; animation-duration: 4.0s, 2.2s; animation-delay: 0.8s; width: 4.53vw; height: 4.53vw; --sway: 11vw; }
-.c9  { background: #4FC3F7; left: 78%; animation-duration: 5.2s, 1.8s; animation-delay: 0.9s; width: 3.47vw; height: 3.47vw; border-radius: 50%; --sway: -8vw; }
-.c10 { background: #A8D86E; left: 93%; animation-duration: 4.7s, 2.5s; animation-delay: 1.2s; width: 4.27vw; height: 4.27vw; --sway: -14vw; }
+.c1  { background: #FF6B6B; left: 8%;  animation-duration: 4.7s, 2.1s; animation-delay: 0s;   width: 4.27cqw; height: 4.27cqw; border-radius: 50%; --sway: 8cqw; }
+.c2  { background: #FFE57F; left: 27%; animation-duration: 4.2s, 1.7s; animation-delay: 0.3s; width: 3.73cqw; height: 3.73cqw; --sway: -6cqw; }
+.c3  { background: #4FC3F7; left: 52%; animation-duration: 5.1s, 2.4s; animation-delay: 0.1s; width: 4cqw;    height: 4cqw;    border-radius: 50%; --sway: 10cqw; }
+.c4  { background: #A8D86E; left: 73%; animation-duration: 4.3s, 1.9s; animation-delay: 0.5s; width: 4.8cqw;  height: 4.8cqw;  --sway: -9cqw; }
+.c5  { background: #FF8E53; left: 88%; animation-duration: 4.8s, 2.3s; animation-delay: 0.2s; width: 3.2cqw;  height: 3.2cqw;  border-radius: 50%; --sway: -12cqw; }
+.c6  { background: #CE93D8; left: 17%; animation-duration: 4.5s, 2.0s; animation-delay: 0.4s; width: 3.73cqw; height: 3.73cqw; --sway: 7cqw; }
+.c7  { background: #FF6B6B; left: 37%; animation-duration: 4.9s, 1.6s; animation-delay: 0.7s; width: 4cqw;    height: 4cqw;    border-radius: 50%; --sway: -5cqw; }
+.c8  { background: #FFE57F; left: 58%; animation-duration: 4.0s, 2.2s; animation-delay: 0.8s; width: 4.53cqw; height: 4.53cqw; --sway: 11cqw; }
+.c9  { background: #4FC3F7; left: 78%; animation-duration: 5.2s, 1.8s; animation-delay: 0.9s; width: 3.47cqw; height: 3.47cqw; border-radius: 50%; --sway: -8cqw; }
+.c10 { background: #A8D86E; left: 93%; animation-duration: 4.7s, 2.5s; animation-delay: 1.2s; width: 4.27cqw; height: 4.27cqw; --sway: -14cqw; }
 
 /* 第 11-20 个：中等大小碎片 */
-.c11 { background: #FF8E53; left: 4%;  animation-duration: 4.3s, 1.5s; animation-delay: 1.1s; width: 2.4vw;  height: 2.4vw;  --sway: 6vw; }
-.c12 { background: #CE93D8; left: 22%; animation-duration: 4.8s, 2.1s; animation-delay: 1.3s; width: 2.67vw; height: 2.67vw; --sway: -7vw; }
-.c13 { background: #FF6B6B; left: 42%; animation-duration: 4.5s, 1.8s; animation-delay: 1.5s; width: 2.93vw; height: 2.93vw; border-radius: 50%; --sway: 9vw; }
-.c14 { background: #FFE57F; left: 62%; animation-duration: 5.1s, 2.3s; animation-delay: 1.4s; width: 2.67vw; height: 2.67vw; --sway: -5vw; }
-.c15 { background: #4FC3F7; left: 82%; animation-duration: 4.2s, 1.6s; animation-delay: 1.7s; width: 2.4vw;  height: 2.4vw;  border-radius: 50%; --sway: -10vw; }
-.c16 { background: #A8D86E; left: 14%; animation-duration: 4.9s, 2.0s; animation-delay: 1.6s; width: 2.93vw; height: 2.93vw; --sway: 8vw; }
-.c17 { background: #FF8E53; left: 34%; animation-duration: 4.7s, 1.4s; animation-delay: 1.9s; width: 2.67vw; height: 2.67vw; border-radius: 50%; --sway: -4vw; }
-.c18 { background: #CE93D8; left: 54%; animation-duration: 4.3s, 2.2s; animation-delay: 1.8s; width: 3.2vw;  height: 3.2vw;  --sway: 12vw; }
-.c19 { background: #FF6B6B; left: 74%; animation-duration: 5.2s, 1.7s; animation-delay: 2.1s; width: 2.67vw; height: 2.67vw; border-radius: 50%; --sway: -6vw; }
-.c20 { background: #FFE57F; left: 91%; animation-duration: 4.8s, 1.9s; animation-delay: 2.0s; width: 2.4vw;  height: 2.4vw;  --sway: -11vw; }
+.c11 { background: #FF8E53; left: 4%;  animation-duration: 4.3s, 1.5s; animation-delay: 1.1s; width: 2.4cqw;  height: 2.4cqw;  --sway: 6cqw; }
+.c12 { background: #CE93D8; left: 22%; animation-duration: 4.8s, 2.1s; animation-delay: 1.3s; width: 2.67cqw; height: 2.67cqw; --sway: -7cqw; }
+.c13 { background: #FF6B6B; left: 42%; animation-duration: 4.5s, 1.8s; animation-delay: 1.5s; width: 2.93cqw; height: 2.93cqw; border-radius: 50%; --sway: 9cqw; }
+.c14 { background: #FFE57F; left: 62%; animation-duration: 5.1s, 2.3s; animation-delay: 1.4s; width: 2.67cqw; height: 2.67cqw; --sway: -5cqw; }
+.c15 { background: #4FC3F7; left: 82%; animation-duration: 4.2s, 1.6s; animation-delay: 1.7s; width: 2.4cqw;  height: 2.4cqw;  border-radius: 50%; --sway: -10cqw; }
+.c16 { background: #A8D86E; left: 14%; animation-duration: 4.9s, 2.0s; animation-delay: 1.6s; width: 2.93cqw; height: 2.93cqw; --sway: 8cqw; }
+.c17 { background: #FF8E53; left: 34%; animation-duration: 4.7s, 1.4s; animation-delay: 1.9s; width: 2.67cqw; height: 2.67cqw; border-radius: 50%; --sway: -4cqw; }
+.c18 { background: #CE93D8; left: 54%; animation-duration: 4.3s, 2.2s; animation-delay: 1.8s; width: 3.2cqw;  height: 3.2cqw;  --sway: 12cqw; }
+.c19 { background: #FF6B6B; left: 74%; animation-duration: 5.2s, 1.7s; animation-delay: 2.1s; width: 2.67cqw; height: 2.67cqw; border-radius: 50%; --sway: -6cqw; }
+.c20 { background: #FFE57F; left: 91%; animation-duration: 4.8s, 1.9s; animation-delay: 2.0s; width: 2.4cqw;  height: 2.4cqw;  --sway: -11cqw; }
 
 /* 第 21-30 个：偏长条的彩带 */
-.c21 { background: #4FC3F7; left: 6%;  animation-duration: 5.4s, 2.6s; animation-delay: 0.1s; width: 1.07vw; height: 4.27vw; --sway: 9vw; }
-.c22 { background: #A8D86E; left: 24%; animation-duration: 4.8s, 1.8s; animation-delay: 0.6s; width: 1.33vw; height: 4.8vw;  --sway: -8vw; }
-.c23 { background: #FF8E53; left: 46%; animation-duration: 4.9s, 2.1s; animation-delay: 0.9s; width: 1.07vw; height: 3.73vw; --sway: 7vw; }
-.c24 { background: #CE93D8; left: 66%; animation-duration: 4.7s, 1.5s; animation-delay: 1.3s; width: 1.6vw;  height: 5.33vw; --sway: -11vw; }
-.c25 { background: #FF6B6B; left: 86%; animation-duration: 5.2s, 2.4s; animation-delay: 1.7s; width: 1.33vw; height: 4vw;    --sway: -7vw; }
-.c26 { background: #FFE57F; left: 19%; animation-duration: 4.3s, 1.3s; animation-delay: 2.2s; width: 1.07vw; height: 4.53vw; --sway: 5vw; }
-.c27 { background: #4FC3F7; left: 40%; animation-duration: 5.1s, 2.0s; animation-delay: 2.5s; width: 1.6vw;  height: 5.07vw; --sway: -6vw; }
-.c28 { background: #A8D86E; left: 56%; animation-duration: 4.5s, 1.7s; animation-delay: 0.4s; width: 1.33vw; height: 4.27vw; --sway: 10vw; }
-.c29 { background: #FF8E53; left: 76%; animation-duration: 5.6s, 2.3s; animation-delay: 0.8s; width: 1.07vw; height: 3.47vw; --sway: -9vw; }
-.c30 { background: #CE93D8; left: 96%; animation-duration: 4.9s, 1.6s; animation-delay: 1.2s; width: 1.33vw; height: 4.8vw;  --sway: -13vw; }
+.c21 { background: #4FC3F7; left: 6%;  animation-duration: 5.4s, 2.6s; animation-delay: 0.1s; width: 1.07cqw; height: 4.27cqw; --sway: 9cqw; }
+.c22 { background: #A8D86E; left: 24%; animation-duration: 4.8s, 1.8s; animation-delay: 0.6s; width: 1.33cqw; height: 4.8cqw;  --sway: -8cqw; }
+.c23 { background: #FF8E53; left: 46%; animation-duration: 4.9s, 2.1s; animation-delay: 0.9s; width: 1.07cqw; height: 3.73cqw; --sway: 7cqw; }
+.c24 { background: #CE93D8; left: 66%; animation-duration: 4.7s, 1.5s; animation-delay: 1.3s; width: 1.6cqw;  height: 5.33cqw; --sway: -11cqw; }
+.c25 { background: #FF6B6B; left: 86%; animation-duration: 5.2s, 2.4s; animation-delay: 1.7s; width: 1.33cqw; height: 4cqw;    --sway: -7cqw; }
+.c26 { background: #FFE57F; left: 19%; animation-duration: 4.3s, 1.3s; animation-delay: 2.2s; width: 1.07cqw; height: 4.53cqw; --sway: 5cqw; }
+.c27 { background: #4FC3F7; left: 40%; animation-duration: 5.1s, 2.0s; animation-delay: 2.5s; width: 1.6cqw;  height: 5.07cqw; --sway: -6cqw; }
+.c28 { background: #A8D86E; left: 56%; animation-duration: 4.5s, 1.7s; animation-delay: 0.4s; width: 1.33cqw; height: 4.27cqw; --sway: 10cqw; }
+.c29 { background: #FF8E53; left: 76%; animation-duration: 5.6s, 2.3s; animation-delay: 0.8s; width: 1.07cqw; height: 3.47cqw; --sway: -9cqw; }
+.c30 { background: #CE93D8; left: 96%; animation-duration: 4.9s, 1.6s; animation-delay: 1.2s; width: 1.33cqw; height: 4.8cqw;  --sway: -13cqw; }
 
 /* 第 31-40 个：快速漂浮的细碎粒子 */
-.c31 { background: #FF6B6B; left: 2%;  animation-duration: 3.8s, 1.2s; animation-delay: 0.5s; width: 1.6vw;  height: 1.6vw;  border-radius: 50%; --sway: 5vw; }
-.c32 { background: #FFE57F; left: 20%; animation-duration: 3.9s, 1.5s; animation-delay: 0.8s; width: 1.33vw; height: 1.33vw; --sway: -4vw; }
-.c33 { background: #4FC3F7; left: 44%; animation-duration: 3.6s, 1.1s; animation-delay: 1.1s; width: 1.87vw; height: 1.87vw; border-radius: 50%; --sway: 6vw; }
-.c34 { background: #A8D86E; left: 60%; animation-duration: 4.0s, 1.8s; animation-delay: 1.4s; width: 1.6vw;  height: 1.6vw;  --sway: -7vw; }
-.c35 { background: #FF8E53; left: 80%; animation-duration: 3.8s, 1.3s; animation-delay: 1.8s; width: 2.13vw; height: 2.13vw; border-radius: 50%; --sway: -5vw; }
-.c36 { background: #CE93D8; left: 11%; animation-duration: 4.2s, 2.0s; animation-delay: 2.1s; width: 1.87vw; height: 1.87vw; --sway: 8vw; }
-.c37 { background: #FF6B6B; left: 31%; animation-duration: 3.6s, 1.4s; animation-delay: 2.4s; width: 1.6vw;  height: 1.6vw;  border-radius: 50%; --sway: -3vw; }
-.c38 { background: #FFE57F; left: 50%; animation-duration: 3.9s, 1.6s; animation-delay: 0.2s; width: 2.13vw; height: 2.13vw; --sway: 9vw; }
-.c39 { background: #4FC3F7; left: 70%; animation-duration: 4.0s, 1.9s; animation-delay: 0.6s; width: 1.33vw; height: 1.33vw; border-radius: 50%; --sway: -6vw; }
-.c40 { background: #A8D86E; left: 90%; animation-duration: 3.8s, 1.2s; animation-delay: 1.0s; width: 1.87vw; height: 1.87vw; --sway: -10vw; }
+.c31 { background: #FF6B6B; left: 2%;  animation-duration: 3.8s, 1.2s; animation-delay: 0.5s; width: 1.6cqw;  height: 1.6cqw;  border-radius: 50%; --sway: 5cqw; }
+.c32 { background: #FFE57F; left: 20%; animation-duration: 3.9s, 1.5s; animation-delay: 0.8s; width: 1.33cqw; height: 1.33cqw; --sway: -4cqw; }
+.c33 { background: #4FC3F7; left: 44%; animation-duration: 3.6s, 1.1s; animation-delay: 1.1s; width: 1.87cqw; height: 1.87cqw; border-radius: 50%; --sway: 6cqw; }
+.c34 { background: #A8D86E; left: 60%; animation-duration: 4.0s, 1.8s; animation-delay: 1.4s; width: 1.6cqw;  height: 1.6cqw;  --sway: -7cqw; }
+.c35 { background: #FF8E53; left: 80%; animation-duration: 3.8s, 1.3s; animation-delay: 1.8s; width: 2.13cqw; height: 2.13cqw; border-radius: 50%; --sway: -5cqw; }
+.c36 { background: #CE93D8; left: 11%; animation-duration: 4.2s, 2.0s; animation-delay: 2.1s; width: 1.87cqw; height: 1.87cqw; --sway: 8cqw; }
+.c37 { background: #FF6B6B; left: 31%; animation-duration: 3.6s, 1.4s; animation-delay: 2.4s; width: 1.6cqw;  height: 1.6cqw;  border-radius: 50%; --sway: -3cqw; }
+.c38 { background: #FFE57F; left: 50%; animation-duration: 3.9s, 1.6s; animation-delay: 0.2s; width: 2.13cqw; height: 2.13cqw; --sway: 9cqw; }
+.c39 { background: #4FC3F7; left: 70%; animation-duration: 4.0s, 1.9s; animation-delay: 0.6s; width: 1.33cqw; height: 1.33cqw; border-radius: 50%; --sway: -6cqw; }
+.c40 { background: #A8D86E; left: 90%; animation-duration: 3.8s, 1.2s; animation-delay: 1.0s; width: 1.87cqw; height: 1.87cqw; --sway: -10cqw; }
 
 /* 下落动画：纯垂直 + 旋转 */
 @keyframes confetti-fall {
   0% {
-    transform: translateY(-10.67vw) rotate(0deg);
+    transform: translateY(-10.67cqw) rotate(0deg);
     opacity: 1;
   }
   100% {
-    transform: translateY(120vw) rotate(1080deg);
+    transform: translateY(120cqw) rotate(1080deg);
     opacity: 0;
   }
 }
@@ -432,9 +432,9 @@ button::after {
 /* 水平S形摆动动画：用 CSS 变量 --sway 控制摆幅和方向 */
 @keyframes confetti-sway {
   0%   { margin-left: 0; }
-  25%  { margin-left: var(--sway, 5vw); }
+  25%  { margin-left: var(--sway, 5cqw); }
   50%  { margin-left: 0; }
-  75%  { margin-left: calc(var(--sway, 5vw) * -0.6); }
+  75%  { margin-left: calc(var(--sway, 5cqw) * -0.6); }
   100% { margin-left: 0; }
 }
 
@@ -449,10 +449,10 @@ button::after {
 
 .cannon-particle {
   position: absolute;
-  bottom: -2.67vw;
-  width: 1.6vw;
-  height: 1.6vw;
-  border-radius: 0.27vw;
+  bottom: -2.67cqw;
+  width: 1.6cqw;
+  height: 1.6cqw;
+  border-radius: 0.27cqw;
   opacity: 0;
   animation-fill-mode: forwards;
 }
@@ -464,18 +464,18 @@ button::after {
   100% { transform: translate(var(--tx), var(--ty)) scale(1) rotate(var(--rot)); opacity: 0; }
 }
 
-.cp-l1 { left: 0%; background: #FF6B6B; animation: shoot-left 1.2s cubic-bezier(0.1, 0.8, 0.3, 1) 1.0s infinite; --tx: 13.33vw; --ty: -46.67vw; --rot: 260deg; width: 1.87vw; height: 1.87vw; border-radius: 50%; }
-.cp-l2 { left: 3%; background: #FFE57F; animation: shoot-left 1.3s cubic-bezier(0.1, 0.8, 0.3, 1) 1.1s infinite; --tx: 26.67vw; --ty: -60vw; --rot: 420deg; }
-.cp-l3 { left: -2%; background: #4FC3F7; animation: shoot-left 1.1s cubic-bezier(0.1, 0.8, 0.3, 1) 1.2s infinite; --tx: 20vw; --ty: -37.33vw; --rot: 180deg; width: 1.07vw; height: 2.67vw; }
-.cp-l4 { left: 2%; background: #A8D86E; animation: shoot-left 1.4s cubic-bezier(0.1, 0.8, 0.3, 1) 1.0s infinite; --tx: 33.33vw; --ty: -46.67vw; --rot: 300deg; width: 1.33vw; height: 1.33vw; }
-.cp-l5 { left: 5%; background: #CE93D8; animation: shoot-left 1.5s cubic-bezier(0.1, 0.8, 0.3, 1) 1.3s infinite; --tx: 40vw; --ty: -73.33vw; --rot: 500deg; border-radius: 50%; width: 1.6vw; height: 1.6vw; }
-.cp-l6 { left: -4%; background: #FF8E53; animation: shoot-left 1.0s cubic-bezier(0.1, 0.8, 0.3, 1) 1.1s infinite; --tx: 10.67vw;  --ty: -26.67vw; --rot: 120deg; width: 2.13vw; height: 1.07vw; }
-.cp-l7 { left: 1%; background: #FF6B6B; animation: shoot-left 1.6s cubic-bezier(0.1, 0.8, 0.3, 1) 1.2s infinite; --tx: 46.67vw; --ty: -53.33vw; --rot: 360deg; }
-.cp-l8 { left: 7%; background: #FFE57F; animation: shoot-left 1.2s cubic-bezier(0.1, 0.8, 0.3, 1) 1.0s infinite; --tx: 24vw; --ty: -66.67vw; --rot: 480deg; width: 1.33vw; height: 3.2vw; }
-.cp-l9 { left: -1%; background: #4FC3F7; animation: shoot-left 1.3s cubic-bezier(0.1, 0.8, 0.3, 1) 1.4s infinite; --tx: 37.33vw; --ty: -40vw; --rot: -120deg; border-radius: 50%; width: 1.6vw; height: 1.6vw; }
-.cp-l10 { left: 4%; background: #A8D86E; animation: shoot-left 1.5s cubic-bezier(0.1, 0.8, 0.3, 1) 1.1s infinite; --tx: 29.33vw; --ty: -80vw; --rot: 540deg; width: 2.13vw; height: 2.13vw; }
-.cp-l11 { left: 6%; background: #CE93D8; animation: shoot-left 1.1s cubic-bezier(0.1, 0.8, 0.3, 1) 1.2s infinite; --tx: 17.33vw; --ty: -33.33vw; --rot: 240deg; }
-.cp-l12 { left: -3%; background: #FF8E53; animation: shoot-left 1.4s cubic-bezier(0.1, 0.8, 0.3, 1) 1.3s infinite; --tx: 42.67vw; --ty: -60vw; --rot: 320deg; width: 1.07vw; height: 2.13vw; }
+.cp-l1 { left: 0%; background: #FF6B6B; animation: shoot-left 1.2s cubic-bezier(0.1, 0.8, 0.3, 1) 1.0s infinite; --tx: 13.33cqw; --ty: -46.67cqw; --rot: 260deg; width: 1.87cqw; height: 1.87cqw; border-radius: 50%; }
+.cp-l2 { left: 3%; background: #FFE57F; animation: shoot-left 1.3s cubic-bezier(0.1, 0.8, 0.3, 1) 1.1s infinite; --tx: 26.67cqw; --ty: -60cqw; --rot: 420deg; }
+.cp-l3 { left: -2%; background: #4FC3F7; animation: shoot-left 1.1s cubic-bezier(0.1, 0.8, 0.3, 1) 1.2s infinite; --tx: 20cqw; --ty: -37.33cqw; --rot: 180deg; width: 1.07cqw; height: 2.67cqw; }
+.cp-l4 { left: 2%; background: #A8D86E; animation: shoot-left 1.4s cubic-bezier(0.1, 0.8, 0.3, 1) 1.0s infinite; --tx: 33.33cqw; --ty: -46.67cqw; --rot: 300deg; width: 1.33cqw; height: 1.33cqw; }
+.cp-l5 { left: 5%; background: #CE93D8; animation: shoot-left 1.5s cubic-bezier(0.1, 0.8, 0.3, 1) 1.3s infinite; --tx: 40cqw; --ty: -73.33cqw; --rot: 500deg; border-radius: 50%; width: 1.6cqw; height: 1.6cqw; }
+.cp-l6 { left: -4%; background: #FF8E53; animation: shoot-left 1.0s cubic-bezier(0.1, 0.8, 0.3, 1) 1.1s infinite; --tx: 10.67cqw;  --ty: -26.67cqw; --rot: 120deg; width: 2.13cqw; height: 1.07cqw; }
+.cp-l7 { left: 1%; background: #FF6B6B; animation: shoot-left 1.6s cubic-bezier(0.1, 0.8, 0.3, 1) 1.2s infinite; --tx: 46.67cqw; --ty: -53.33cqw; --rot: 360deg; }
+.cp-l8 { left: 7%; background: #FFE57F; animation: shoot-left 1.2s cubic-bezier(0.1, 0.8, 0.3, 1) 1.0s infinite; --tx: 24cqw; --ty: -66.67cqw; --rot: 480deg; width: 1.33cqw; height: 3.2cqw; }
+.cp-l9 { left: -1%; background: #4FC3F7; animation: shoot-left 1.3s cubic-bezier(0.1, 0.8, 0.3, 1) 1.4s infinite; --tx: 37.33cqw; --ty: -40cqw; --rot: -120deg; border-radius: 50%; width: 1.6cqw; height: 1.6cqw; }
+.cp-l10 { left: 4%; background: #A8D86E; animation: shoot-left 1.5s cubic-bezier(0.1, 0.8, 0.3, 1) 1.1s infinite; --tx: 29.33cqw; --ty: -80cqw; --rot: 540deg; width: 2.13cqw; height: 2.13cqw; }
+.cp-l11 { left: 6%; background: #CE93D8; animation: shoot-left 1.1s cubic-bezier(0.1, 0.8, 0.3, 1) 1.2s infinite; --tx: 17.33cqw; --ty: -33.33cqw; --rot: 240deg; }
+.cp-l12 { left: -3%; background: #FF8E53; animation: shoot-left 1.4s cubic-bezier(0.1, 0.8, 0.3, 1) 1.3s infinite; --tx: 42.67cqw; --ty: -60cqw; --rot: 320deg; width: 1.07cqw; height: 2.13cqw; }
 
 /* 右下角礼炮：向左上方喷射 */
 @keyframes shoot-right {
@@ -484,38 +484,38 @@ button::after {
   100% { transform: translate(var(--tx), var(--ty)) scale(1) rotate(var(--rot)); opacity: 0; }
 }
 
-.cp-r1 { right: 0%; background: #FF6B6B; animation: shoot-right 1.2s cubic-bezier(0.1, 0.8, 0.3, 1) 1.0s infinite; --tx: -13.33vw; --ty: -46.67vw; --rot: -260deg; width: 1.87vw; height: 1.87vw; border-radius: 50%; }
-.cp-r2 { right: 3%; background: #FFE57F; animation: shoot-right 1.3s cubic-bezier(0.1, 0.8, 0.3, 1) 1.1s infinite; --tx: -26.67vw; --ty: -60vw; --rot: -420deg; }
-.cp-r3 { right: -2%; background: #4FC3F7; animation: shoot-right 1.1s cubic-bezier(0.1, 0.8, 0.3, 1) 1.2s infinite; --tx: -20vw; --ty: -37.33vw; --rot: -180deg; width: 1.07vw; height: 2.67vw; }
-.cp-r4 { right: 2%; background: #A8D86E; animation: shoot-right 1.4s cubic-bezier(0.1, 0.8, 0.3, 1) 1.0s infinite; --tx: -33.33vw; --ty: -46.67vw; --rot: -300deg; width: 1.33vw; height: 1.33vw; }
-.cp-r5 { right: 5%; background: #CE93D8; animation: shoot-right 1.5s cubic-bezier(0.1, 0.8, 0.3, 1) 1.3s infinite; --tx: -40vw; --ty: -73.33vw; --rot: -500deg; border-radius: 50%; width: 1.6vw; height: 1.6vw; }
-.cp-r6 { right: -4%; background: #FF8E53; animation: shoot-right 1.0s cubic-bezier(0.1, 0.8, 0.3, 1) 1.1s infinite; --tx: -10.67vw;  --ty: -26.67vw; --rot: -120deg; width: 2.13vw; height: 1.07vw; }
-.cp-r7 { right: 1%; background: #FF6B6B; animation: shoot-right 1.6s cubic-bezier(0.1, 0.8, 0.3, 1) 1.2s infinite; --tx: -46.67vw; --ty: -53.33vw; --rot: -360deg; }
-.cp-r8 { right: 7%; background: #FFE57F; animation: shoot-right 1.2s cubic-bezier(0.1, 0.8, 0.3, 1) 1.0s infinite; --tx: -24vw; --ty: -66.67vw; --rot: -480deg; width: 1.33vw; height: 3.2vw; }
-.cp-r9 { right: -1%; background: #4FC3F7; animation: shoot-right 1.3s cubic-bezier(0.1, 0.8, 0.3, 1) 1.4s infinite; --tx: -37.33vw; --ty: -40vw; --rot: 120deg; border-radius: 50%; width: 1.6vw; height: 1.6vw; }
-.cp-r10 { right: 4%; background: #A8D86E; animation: shoot-right 1.5s cubic-bezier(0.1, 0.8, 0.3, 1) 1.1s infinite; --tx: -29.33vw; --ty: -80vw; --rot: -540deg; width: 2.13vw; height: 2.13vw; }
-.cp-r11 { right: 6%; background: #CE93D8; animation: shoot-right 1.1s cubic-bezier(0.1, 0.8, 0.3, 1) 1.2s infinite; --tx: -17.33vw; --ty: -33.33vw; --rot: -240deg; }
-.cp-r12 { right: -3%; background: #FF8E53; animation: shoot-right 1.4s cubic-bezier(0.1, 0.8, 0.3, 1) 1.3s infinite; --tx: -42.67vw; --ty: -60vw; --rot: -320deg; width: 1.07vw; height: 2.13vw; }
+.cp-r1 { right: 0%; background: #FF6B6B; animation: shoot-right 1.2s cubic-bezier(0.1, 0.8, 0.3, 1) 1.0s infinite; --tx: -13.33cqw; --ty: -46.67cqw; --rot: -260deg; width: 1.87cqw; height: 1.87cqw; border-radius: 50%; }
+.cp-r2 { right: 3%; background: #FFE57F; animation: shoot-right 1.3s cubic-bezier(0.1, 0.8, 0.3, 1) 1.1s infinite; --tx: -26.67cqw; --ty: -60cqw; --rot: -420deg; }
+.cp-r3 { right: -2%; background: #4FC3F7; animation: shoot-right 1.1s cubic-bezier(0.1, 0.8, 0.3, 1) 1.2s infinite; --tx: -20cqw; --ty: -37.33cqw; --rot: -180deg; width: 1.07cqw; height: 2.67cqw; }
+.cp-r4 { right: 2%; background: #A8D86E; animation: shoot-right 1.4s cubic-bezier(0.1, 0.8, 0.3, 1) 1.0s infinite; --tx: -33.33cqw; --ty: -46.67cqw; --rot: -300deg; width: 1.33cqw; height: 1.33cqw; }
+.cp-r5 { right: 5%; background: #CE93D8; animation: shoot-right 1.5s cubic-bezier(0.1, 0.8, 0.3, 1) 1.3s infinite; --tx: -40cqw; --ty: -73.33cqw; --rot: -500deg; border-radius: 50%; width: 1.6cqw; height: 1.6cqw; }
+.cp-r6 { right: -4%; background: #FF8E53; animation: shoot-right 1.0s cubic-bezier(0.1, 0.8, 0.3, 1) 1.1s infinite; --tx: -10.67cqw;  --ty: -26.67cqw; --rot: -120deg; width: 2.13cqw; height: 1.07cqw; }
+.cp-r7 { right: 1%; background: #FF6B6B; animation: shoot-right 1.6s cubic-bezier(0.1, 0.8, 0.3, 1) 1.2s infinite; --tx: -46.67cqw; --ty: -53.33cqw; --rot: -360deg; }
+.cp-r8 { right: 7%; background: #FFE57F; animation: shoot-right 1.2s cubic-bezier(0.1, 0.8, 0.3, 1) 1.0s infinite; --tx: -24cqw; --ty: -66.67cqw; --rot: -480deg; width: 1.33cqw; height: 3.2cqw; }
+.cp-r9 { right: -1%; background: #4FC3F7; animation: shoot-right 1.3s cubic-bezier(0.1, 0.8, 0.3, 1) 1.4s infinite; --tx: -37.33cqw; --ty: -40cqw; --rot: 120deg; border-radius: 50%; width: 1.6cqw; height: 1.6cqw; }
+.cp-r10 { right: 4%; background: #A8D86E; animation: shoot-right 1.5s cubic-bezier(0.1, 0.8, 0.3, 1) 1.1s infinite; --tx: -29.33cqw; --ty: -80cqw; --rot: -540deg; width: 2.13cqw; height: 2.13cqw; }
+.cp-r11 { right: 6%; background: #CE93D8; animation: shoot-right 1.1s cubic-bezier(0.1, 0.8, 0.3, 1) 1.2s infinite; --tx: -17.33cqw; --ty: -33.33cqw; --rot: -240deg; }
+.cp-r12 { right: -3%; background: #FF8E53; animation: shoot-right 1.4s cubic-bezier(0.1, 0.8, 0.3, 1) 1.3s infinite; --tx: -42.67cqw; --ty: -60cqw; --rot: -320deg; width: 1.07cqw; height: 2.13cqw; }
 
 /* ========== 通用资产胶囊 (全局) ========== */
 .asset-item {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 1.07vw;
-  padding: 1.33vw 2.67vw;
+  gap: 1.07cqw;
+  padding: 1.33cqw 2.67cqw;
   background: rgba(255, 255, 255, 0.5);
-  border-radius: 4vw;
-  border: 0.13vw solid rgba(255, 255, 255, 0.6);
+  border-radius: 4cqw;
+  border: 0.13cqw solid rgba(255, 255, 255, 0.6);
 }
 
 .asset-icon {
-  width: 6.67vw;
-  height: 6.67vw;
+  width: 6.67cqw;
+  height: 6.67cqw;
 }
 
 .asset-value {
-  font-size: 3.73vw;
+  font-size: 3.73cqw;
   font-weight: 600;
   color: #2c5f7c;
 }
@@ -523,9 +523,9 @@ button::after {
 .infinite-energy-value {
   display: inline-flex;
   align-items: center;
-  gap: 0.8vw;
+  gap: 0.8cqw;
   white-space: nowrap;
-  font-size: 3.73vw;
+  font-size: 3.73cqw;
   font-weight: 700;
   line-height: 1;
   color: #2c5f7c;
@@ -533,7 +533,7 @@ button::after {
 
 .infinite-energy-value strong {
   display: inline-block;
-  font-size: 6.4vw;
+  font-size: 6.4cqw;
   line-height: 0.75;
   font-weight: 800;
   transform: scaleX(0.8);
@@ -541,16 +541,16 @@ button::after {
 }
 
 .asset-plus {
-  width: 4.27vw;
-  height: 4.27vw;
-  line-height: 4vw;
+  width: 4.27cqw;
+  height: 4.27cqw;
+  line-height: 4cqw;
   text-align: center;
-  font-size: 3.73vw;
+  font-size: 3.73cqw;
   font-weight: 700;
   color: #fff;
   background: linear-gradient(135deg, #4FC3F7, #2196F3);
   border-radius: 50%;
-  margin-left: 0.53vw;
+  margin-left: 0.53cqw;
 }
 
 .asset-item:active {
@@ -561,19 +561,19 @@ button::after {
 /* 溢出贝壳红色角标（定位在"满"字上方） */
 .bonus-badge {
   position: absolute;
-  top: -2.9vw;
-  right: 7vw;
-  min-width: 4.8vw;
-  height: 4.8vw;
-  line-height: 4.8vw;
+  top: -2.9cqw;
+  right: 7cqw;
+  min-width: 4.8cqw;
+  height: 4.8cqw;
+  line-height: 4.8cqw;
   text-align: center;
-  font-size: 3.2vw;
+  font-size: 3.2cqw;
   font-weight: 800;
   color: #fff;
   background: #FF3B30;
   border-radius: 50%;
-  padding: 0 0.8vw;
-  box-shadow: 0 0.27vw 0.8vw rgba(255, 59, 48, 0.4);
+  padding: 0 0.8cqw;
+  box-shadow: 0 0.27cqw 0.8cqw rgba(255, 59, 48, 0.4);
   z-index: 10;
 }
 
