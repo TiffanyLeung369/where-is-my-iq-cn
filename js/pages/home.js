@@ -316,13 +316,20 @@ const HomePage = {
 
 
 
-    <!-- 每日打卡入口 -->
-    <div class="checkin-entry-btn" @click="onOpenCheckIn">
-      <div style="display:flex; align-items:center; justify-content:center; gap:1.067cqw;">
-        <img class="pencil-icon" :src="IMG.calendar" style="width:4.8cqw; height:4.8cqw;" />
-        <span class="checkin-entry-text">{{ t('home.daily_checkin') }}</span>
+    <div class="entry-row">
+      <!-- 赞助作者入口（跳转爱发电） -->
+      <div class="checkin-entry-btn" @click="onOpenSponsor">
+        <span class="checkin-entry-text">{{ t('home.sponsor_author') }}</span>
       </div>
-      <div class="red-dot" v-if="!hasCheckedInToday"></div>
+
+      <!-- 每日打卡入口 -->
+      <div class="checkin-entry-btn" @click="onOpenCheckIn">
+        <div style="display:flex; align-items:center; justify-content:center; gap:1.067cqw;">
+          <img class="pencil-icon" :src="IMG.calendar" style="width:4.8cqw; height:4.8cqw;" />
+          <span class="checkin-entry-text">{{ t('home.daily_checkin') }}</span>
+        </div>
+        <div class="red-dot" v-if="!hasCheckedInToday"></div>
+      </div>
     </div>
 
 
@@ -1068,6 +1075,11 @@ const HomePage = {
 
       this.updateUIState();
       this._playRewardAnim(IMG.shell, t('home.reward_shells', {count: count}), 'coin', count);
+    },
+
+    onOpenSponsor() {
+      AudioManager.playSFX('click');
+      window.location.href = 'https://afdian.com/a/liang_li';
     },
 
     onOpenCheckIn() {

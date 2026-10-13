@@ -81,6 +81,7 @@ I18n.register('en', {
   'home.tutorial_start': 'Tutorial',
   'home.level_number': 'Level {currentLevel}',
   'home.daily_checkin': 'Daily Bonus',
+  'home.sponsor_author': 'Support Me',
   'home.footer_find': 'Find the hidden {skinName}',
   'home.exchange_title': 'Exchange Coins for Shells',
   'home.exchange_quantity': 'Quantity',

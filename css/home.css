@@ -1300,9 +1300,15 @@
   align-items: center;
 }
 
-/* ========== 每日打卡入口 ========== */
-.checkin-entry-btn {
+/* ========== 赞助作者 + 每日打卡入口 ========== */
+.entry-row {
   margin-top: 2.13cqw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3.2cqw;
+}
+.checkin-entry-btn {
   padding: 1.33cqw 5.33cqw;
   background: rgba(255, 255, 255, 0.2);
   border: 0.27cqw solid rgba(255, 255, 255, 0.4);

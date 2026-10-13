@@ -81,6 +81,7 @@ I18n.register('zh', {
   'home.tutorial_start': '教程关',
   'home.level_number': '第 {currentLevel} 关',
   'home.daily_checkin': '每日打卡',
+  'home.sponsor_author': '赞助作者',
   'home.footer_find': '找到藏起来的{skinName}',
   'home.exchange_title': '金币兑换贝壳',
   'home.exchange_quantity': '购买数量',
